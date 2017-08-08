@@ -1,0 +1,19 @@
+#bct {
+    width: 100%;
+    font-size: 2rem;
+    text-align: center;
+    padding: 13px 0;
+}
+
+ff-breadcrumb-trail-item {
+    font-style: italic;
+    font-weight: bold;
+}
+
+ff-breadcrumb-trail-item h2 {
+    display: inline-block;
+}
+
+ff-breadcrumb-trail-item:hover {
+    text-decoration: underline;
+}

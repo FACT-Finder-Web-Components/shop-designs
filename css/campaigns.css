@@ -1,0 +1,26 @@
+ff-campaign-advisor {
+    padding-top: 25px;
+    border-top: 1px solid lightgray;
+    margin-top: 10px;
+}
+
+ff-campaign-advisor-question {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+ff-campaign-advisor-question .answerContainer {
+    margin-top: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+ff-campaign-advisor-answer {
+    cursor: pointer;
+    padding: 15px;
+}

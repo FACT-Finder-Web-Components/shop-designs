@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shop Design</title>
+
+    <script>
+        var Polymer = Polymer || {};
+        Polymer.dom = "shady";
+        document.addEventListener("ffReady", function () {
+            function addRating(records) {
+                try {
+                    records.forEach(function (product) {
+                        product.record.Rating = product.record.Rating || "0.0";
+                    });
+                } catch (e) {
+                    //TODO handle me
+                }
+            }
+
+            factfinder.communication.ResultDispatcher.subscribe("result", function (result) {
+                hideProductDetail();
+                showSearchResult();
+                addRating(result.records || []);
+
+                document.querySelector("#overlayNav").classList.remove("active");
+                if (result.resultStatus === "nothingFound") {
+                    document.querySelector("#tagCloudContainer").innerHTML = '<h2>Most Popular Search Terms</h2><ff-tag-cloud id="tagCloud" min-font-size="10" max-font-size="40" word-count="60" gradient-color-start="#436371" gradient-color-end="#0b83b3"></ff-tag-cloud>';
+                } else {
+                    document.querySelector("#tagCloudContainer").innerHTML = '';
+                }
+            });
+
+            factfinder.communication.ResultDispatcher.subscribe("recommendation", function (records) {
+                addRating(records || []);
+            });
+
+            factfinder.communication.ResultDispatcher.subscribe("detailPage", function (result) {
+                var recordData = result.searchResult.records[0];
+                showProductDetail({
+                    currentTarget: {
+                        recordData: recordData
+                    }
+                });
+            });
+
+            factfinder.communication.ResultDispatcher.subscribe("sort", function () {
+                hideOverlay(0);
+            });
+
+            factfinder.communication.ResultDispatcher.subscribe("suggest", function (suggestions) {
+                if (suggestions) {
+                    showOverlay(0);
+                } else {
+                    hideOverlay(0);
+                }
+            });
+
+            factfinder.communication.FFCommunicationEventAggregator.addBeforeDispatchingCallback(function (event) {
+                if (event.type === "search" || event.type === "filter" || event.type === "sort" || event.type === "clearFilter" || event.type === "advisor") {
+                    showOverlay(0, true);
+                }
+            });
+        });
+    </script>
+    <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+    <link rel="import" href="elements.html">
+
+    <style is="custom-style">
+        [unresolved] {
+            opacity: 0;
+        }
+
+        html, body {
+            font-size: 14px;
+            transition: opacity 0.4s;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            overflow-y: scroll;
+            padding-top: 150px;
+        }
+
+        header {
+            width: 100%;
+            height: 150px;
+            background: #0b97c4;
+            color: white;
+            position: fixed;
+            top: 0;
+            z-index: 99991;
+        }
+
+        .sortboxContainer {
+            height: 75px;
+            position: absolute;
+            left: 15px;
+        }
+
+        nav {
+            height: 75px;
+            background-color: #23282d;
+        }
+
+        #searchHeader {
+            font-size: 34px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        input[is="ff-searchbox"] {
+            outline: none;
+            background: #0b97c4;
+            border: none;
+            color: white;
+            margin-top: 10px;
+            height: 55px;
+            width: 50%;
+            font-size: 34px;
+            line-height: 35px;
+            border-bottom: 1px solid white;
+            text-align: center;
+        }
+
+        button {
+            cursor: pointer;
+            background: none;
+            outline: none !important;
+            border: none;
+        }
+
+        main {
+            display: block;
+            transition: all 0.3s;
+        }
+
+        ff-campaign-feedbacktext {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+        }
+
+        #rightColumn {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        span.rating {
+            color: gold;
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+<ff-campaign-redirect></ff-campaign-redirect>
+<ff-communication url="http://web-components.fact-finder.de/FACT-Finder-7.2"
+                  version="7.2"
+                  channel="bergfreunde-co-uk"
+                  default-query="sale"
+                  search-immediate="true"></ff-communication>
+
+<header style="position: fixed">
+    <nav>
+        <ff-header-navigation group-count="4" unresolved="">
+            <img slot="container-left-Outdoor clothing" src="images/outdoorClothing.jpg" style="max-width: 1200px"
+                 alt="Outdoor CLothing Banner">
+        </ff-header-navigation>
+        <img style="position: absolute;right: 15px; top: 15px; cursor: pointer;color: white"
+             src="images/ic_info_outline_black_24px.svg" alt="info icon"
+             height="42px"
+             width="42px"/>
+    </nav>
+    <div id="searchHeader">
+        <input type="text" is="ff-searchbox" hidesuggest-onblur="true">
+        <button is="ff-searchbutton">
+            <img src="images/ic_search_black_24px.svg" alt="search icon" style="color: white" height="42px"
+                 width="42px">
+        </button>
+
+        <div class="sortboxContainer">
+            <div class="sortBoxCaption" onclick="toggleSortbox()">
+                <img src="images/sort_by_V1.png" alt="sorting icons">
+            </div>
+            <ff-sortbox show-selected="true" id="sortbox"></ff-sortbox>
+        </div>
+    </div>
+    <ff-onfocus-suggest id="suggest" unresolved>
+        <section data-container="onfocus">
+            <ff-suggest-item type="searchTerm">
+                <div>{{{name}}}</div>
+            </ff-suggest-item>
+        </section>
+        <section data-container="suggestions" style="display: flex;flex-direction: row">
+            <div style="display: flex;flex-direction: column;">
+                <div data-container="category">
+                    <h2>Categories</h2>
+                    <ff-suggest-item type="category">
+                        <div>{{{name}}}</div>
+                    </ff-suggest-item>
+                </div>
+                <div data-container="brand">
+                    <h2>Brands</h2>
+                    <ff-suggest-item type="brand">
+                        <div>{{{name}}}</div>
+                    </ff-suggest-item>
+                </div>
+            </div>
+
+            <div data-container="productName">
+                <h2>Products</h2>
+                <div style="display: flex;flex-direction: row;flex-wrap: wrap;justify-content: flex-start; border-left:1px solid #eee;">
+                    <ff-suggest-item type="productName">
+                        <img data-image="product">
+                        <div class="product-center">
+                            <div class="product-name">{{{name}}}</div>
+                            <!--<div>Shipping</div>-->
+                            <!--<div>Rating</div>-->
+                        </div>
+                        <!-- Price and availability-->
+                        <div class="product-right">
+                            <div class="product-price">{{attributes.Price}}€</div>
+                            <div class="product-availabilitytext">{{attributes.availabilitytext}}</div>
+                        </div>
+                    </ff-suggest-item>
+                </div>
+            </div>
+        </section>
+    </ff-onfocus-suggest>
+</header>
+
+<section id="productDetail" style="display: none;opacity: 0;">
+    <ff-record>
+        <h2>{{record.Title}}</h2>
+        <div class="detailTop">
+            <img data-image="{{record.ImageName}}">
+            <div>{{record.Description}}</div>
+        </div>
+
+        <div class="priceContainer">
+            <div>
+                <span class="rating">&#x2605;</span>
+                <span style="font-size: 1.25rem;">{{record.Rating}}</span>
+            </div>
+            <span class="price">{{record.Price}} €</span>
+        </div>
+    </ff-record>
+
+    <ff-recommendation unresolved>
+        <h2>Recommendations</h2>
+        <ff-record-list unresolved>
+            <ff-record onclick="showProductDetail(event)">
+                <div style="min-height: 230px" data-track>
+                    <img data-image="{{record.ImageName}}">
+                </div>
+                <h2 style="font-size: 1.2rem" data-track>
+                    {{record.Title}}
+                </h2>
+
+                <div class="priceContainer" data-track>
+                    <div>
+                        <span class="rating">&#x2605;</span>
+                        <span style="font-size: 1.25rem;">{{record.Rating}}</span>
+                    </div>
+                    <span class="price">{{record.Price}} €</span>
+                </div>
+            </ff-record>
+        </ff-record-list>
+    </ff-recommendation>
+</section>
+
+<main id="searchResult">
+    <div id="overlayNav">
+        <svg id="spinner" class="spinner" width="65px" height="65px" viewBox="0 0 66 66"
+             xmlns="http://www.w3.org/2000/svg">
+            <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+        </svg>
+    </div>
+
+    <ff-asn unresolved>
+        <ff-asn-remove-all-filter>[X] Remove all Filter</ff-asn-remove-all-filter>
+
+        <ff-asn-group for-group="all" class="group" opened>
+            <ff-asn-group-element class="ff-asn-group">
+                <div data-selected>
+                    <p class="selected indent"><span class="checkbox"></span> {{element.name}}&nbsp;{{group.unit}}
+                    </p>
+                </div>
+
+                <div data-unselected class="ff-asn-group">
+                    <p class="indent"><span class="checkbox"></span> {{element.name}}&nbsp;{{group.unit}}<span
+                            class="count">{{element.recordCount}}</span></p>
+                </div>
+            </ff-asn-group-element>
+
+            <div data-container="groupCaption">
+                <h3>{{group.name}}</h3>
+            </div>
+
+            <div opened data-container="detailedLinks">
+                <div data-content="detailedLinks"></div>
+            </div>
+
+            <div data-container="hiddenLinks">
+                <div data-content="hiddenLinks"></div>
+            </div>
+        </ff-asn-group>
+        <ff-asn-group-slider class="group" opened>
+            <div data-container="groupCaption" class="groupCaption">
+                <h3>{{group.name}}</h3>
+            </div>
+            <ff-slider-control>
+                <input data-control="1" type="text">
+                <input data-control="2" type="text">
+
+                <ff-slider>
+                    <div id="slider1" class="sliderBtn">&nbsp;</div>
+                    <div id="slider2" class="sliderBtn">&nbsp;</div>
+                </ff-slider>
+
+                <div data-container="removeFilter" id="removeFilter"
+                     style="margin-top: 12px;
+                                         font-size: 12px;
+                                         cursor: pointer;">
+                    [x] Remove
+                    Filter
+                </div>
+            </ff-slider-control>
+        </ff-asn-group-slider>
+        <ff-asn-group for-group="Color" class="group" opened>
+            <ff-asn-group-element class="ff-asn-group" style="width: 40%;padding-left: 2%">
+                <div data-selected>
+                    <p class="selected indent"><span class="circle"
+                                                     style="background-color: {{element.previewImageURL}} !important"></span>
+                        {{element.name}}&nbsp;{{group.unit}}
+                    </p>
+                </div>
+
+                <div data-unselected class="ff-asn-group">
+                    <p class="indent"><span class="circle"
+                                            style="background-color: {{element.previewImageURL}} !important"></span>
+                        {{element.name}}&nbsp;{{group.unit}}
+                    </p>
+                </div>
+            </ff-asn-group-element>
+
+            <div data-container="groupCaption" class="groupCaption">
+                <h3>{{group.name}}</h3>
+            </div>
+
+            <div opened data-container="detailedLinks" style="display: flex;flex-wrap: wrap">
+                <div data-content="detailedLinks"></div>
+            </div>
+            <!--<div data-container="hiddenLinks" opened>-->
+            <!--<div data-content="hiddenLinks"></div>-->
+            <!--</div>-->
+        </ff-asn-group>
+        <ff-asn-group filter-style="DEFAULT" class="group" opened>
+            <ff-asn-group-element class="ff-asn-group">
+                <div data-selected>
+                    <p class="selected indent"><span class="circle"></span> {{element.name}}&nbsp;{{group.unit}}
+                    </p>
+                </div>
+
+                <div data-unselected class="ff-asn-group">
+                    <p class="indent"><span class="circle"></span> {{element.name}}&nbsp;{{group.unit}}
+                        <span class="count">{{element.recordCount}}</span>
+                    </p>
+                </div>
+            </ff-asn-group-element>
+
+            <div data-container="groupCaption" class="groupCaption">
+                <h3>{{group.name}}</h3>
+            </div>
+
+            <div opened data-container="detailedLinks">
+                <div data-content="detailedLinks"></div>
+            </div>
+            <div data-container="hiddenLinks">
+                <div data-content="hiddenLinks"></div>
+            </div>
+        </ff-asn-group>
+        <ff-asn-group opened filter-style="TREE" class="group">
+            <ff-asn-group-element class="ff-asn-group">
+                <div data-selected>
+                    <p class="selected" style="color: #0b97c4 !important;">- {{element.name}}&nbsp;{{group.unit}}</p>
+                </div>
+
+                <div data-unselected class="ff-asn-group">
+                    <p>+ {{element.name}}&nbsp;{{group.unit}} <span class="count">{{element.recordCount}}</span>
+                    </p>
+                </div>
+            </ff-asn-group-element>
+
+            <div data-container="groupCaption" class="groupCaption">
+                <h3>{{group.name}}</h3>
+            </div>
+
+            <div opened data-container="detailedLinks">
+                <div data-content="detailedLinks"></div>
+            </div>
+
+            <div data-container="hiddenLinks">
+                <div data-content="hiddenLinks"></div>
+            </div>
+        </ff-asn-group>
+    </ff-asn>
+
+    <div id="rightColumn">
+        <ff-campaign-feedbacktext label="above search result" style="width: 100%" unresolved>
+            {{{text}}}
+        </ff-campaign-feedbacktext>
+
+        <div id="bct">
+            <ff-template scope="result" unresolved>Your search for:</ff-template>
+            <ff-breadcrumb-trail unresolved>
+                <ff-breadcrumb-trail-item type="search">&quot;{{text}}&quot;</ff-breadcrumb-trail-item>
+                <ff-breadcrumb-trail-item type="advisor">{{{text}}}</ff-breadcrumb-trail-item>
+            </ff-breadcrumb-trail>
+            <ff-template scope="result" unresolved>produced <u>{{resultCount}}</u> hits</ff-template>
+        </div>
+
+        <div id="tagCloudContainer"></div>
+
+        <!--<ff-campaign-pushed-products unresolved style="border-top: 1px solid lightgray;padding-top: 15px">-->
+            <!--<h2 style="text-align: center">You may be interested in</h2>-->
+            <!--<ff-record-list id="pushedProducts" unresolved style="width: 80%">-->
+                <!--&lt;!&ndash;<ff-carousel per-slide="4">&ndash;&gt;-->
+                    <!--<ff-record onclick="showProductDetail(event)" slot="items">-->
+                        <!--<div style="min-height: 230px" data-track>-->
+                            <!--<img data-image="{{record.ImageName}}">-->
+                        <!--</div>-->
+                        <!--<h2 style="font-size: 1.5rem" data-track>-->
+                            <!--{{record.Title}}-->
+                        <!--</h2>-->
+
+                        <!--<div class="priceContainer" data-track>-->
+                            <!--&lt;!&ndash;<span class="brand">{{record.Manufacturer}}</span>&ndash;&gt;-->
+                            <!--<div>-->
+                                <!--<span class="rating">&#x2605;</span>-->
+                                <!--<span style="font-size: 1.25rem;">{{record.Rating}}</span>-->
+                            <!--</div>-->
+                            <!--<span class="price">{{record.Price}} €</span>-->
+                        <!--</div>-->
+                    <!--</ff-record>-->
+                <!--&lt;!&ndash;</ff-carousel>&ndash;&gt;-->
+            <!--</ff-record-list>-->
+        <!--</ff-campaign-pushed-products>-->
+        <!--<script>-->
+            <!--var recordList = document.querySelector("#pushedProducts");-->
+            <!--recordList.addEventListener("dom-upated", function () {-->
+                <!--setTimeout(function () {-->
+                    <!--recordList.querySelector("ff-carousel").calculateSizes();-->
+                <!--}, 1000);-->
+            <!--})-->
+        <!--</script>-->
+
+        <ff-campaign-advisor>
+            <ff-campaign-advisor-question>
+                <h2 data-question style="font-size: 2.5rem;">{{{text}}}</h2>
+                <div class="answerContainer">
+                    <ff-campaign-advisor-answer class="layout vertical center-center">
+                        <h2>{{{text}}}</h2>
+                    </ff-campaign-advisor-answer>
+                </div>
+            </ff-campaign-advisor-question>
+        </ff-campaign-advisor>
+
+        <ff-record-list unresolved>
+            <ff-record onclick="showProductDetail(event)">
+                <div style="min-height: 230px" data-track>
+                    <img data-image="{{record.ImageName}}">
+                </div>
+                <h2 style="font-size: 1.5rem" data-track>
+                    {{record.Title}}
+                </h2>
+
+                <div class="priceContainer" data-track>
+                    <!--<span class="brand">{{record.Manufacturer}}</span>-->
+                    <div>
+                        <span class="rating">&#x2605;</span>
+                        <span style="font-size: 1.25rem;">{{record.Rating}}</span>
+                    </div>
+                    <span class="price">{{record.Price}} €</span>
+                </div>
+            </ff-record>
+        </ff-record-list>
+    </div>
+</main>
+
+<script src="custom.js"></script>
+</body>
+</html>

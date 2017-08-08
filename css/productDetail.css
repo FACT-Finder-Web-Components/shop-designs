@@ -1,0 +1,54 @@
+#productDetail {
+    transition: all 0.3s;
+    position: absolute;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    z-index: 5;
+    padding: 10px;
+}
+
+#productDetail ff-record {
+    width: auto;
+    width: 80%;
+    max-width: 1000px;
+    height: auto;
+    padding-top: 25px;
+    cursor: default;
+}
+
+#productDetail ff-recommendation {
+    max-width: 900px;
+    margin-top: 25px;
+}
+
+#productDetail ff-recommendation ff-record {
+    cursor: pointer;
+    width: 20%;
+    min-width: 190px;
+    padding-top: 0px;
+}
+
+#productDetail ff-recommendation ff-record-list {
+    /*border: 1px solid lightgray;*/
+    justify-content: space-around;
+    align-items: center;
+}
+
+#productDetail ff-record:hover {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+#productDetail ff-record:hover img {
+    width: 205px;
+    height: 205px;
+}
+
+#productDetail ff-record .detailTop {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}

@@ -1,0 +1,111 @@
+1.2.0
+ADD: ff-slider-control introduces new mixins
+ADD: ff-paging-item does now set the css class disabled when it is not active
+FIX: fixed a bug for ff-record data-redirect where some data-redirect targets other than _self could lead to flaky click tracking
+FIX: pushed wrong url to browser history when using a html <base> tag
+ADD: ff-paging-dropdown element
+ADD: Backwards compatibility for FF < 7.3 and "productName" ff-suggest-item click
+FIX: broken layout of container in ff-header-navigation
+ADD: add "ff-asn-remove-all-filter" element
+ADD: suggest-product-record event to ff-suggest which contains the product fetched by the REST call on a suggest productName click
+ADD: ff-suggest-item uses the REST get records API to fetch a product on a suggest productName click
+ADD: getRecordsUrl property on ff-communication
+CHG: core Dispatcher and custom topics
+FIX: ignore 'ignorePage' lazy check on searchImmediate
+CHG: core Distapcher and custom topics
+ADD: infinite scrolling to ff-record-list
+CHG: add dynamic slots and change the layout of the container in ff-header-navigation
+CHG: don't dispatch asn on a sort, paging or ppp event
+ADD: add custom urls to ff-communication
+FIX: ASN filter did not consider the ClusterLevel of an element
+
+1.1.10
+FIX: Overriding the default action of the ff-suggest-item click
+
+1.1.9
+FIX: add fallback for not supported localStorage in Safari inkognito mode
+
+1.1.8
+FIX: fix a bug where in Safari 10.1 ff-asn-groups collapse and are not openable
+
+1.1.7
+FIX: ff-asn crashs without configured slider
+
+1.1.6
+CHG: removed blank between numerical values of slider filter values as the FF-UI diagnostic search can't handle them
+CHG: change ff-paging inheritance behavior for showOnly property
+FIX: init of ff-asn-group template in ff-asn and asn-group-element template upgrading in ff-asn-group
+FIX: ff-asn-group-slider are always shown
+CHG: add lazy-rendering for detailedLinks in asn-group
+ADD: ff-communication does now send login event when user-id attribute changes. If set, all tracking requests will have the userId as an additional parameter
+ADD: ff-communication add sid attribute
+CHG: campaign dispatching dose not dispatch 'undefined' to campaigns which are affected.
+FIX: set asn-group element 'opened' when group has a selectedElement in searchResult
+
+1.1.5
+FIX: shoppingCartCampaign dispatching bug
+ADD: ff-search-feedback dont-sho-on-result-changed attribute
+
+1.1.4
+FIX: fix suggest 401 bug
+FIX: ff-tag-cloud double encoding bug
+ADD: ff-suggest-item adds now queryFromSuggest
+
+1.1.3
+ADD shopping cart campaign API element (ff-campaign-shopping-cart)
+ADD ff-tag-cloud
+ADD lazy-load for ff-asn-group
+ADD ff-compare element
+ADD factfinder.communication.FFCommunicationEventAggregator.addBeforeDispatchingCallback(fn)
+
+1.1.0
+ADD: ff-search-feedback element
+ADD: ff-campaign-landing-page element
+ADD: ff-navigation element
+ADD: ff-header-navigation element
+
+1.0.16
+fix: console error log on tracking request
+fix: recommendation are not displayed
+
+1.0.15
+ff-communiction: fixed search-immediate always true when use-seo="true"
+ff-slider: fixed encoding issue
+ff-breadcrumb-trail-item: does now reflect type attribute
+fixed tracking 401 bug
+
+1.0.14
+ff-searchbox: fixed on key left right console error when no ff-suggest available
+ff-communication: fixed encoding issue when use-seo was set to true
+ff-campaign-advisor: fixed polyfill related display bug which caused the advisor question not to show up occasionally in firefox and IE
+ff-communication: fixed a bug where setting the version attribute to 7.2 resulted in console log: version ont supported
+
+
+1.0.12
+ff-campaign-advisor bugfix: The ff-campaign-advisor-questions contains now the ff-campaign-advisor-answer as it should be. Therefore the ff-campaign-advisor element is now able to process more than 1 advisor question.
+add use-browser-history="true/false" to ff-communication
+add use-url-parameter="true/false" to ff-communication
+minor improvements
+
+1.0.10 -> 1.0.11
+fixed umlaut encoding bug in suggest searchTerms
+
+1.0.9 -> 1.0.10
+fixed: search-immediate wasn't occasionally executed in Internet Explorer
+
+1.0.8 -> 1.0.9
+ff-asn does now set style="display:none;" at creation time
+fixed search-immediate error again
+
+1.0.7 -> 1.0.8
+fixed a bug where no tracking request was send on data-redirect
+add factfinder.communication.version
+
+1.0.6 -> 1.0.7
+fixed onerror-image uncaught exception
+
+1.0.5 -> 1.0.6
+Renamed shadow dom css class from container to ff-asn-group-container due to polyfill lack of scoping
+Add removeUnresolvedAttribute behavior. It's now possible to prevent FOUC with the [unresovled] attribute on all ff-* elements with visual component
+[data-image] attribute is now automatically resolved with the appropriate fieldRole value if possible
+ff-sortbox does not change the key anymore when showSelected is true (currentKey + "_showSelected")

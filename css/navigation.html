@@ -1,0 +1,117 @@
+<style is="custom-style">
+
+    ff-header-navigation:hover {
+        --header: {
+            height: 75px;
+            width: 100%;
+        };
+    }
+
+    ff-header-navigation {
+        height: 75px;
+        display: block;
+        width: 60%;
+
+        --nav-group: {
+            padding: 15px;
+            border-right: 1px solid lightgray;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        };
+
+        --nav-group-caption: {
+            font-weight: bold;
+            margin: 20px 0px 10px 0;
+            color: #3c3c3b;
+            cursor: pointer;
+            transition: color 0.2s;
+        };
+
+        --nav-group-caption-hover: {
+            color: #0b97c4;
+        };
+
+        --container: {
+            -webkit-box-shadow: 0 0 0.3125em rgba(0, 0, 0, 0.2);
+            box-shadow: 0 0 0.3125em rgba(0, 0, 0, 0.2);
+            z-index: 99999;
+            /*margin-top: 25px;*/
+        };
+
+        --header: {
+            height: 75px;
+            width: 60%;
+            min-width: 1120px;
+        };
+
+        --nav-link: {
+            cursor: pointer;
+            color: #3c3c3b;
+            padding-left: 0;
+            transition: color 0.2s;
+
+        };
+
+        --nav-link-hover: {
+            color: #0b97c4;
+        };
+
+        --nav-group-hover: {
+            background-color: lightgray;
+        };
+
+        --nav-item: {
+            color: white;
+            text-transform: uppercase;
+            font-weight: bold;
+            font-style: normal;
+            text-decoration: inherit;
+            justify-content: center;
+            text-decoration: inherit;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            flex: auto;
+            /*margin-top: 17.5px;*/
+            transition: color 150ms;
+        };
+
+        --nav-item-hover: {
+            color: #0b97c4;
+        };
+
+        --wrapper: {
+            height: 100%;
+            position: static !important;
+        };
+    }
+
+    main {
+        display: flex;
+        justify-content: flex-start;
+        transition: all 0.2s;
+        background-color: white;
+    }
+
+    #overlayNav {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        z-index: -1;
+        background-color: #000000;
+        transition: all 0.2s;
+        opacity: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #overlayNav.active {
+        z-index: 9999;
+        opacity: 0.6;
+    }
+
+</style>

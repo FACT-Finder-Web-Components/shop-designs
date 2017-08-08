@@ -1,0 +1,71 @@
+
+ff-record-list {
+    width: 100%;
+    right: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+ff-record {
+    padding: 15px 1.5% 25px 1.5%;
+    width: 22%;
+    overflow: hidden;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    transition: box-shadow 0.2s;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 380px;
+    box-sizing: content-box;
+}
+
+ff-record:hover {
+    -webkit-box-shadow: 0px 0px 40px -10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 0px 40px -10px rgba(0, 0, 0, 0.3);
+}
+
+ff-record:hover img {
+    width: 215px;
+    height: 215px;
+    transition: all 0.5s;
+}
+
+ff-record img {
+    width: 205px;
+    height: 205px;
+}
+
+ff-record .priceContainer {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 8px;
+    width: 100%;
+}
+
+ff-record .price {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+ff-record .brand {
+    color: #3c3c3b;
+    font-weight: bold;
+}
+
+ff-record a, ff-record a:visited, ff-record a:active {
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+    /*height: 35px;*/
+    overflow: hidden;
+    display: block;
+}
