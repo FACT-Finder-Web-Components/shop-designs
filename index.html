@@ -163,6 +163,8 @@
                   version="7.2"
                   channel="bergfreunde-co-uk"
                   default-query="sale"
+                  currency-country-code="de-DE"
+                  currency-code="EUR"
                   search-immediate="true"></ff-communication>
 
 <header style="position: fixed">
@@ -224,7 +226,7 @@
                         </div>
                         <!-- Price and availability-->
                         <div class="product-right">
-                            <div class="product-price">{{attributes.Price}}€</div>
+                            <div class="product-price">{{attributes.Price}}</div>
                             <div class="product-availabilitytext">{{attributes.availabilitytext}}</div>
                         </div>
                     </ff-suggest-item>
@@ -247,7 +249,7 @@
                 <span class="rating">&#x2605;</span>
                 <span style="font-size: 1.25rem;">{{record.Rating}}</span>
             </div>
-            <span class="price">{{record.Price}} €</span>
+            <span class="price">{{record.Price}} </span>
         </div>
     </ff-record>
 
@@ -267,7 +269,7 @@
                         <span class="rating">&#x2605;</span>
                         <span style="font-size: 1.25rem;">{{record.Rating}}</span>
                     </div>
-                    <span class="price">{{record.Price}} €</span>
+                    <span class="price">{{record.Price}} </span>
                 </div>
             </ff-record>
         </ff-record-list>
@@ -445,7 +447,7 @@
                                 <!--<span class="rating">&#x2605;</span>-->
                                 <!--<span style="font-size: 1.25rem;">{{record.Rating}}</span>-->
                             <!--</div>-->
-                            <!--<span class="price">{{record.Price}} €</span>-->
+                            <!--<span class="price">{{record.Price}} </span>-->
                         <!--</div>-->
                     <!--</ff-record>-->
                 <!--&lt;!&ndash;</ff-carousel>&ndash;&gt;-->
@@ -486,7 +488,7 @@
                         <span class="rating">&#x2605;</span>
                         <span style="font-size: 1.25rem;">{{record.Rating}}</span>
                     </div>
-                    <span class="price">{{record.Price}} €</span>
+                    <span class="price">{{record.Price}} </span>
                 </div>
             </ff-record>
         </ff-record-list>
