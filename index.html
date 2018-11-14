@@ -5,8 +5,16 @@
     <title>Shop Design</title>
 
     <script>
-        var Polymer = Polymer || {};
-        Polymer.dom = "shady";
+        // todo: temp workaround until full replacement through Polymer/lit-element
+        ShadyDOM = { force: true };
+        ShadyCSS = { shimcssproperties: true};
+        // todo: change ./bower... to ../bower...
+    </script>
+    <script src="./bower_components/ff-web-components/dist/vendor/custom-elements-es5-adapter.js"></script>
+    <script src="./bower_components/ff-web-components/dist/vendor/webcomponents-loader.js"></script>
+    <script defer src="./bower_components/ff-web-components/dist/bundle.js"></script>
+
+    <script>
         document.addEventListener("ffReady", function () {
             function addRating(records) {
                 try {
@@ -63,8 +71,6 @@
             });
         });
     </script>
-    <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
-    <link rel="import" href="elements.html">
 
     <style is="custom-style">
         [unresolved] {
