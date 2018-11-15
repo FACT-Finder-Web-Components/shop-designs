@@ -1,0 +1,58 @@
+ff-campaign-pushed-products ff-record-list {
+    flex-direction: row;
+    margin-bottom: 35px;
+}
+
+ff-campaign-pushed-products h2 {
+    padding: 0px 32px;
+    font-size: 32px;
+    margin-bottom: 0;
+}
+
+ff-campaign-pushed-products ff-record {
+    width: 20%;
+    flex-direction: column;
+    padding: 0;
+    transition: 400ms;
+    box-shadow: none;
+
+    -webkit-box-shadow: 1px 1px 10px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 1px 1px 10px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 1px 1px 10px 0px rgba(0, 0, 0, 0.75);
+}
+
+ff-campaign-pushed-products ff-record:hover {
+    -webkit-box-shadow: 1px 1px 10px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 1px 1px 10px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 1px 1px 10px 0px rgba(0, 0, 0, 0.75);
+}
+
+ff-campaign-pushed-products ff-record .recordContent {
+    padding: 0;
+}
+
+ff-campaign-pushed-products ff-record .recordContent .productDetailLink {
+    font-size: 16px;
+    padding: 0px 6px;
+}
+
+ff-campaign-pushed-products ff-record .recordContent a {
+    border-left: none;
+}
+
+ff-campaign-pushed-products ff-record .price {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+ff-campaign-pushed-products ff-record .brand {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+ff-campaign-pushed-products ff-record img {
+    max-width: 90%;
+    margin-top: 10px;
+}

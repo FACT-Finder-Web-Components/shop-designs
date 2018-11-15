@@ -1,0 +1,125 @@
+ff-asn {
+    width: 270px;
+}
+
+ff-asn-group, ff-asn-group-slider {
+    cursor: pointer;
+    padding-bottom: 15px;
+    position: relative;
+    max-width: 100% !important;
+}
+
+ff-asn-group [data-container="groupCaption"],
+ff-asn-group-slider [data-container="groupCaption"] {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #393b3e;
+
+    user-select: none;
+    font-weight: bold;
+    border-bottom: 1px solid #ccc;
+    padding: 8px 5px 8px 0;
+    margin-bottom: 10px;
+}
+
+ff-asn-group [data-container="groupCaption"] .openState::before,
+ff-asn-group-slider [data-container="groupCaption"] .openState::before {
+    font-size: 24px;
+    position: absolute;
+    transform: translateY(-50%) translateX(-50%);
+    padding-right: 15px;
+}
+
+ff-asn-group [data-container="groupCaption"] .openState::before,
+ff-asn-group-slider [data-container="groupCaption"] .openState::before {
+    content: "+";
+}
+
+ff-asn-group[opened] [data-container="groupCaption"] .openState::before,
+ff-asn-group-slider[opened] [data-container="groupCaption"] .openState::before {
+    content: "-";
+}
+
+ff-asn-group [data-container="detailedLinks"],
+ff-asn-group [data-container="hiddenLinks"] {
+    padding-left: 15px;
+}
+
+ff-asn-group:not([filter-style="TREE"]) ff-asn-group-element:hover {
+    text-decoration: underline;
+    color: rgb(255, 105, 44);
+    /*color: #fff;*/
+}
+
+ff-asn-group-element [data-selected] {
+    font-weight: bold;
+    color: rgb(255, 105, 44);
+}
+
+.sliderBtn {
+    cursor: pointer;
+    position: absolute;
+    margin-left: -0.5em;
+    top: -0.2em;
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    background: #ffffff;
+    width: 15px;
+    height: 15px;
+}
+
+[data-container="showMore"],
+[data-container="showLess"] {
+    transition: 400ms;
+}
+
+[data-container="showMore"] span,
+[data-container="showLess"] span {
+    padding-top: 10px;
+    display: inline-block;
+}
+
+.clusterLevel0 {
+
+}
+
+.clusterLevel1 {
+    padding-left: 7px;
+}
+
+.clusterLevel2 {
+    padding-left: 14px;
+}
+
+.clusterLevel3 {
+    padding-left: 21px;
+}
+
+.clusterLevel4 {
+    padding-left: 28px;
+}
+
+ff-slider-control {
+    padding: 15px;
+}
+
+ff-slider {
+    background-color: rgb(255, 105, 44) !important;
+    width: 80%;
+}
+
+ff-asn-group-slider [data-container="removeFilter"] {
+    padding-left: 15px;
+}
+
+ff-asn-group[filter-style="TREE"] ff-asn-group-element {
+    padding-top: 3px;
+}
+
+/*ff-asn-group [data-container="groupCaption"]::after,*/
+/*ff-asn-group-slider [data-container="groupCaption"]::after {*/
+/*content: "+";*/
+/*}*/
