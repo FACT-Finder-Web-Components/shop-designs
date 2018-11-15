@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FACT-Finder Search</title>
+
+    <script>
+        var Polymer = Polymer || {};
+        Polymer.dom = 'shady';
+    </script>
+
+    <!--needs to be inserted before fact-finder web components html import or ffReady will not trigger-->
+    <script src="resources/fieldMapping.js"></script>
+
+    <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+    <link rel="import" href="bower_components/ff-web-components/dist/elements.build_with_dependencies.html">
+    <link rel="stylesheet" href="resources/css/ff-asn.css">
+    <link rel="stylesheet" href="resources/css/ff-record-list.css">
+    <link rel="stylesheet" href="resources/css/ff-breadcrumb-trail.css">
+    <link rel="stylesheet" href="resources/css/ff-campaign-feedbacktext.css">
+    <link rel="stylesheet" href="resources/css/ff-campaign-pushed-products.css">
+    <link rel="stylesheet" href="resources/css/ff-campaign-advisor.css">
+    <link rel="import" href="resources/css/ff-products-per-page-dropdown.html">
+    <link rel="import" href="resources/css/ff-paging.html">
+    <link rel="import" href="resources/css/ff-sortbox.html">
+    <link rel="import" href="resources/css/ff-suggest.html">
+</head>
+<body>
+<ff-communication url="https://search-web-components.fact-finder.de/FACT-Finder-7.2"
+                  version="7.2"
+                  channel="bergfreunde-co-uk"
+                  default-query="bagpack"
+                  search-immediate>
+</ff-communication>
+
+<style>
+    #searchContent {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: space-around;
+        align-items: flex-start;
+        max-width: 1240px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    main {
+        padding-left: 25px;
+    }
+
+    [unresolved] {
+        transition: 700ms;
+        opacity: 0;
+    }
+
+    input[is="ff-searchbox"] {
+        height: 16px;
+        width: 70%;
+        padding: 8px;
+        font-size: 18px;
+
+        border: none;
+        border-bottom: 1px solid lightgray;
+        outline: none;
+    }
+
+    button[is="ff-searchbutton"] {
+        height: 33px;
+        cursor: pointer;
+        outline: none;
+
+        border: none;
+        border-bottom: 1px solid lightgray;
+    }
+
+</style>
+
+<div style="max-width: 1024px;margin-left: auto;margin-right: auto;display: flex;
+            justify-content: center;align-items: center;margin-bottom: 35px; margin-top: 25px;
+            flex-wrap: wrap;">
+    <input is="ff-searchbox" select-onclick="true" placeholder="Type Your Search..." hidesuggest-onblur="true"/>
+    <button is="ff-searchbutton">Search</button>
+</div>
+
+<div style="max-width: 1240px;margin-left: auto;margin-right: auto;display: flex;
+            justify-content: center;align-items: center;margin-bottom: 35px; margin-top: 25px;
+            flex-wrap: wrap;">
+    <ff-suggest layout="block" unresolved>
+        <section id="searchContainer" class="searchTermContainer">
+            <div data-container="searchTerm">
+                <p class="containerCaption">Suchvorschläge</p>
+                <ff-suggest-item type="searchTerm">
+                    <span>{{{name}}}</span>
+                </ff-suggest-item>
+            </div>
+
+            <div data-container="category">
+                <p class="containerCaption">Kategorievorschläge</p>
+                <ff-suggest-item type="category">
+                    <span>{{{name}}}</span>
+                </ff-suggest-item>
+            </div>
+
+            <div data-container="brand">
+                <p class="containerCaption">Marken</p>
+                <ff-suggest-item type="brand">
+                    <span>{{{name}}}</span>
+                </ff-suggest-item>
+            </div>
+        </section>
+
+        <section id="productContainer" class="productsContainer">
+            <div data-container="productName">
+                <p class="containerCaption">Vorgeschlagene Produkte</p>
+                <div>
+                    <ff-suggest-item type="productName" onclick="changeSearchTerm(this)">
+                        <img data-image>
+                        <div class="product-center">
+                            <div class="product-name">{{{name}}}</div>
+                            <div>Shipping</div>
+                            <div>Rating</div>
+                        </div>
+                        <!-- Price and availability-->
+                        <div class="product-right">
+                            <div class="product-price">{{attributes.Price}}€</div>
+                            <div class="product-availabilitytext">{{attributes.availabilitytext}}</div>
+                        </div>
+                    </ff-suggest-item>
+                </div>
+            </div>
+        </section>
+    </ff-suggest unre>
+</div>
+<div id="searchContent">
+    <nav>
+        <ff-tag-cloud min-font-size="10" max-font-size="45" word-count="15" unit="px" style="width: 240px"
+                      gradient-color-end="#FF692C" gradient-color-start="#FF966B"></ff-tag-cloud>
+
+        <ff-campaign-feedbacktext label="above asn">
+            {{{text}}}
+        </ff-campaign-feedbacktext>
+
+        <ff-asn unresolved>
+            <!--template for TREE groups-->
+            <ff-asn-group filter-style="TREE" opened>
+                <!--filter element template-->
+                <ff-asn-group-element>
+                    <div data-selected>
+                        [-] {{element.name}} {{group.unit}}
+                    </div>
+
+                    <div data-unselected>
+                        [+] {{element.name}} {{group.unit}}
+                    </div>
+                </ff-asn-group-element>
+
+                <div data-container="groupCaption">
+                    <span>{{group.name}}</span> <span class="openState"></span>
+                </div>
+
+                <div data-container="detailedLinks">
+                    <!--detailed filter links are inserted here-->
+                    <div data-content="detailedLinks"></div>
+                </div>
+
+                <div data-container="hiddenLinks">
+                    <!--hidden filter links are inserted here-->
+                    <div data-content="hiddenLinks"></div>
+                </div>
+            </ff-asn-group>
+
+            <!--template for MULTISELECT groups-->
+            <ff-asn-group filter-style="MULTISELECT">
+                <!--filter element template-->
+                <ff-asn-group-element>
+                    <div data-selected>
+                        {{element.name}} {{group.unit}}
+                    </div>
+
+                    <div data-unselected>
+                        {{element.name}} {{group.unit}}
+                    </div>
+                </ff-asn-group-element>
+
+                <div data-container="groupCaption">
+                    <span>{{group.name}}</span> <span class="openState"></span>
+                </div>
+
+                <div data-container="detailedLinks">
+                    <!--detailed filter links are inserted here-->
+                    <div data-content="detailedLinks"></div>
+
+                    <div data-container="showMore">
+                        <span>+ more items</span>
+                    </div>
+                </div>
+
+                <div data-container="hiddenLinks">
+                    <!--hidden filter links are inserted here-->
+                    <div data-content="hiddenLinks"></div>
+
+                    <div data-container="showLess"><span>-less items</span></div>
+                </div>
+            </ff-asn-group>
+
+            <!--template for SINGLESELECT groups-->
+            <ff-asn-group filter-style="DEFAULT">
+                <!--filter element template-->
+                <ff-asn-group-element>
+                    <div data-selected>
+                        {{element.name}} {{group.unit}}
+                    </div>
+
+                    <div data-unselected>
+                        {{element.name}} {{group.unit}}
+                    </div>
+                </ff-asn-group-element>
+
+                <div data-container="groupCaption">
+                    <span>{{group.name}}</span> <span class="openState"></span>
+                </div>
+
+                <div data-container="detailedLinks">
+
+                    <!--detailed filter links are inserted here-->
+                    <div data-content="detailedLinks"></div>
+                </div>
+
+                <div data-container="hiddenLinks">
+
+                    <!--hidden filter links are inserted here-->
+                    <div data-content="hiddenLinks"></div>
+                </div>
+            </ff-asn-group>
+
+            <!--template for SLIDER groups-->
+            <ff-asn-group-slider>
+                <div data-container="groupCaption">
+                    <span>{{group.name}}</span> <span class="openState"></span>
+                </div>
+
+                <div data-container="removeFilter">[X] Remove Filter</div>
+
+                <ff-slider-control>
+                    <div style="display: flex;justify-content: space-around;align-items: center;">
+                        <input data-control='1'
+                               style="width: 60px;">
+                        <input
+                                data-control='2' style="width: 60px;">
+                    </div>
+                    <ff-slider>
+                        <div data-slider="1" class="sliderBtn"></div>
+                        <div data-slider="2" class="sliderBtn"></div>
+                    </ff-slider>
+                </ff-slider-control>
+            </ff-asn-group-slider>
+        </ff-asn>
+
+        <ff-campaign-feedbacktext label="below asn">
+            {{{text}}}
+        </ff-campaign-feedbacktext>
+    </nav>
+
+    <main>
+        <ff-campaign-feedbacktext label="above breadcrumb">
+            {{{text}}}
+        </ff-campaign-feedbacktext>
+
+        <div style="display: flex; justify-content: flex-start;margin-bottom: 25px; min-height: 34px;max-width: 93%;align-items: center;flex-wrap: wrap;">
+            <ff-template scope="result" unresolved>
+                <span style="font-weight: bold; font-size: 36px">Your Search For:</span>
+            </ff-template>
+            <ff-breadcrumb-trail unresolved>
+            </ff-breadcrumb-trail>
+            <ff-template scope="result" unresolved>
+                <span style="font-size: 36px;padding-left: 15px">produced {{resultCount}} Hits</span>
+            </ff-template>
+        </div>
+
+        <ff-campaign-feedbacktext label="below breadcrumb">
+            {{{text}}}
+        </ff-campaign-feedbacktext>
+
+        <ff-campaign-advisor>
+            <ff-campaign-advisor-question>
+                <h2 data-question>{{{text}}}</h2>
+                <div class="answers">
+                    <ff-campaign-advisor-answer>{{{text}}}</ff-campaign-advisor-answer>
+                </div>
+            </ff-campaign-advisor-question>
+        </ff-campaign-advisor>
+
+        <ff-campaign-pushed-products>
+            <h2>Pushed Products Campaign</h2>
+            <ff-record-list>
+                <ff-record>
+                    <img data-image="{{record.ImageName}}">
+                    <div class="recordContent">
+                        <a class="productDetailLink" href="{{record.Deeplink}}" onclick="return false;"
+                           data-redirect="{{record.Deeplink}}" data-redirect-target="_blank">
+                            {{record.Title}}
+                        </a>
+
+                        <span class="brand">{{record.Manufacturer}}</span>
+
+                        <a class="toProduct" href="{{record.Deeplink}}" onclick="return false;"
+                           data-redirect="{{record.Deeplink}}"
+                           data-redirect-target="_blank">
+                            Product Page
+                        </a>
+
+                        <div class="productInfo">
+                            <span class="price">{{record.Price}} €</span>
+                        </div>
+                    </div>
+                </ff-record>
+            </ff-record-list>
+        </ff-campaign-pushed-products>
+        <div style="display: flex; justify-content: space-around;margin-bottom: 15px; height: 34px;     max-width: 93%;padding-bottom: 15px">
+            <ff-sortbox layout="dropdown" show-selected="false" collapse-onblur="true" unresolved>
+                <!--set template for relevance-->
+                <ff-sortbox-item key="null.desc">Relevanz</ff-sortbox-item>
+            </ff-sortbox>
+
+            <ff-paging class="pageLinks" unresolved>
+                <!-- 1-2-3-Next -->
+                <ff-paging-set state="pageCount <= 4">
+                    <ff-paging-item type="currentLink -3"><span class="padd">{{caption}}</span>
+                    </ff-paging-item>
+                    <ff-paging-item type="currentLink -2"><span class="padd">{{caption}}</span>
+                    </ff-paging-item>
+                    <ff-paging-item type="currentLink -1"><span class="padd">{{caption}}</span>
+                    </ff-paging-item>
+                    <ff-paging-item type="currentLink" style="font-weight: bold;"><span
+                            class="padd">{{caption}}</span>
+                    </ff-paging-item>
+                    <ff-paging-item type="currentLink +1"><span class="padd">{{caption}}</span>
+                    </ff-paging-item>
+                    <ff-paging-item type="currentLink +2"><span class="padd">{{caption}}</span>
+                    </ff-paging-item>
+                    <ff-paging-item type="currentLink +3"><span class="padd">{{caption}}</span>
+                    </ff-paging-item>
+                    <ff-paging-item type="nextLink"><input type="image" class="padd"
+                                                           src="resources/images/paging_next_page.png">
+                    </ff-paging-item>
+                </ff-paging-set>
+
+                <!-- 1-2-3-4-5-6-7-8-9-...-Last-Next -->
+                <ff-paging-set state="pageCount > 4 && currentPage <= 3">
+                    <ff-paging-item type="currentLink -2"><span class="padd">{{caption}}</span>
+                    </ff-paging-item>
+                    <ff-paging-item type="currentLink -1"><span class="padd">{{caption}}</span>
+                    </ff-paging-item>
+                    <ff-paging-item type="currentLink" style="font-weight: bold;"><span
+                            class="padd">{{caption}}</span>
+                    </ff-paging-item>
+                    <ff-paging-item type="currentLink +1"><span class="padd">{{caption}}</span>
+                    </ff-paging-item>
+                    <ff-paging-item type="currentLink +2"><span class="padd">{{caption}}</span>
+                    </ff-paging-item>
+                    <ff-paging-item type="currentLink +3"><span class="padd">{{caption}}</span>
+                    </ff-paging-item>
+                    <ff-paging-item type="currentLink +4"><span class="padd">{{caption}}</span>
+                    </ff-paging-item>
+                    <ff-paging-item type="currentLink +5"><span class="padd">{{caption}}</span>
+                    </ff-paging-item>
+                    <ff-paging-item type="currentLink +6"><span class="padd">{{caption}}</span>
+                    </ff-paging-item>
+                    <span class="more">...</span>
+                    <ff-paging-item type="lastLink"><span class="padd">{{caption}}</span>
+                    </ff-paging-item>
+                    <ff-paging-item type="nextLink"><input type="image" class="padd"
+                                                           src="resources/images/paging_next_page.png">
+                    </ff-paging-item>
+                </ff-paging-set>
+
+                <!-- Prev-First-...-4-5-6-...-Last-Next -->
+                <ff-paging-set state="currentPage > 3 && pageCount-currentPage >= 3">
+                    <ff-paging-item type="previousLink"><input type="image" class="padd"
+                                                               src="resources/images/paging_prev_page.png">
+                    </ff-paging-item>
+                    <ff-paging-item type="firstLink"><span class="padd">{{caption}}</span>
+                    </ff-paging-item>
+                    <span class="more">...</span>
+                    <ff-paging-item type="currentLink -1"><span class="padd">{{caption}}</span>
+                    </ff-paging-item>
+                    <ff-paging-item type="currentLink" style="font-weight: bold;"><span
+                            class="padd">{{caption}}</span>
+                    </ff-paging-item>
+                    <ff-paging-item type="currentLink +1"><span class="padd">{{caption}}</span>
+                    </ff-paging-item>
+                    <span class="more">...</span>
+                    <ff-paging-item type="lastLink"><span class="padd">{{caption}}</span>
+                    </ff-paging-item>
+                    <ff-paging-item type="nextLink"><input type="image" class="padd"
+                                                           src="resources/images/paging_next_page.png">
+                    </ff-paging-item>
+                </ff-paging-set>
+
+                <!-- Prev-First-...-3-4-5-6-Next -->
+                <ff-paging-set state="pageCount > 4 && pageCount-currentPage < 3 && currentPage > 3">
+                    <ff-paging-item type="previousLink"><input type="image" class="padd"
+                                                               src="resources/images/paging_prev_page.png">
+                    </ff-paging-item>
+                    <ff-paging-item type="firstLink"><span class="padd">{{caption}}</span>
+                    </ff-paging-item>
+                    <span class="more">...</span>
+                    <ff-paging-item type="currentLink -1"><span class="padd">{{caption}}</span>
+                    </ff-paging-item>
+                    <ff-paging-item type="currentLink" style="font-weight: bold;"><span
+                            class="padd">{{caption}}</span>
+                    </ff-paging-item>
+                    <ff-paging-item type="currentLink +1"><span class="padd">{{caption}}</span>
+                    </ff-paging-item>
+                    <ff-paging-item type="currentLink +2"><span class="padd">{{caption}}</span>
+                    </ff-paging-item>
+
+                    <ff-paging-item type="nextLink"><input type="image" class="padd"
+                                                           src="resources/images/paging_next_page.png">
+                    </ff-paging-item>
+                </ff-paging-set>
+
+            </ff-paging>
+
+            <ff-products-per-page-dropdown collapse-onblur="true" unresolved>
+            </ff-products-per-page-dropdown>
+        </div>
+
+        <ff-campaign-feedbacktext label="above search result">
+            {{{text}}}
+        </ff-campaign-feedbacktext>
+
+        <ff-record-list unresolved>
+            <ff-record>
+                <div style="width: 190px">
+                    <img data-image="{{record.ImageName}}">
+                </div>
+                <div class="recordContent">
+                    <a class="productDetailLink" href="{{record.Deeplink}}" onclick="return false;"
+                       data-redirect="{{record.Deeplink}}" data-redirect-target="_blank">
+                        {{record.Title}}
+                    </a>
+                    <div class="description">
+                        {{record.Description}}
+                    </div>
+
+                    <a class="toProduct" href="{{record.Deeplink}}" onclick="return false;"
+                       data-redirect="{{record.Deeplink}}"
+                       data-redirect-target="_blank">
+                        Product Page
+                    </a>
+
+                    <div class="productInfo">
+                        <img class="basketIcon" src="resources/images/basket_2.png" alt="basket icon"
+                             onclick="alert('implement me')">
+                        <span class="brand">{{record.Manufacturer}}</span>
+                        <span style="color: rgb(255, 105, 44)">
+                            <!--<img src="resources/img/basket_2.png" alt="">-->
+                        </span>
+                        <span class="price">{{record.Price}} €</span>
+                    </div>
+                </div>
+            </ff-record>
+        </ff-record-list>
+
+        <ff-campaign-feedbacktext label="below search result">
+            {{{text}}}
+        </ff-campaign-feedbacktext>
+
+        <div style="display: flex; justify-content: space-around;margin-bottom: 15px; height: 34px;     max-width: 93%;">
+            <ff-paging class="pageLinks" unresolved>
+                <!-- 1-2-3-Next -->
+                <ff-paging-set state="pageCount <= 4">
+                    <ff-paging-item type="currentLink -3"><span class="padd">{{caption}}</span>
+                    </ff-paging-item>
+                    <ff-paging-item type="currentLink -2"><span class="padd">{{caption}}</span>
+                    </ff-paging-item>
+                    <ff-paging-item type="currentLink -1"><span class="padd">{{caption}}</span>
+                    </ff-paging-item>
+                    <ff-paging-item type="currentLink" style="font-weight: bold;"><span
+                            class="padd">{{caption}}</span>
+                    </ff-paging-item>
+                    <ff-paging-item type="currentLink +1"><span class="padd">{{caption}}</span>
+                    </ff-paging-item>
+                    <ff-paging-item type="currentLink +2"><span class="padd">{{caption}}</span>
+                    </ff-paging-item>
+                    <ff-paging-item type="currentLink +3"><span class="padd">{{caption}}</span>
+                    </ff-paging-item>
+                    <ff-paging-item type="nextLink"><input type="image" class="padd"
+                                                           src="resources/images/paging_next_page.png">
+                    </ff-paging-item>
+                </ff-paging-set>
+
+                <!-- 1-2-3-4-5-6-7-8-9-...-Last-Next -->
+                <ff-paging-set state="pageCount > 4 && currentPage <= 3">
+                    <ff-paging-item type="currentLink -2"><span class="padd">{{caption}}</span>
+                    </ff-paging-item>
+                    <ff-paging-item type="currentLink -1"><span class="padd">{{caption}}</span>
+                    </ff-paging-item>
+                    <ff-paging-item type="currentLink" style="font-weight: bold;"><span
+                            class="padd">{{caption}}</span>
+                    </ff-paging-item>
+                    <ff-paging-item type="currentLink +1"><span class="padd">{{caption}}</span>
+                    </ff-paging-item>
+                    <ff-paging-item type="currentLink +2"><span class="padd">{{caption}}</span>
+                    </ff-paging-item>
+                    <ff-paging-item type="currentLink +3"><span class="padd">{{caption}}</span>
+                    </ff-paging-item>
+                    <ff-paging-item type="currentLink +4"><span class="padd">{{caption}}</span>
+                    </ff-paging-item>
+                    <ff-paging-item type="currentLink +5"><span class="padd">{{caption}}</span>
+                    </ff-paging-item>
+                    <ff-paging-item type="currentLink +6"><span class="padd">{{caption}}</span>
+                    </ff-paging-item>
+                    <span class="more">...</span>
+                    <ff-paging-item type="lastLink"><span class="padd">{{caption}}</span>
+                    </ff-paging-item>
+                    <ff-paging-item type="nextLink"><input type="image" class="padd"
+                                                           src="resources/images/paging_next_page.png">
+                    </ff-paging-item>
+                </ff-paging-set>
+
+                <!-- Prev-First-...-4-5-6-...-Last-Next -->
+                <ff-paging-set state="currentPage > 3 && pageCount-currentPage >= 3">
+                    <ff-paging-item type="previousLink"><input type="image" class="padd"
+                                                               src="resources/images/paging_prev_page.png">
+                    </ff-paging-item>
+                    <ff-paging-item type="firstLink"><span class="padd">{{caption}}</span>
+                    </ff-paging-item>
+                    <span class="more">...</span>
+                    <ff-paging-item type="currentLink -1"><span class="padd">{{caption}}</span>
+                    </ff-paging-item>
+                    <ff-paging-item type="currentLink" style="font-weight: bold;"><span
+                            class="padd">{{caption}}</span>
+                    </ff-paging-item>
+                    <ff-paging-item type="currentLink +1"><span class="padd">{{caption}}</span>
+                    </ff-paging-item>
+                    <span class="more">...</span>
+                    <ff-paging-item type="lastLink"><span class="padd">{{caption}}</span>
+                    </ff-paging-item>
+                    <ff-paging-item type="nextLink"><input type="image" class="padd"
+                                                           src="resources/images/paging_next_page.png">
+                    </ff-paging-item>
+                </ff-paging-set>
+
+                <!-- Prev-First-...-3-4-5-6-Next -->
+                <ff-paging-set state="pageCount > 4 && pageCount-currentPage < 3 && currentPage > 3">
+                    <ff-paging-item type="previousLink"><input type="image" class="padd"
+                                                               src="resources/images/paging_prev_page.png">
+                    </ff-paging-item>
+                    <ff-paging-item type="firstLink"><span class="padd">{{caption}}</span>
+                    </ff-paging-item>
+                    <span class="more">...</span>
+                    <ff-paging-item type="currentLink -1"><span class="padd">{{caption}}</span>
+                    </ff-paging-item>
+                    <ff-paging-item type="currentLink" style="font-weight: bold;"><span
+                            class="padd">{{caption}}</span>
+                    </ff-paging-item>
+                    <ff-paging-item type="currentLink +1"><span class="padd">{{caption}}</span>
+                    </ff-paging-item>
+                    <ff-paging-item type="currentLink +2"><span class="padd">{{caption}}</span>
+                    </ff-paging-item>
+
+                    <ff-paging-item type="nextLink"><input type="image" class="padd"
+                                                           src="resources/images/paging_next_page.png">
+                    </ff-paging-item>
+                </ff-paging-set>
+
+            </ff-paging>
+        </div>
+    </main>
+</div>
+
+</body>
+</html>

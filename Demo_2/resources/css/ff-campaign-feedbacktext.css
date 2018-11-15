@@ -1,0 +1,9 @@
+ff-campaign-feedbacktext {
+    display: flex;
+    justify-content: center;
+    max-width: 90%;
+}
+
+ff-campaign-feedbacktext img {
+    width: auto !important;
+}

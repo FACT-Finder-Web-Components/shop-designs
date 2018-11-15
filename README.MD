@@ -4,4 +4,5 @@ We suggest to always integrate the latest version, but if you insist on digging 
 feel free to use the git history of this project.
 
 # Work In Progress
-[Demo 1](https://fact-finder-web-components.github.io/shop-designs/)
+[Demo 1](https://fact-finder-web-components.github.io/shop-designs/Demo_1/index.html)
+[Demo 2](https://fact-finder-web-components.github.io/shop-designs/Demo_2/index.html)
