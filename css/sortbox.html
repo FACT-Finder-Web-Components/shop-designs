@@ -1,68 +1,66 @@
-<style is="custom-style">
-    header {
-        /*font-weight: bold;*/
-    }
+<custom-style>
+    <style>
+        ff-sortbox {
+            border: 1px solid black;
+            min-width: 249px;
+            font-size: 1rem;
 
-    ff-sortbox {
-        border: 1px solid black;
-        min-width: 249px;
-        font-size: 1rem;
-
-        --sort-item-container: {
-            transition: all 0.1s;
+            --sort-item-container: {
+                transition: all 0.1s;
+            }
         }
-    }
 
-    ff-sortbox[opened] {
-        --sort-item-container: {
-            -webkit-box-shadow: 0px 0px 40px -10px rgba(0, 0, 0, 0.4);
-            box-shadow: 0px 0px 40px -10px rgba(0, 0, 0, 0.4);
-            margin-top: 1px;
+        ff-sortbox[opened] {
+            --sort-item-container: {
+                -webkit-box-shadow: 0px 0px 40px -10px rgba(0, 0, 0, 0.4);
+                box-shadow: 0px 0px 40px -10px rgba(0, 0, 0, 0.4);
+                margin-top: 1px;
+            }
         }
-    }
 
-    ff-sortbox-item {
-        padding: 10px;
-        min-width: 200px;
-        color: #23282d;
-        transition: background 0.2s;
+        ff-sortbox-item {
+            padding: 10px;
+            min-width: 200px;
+            color: #23282d;
+            transition: background 0.2s;
 
-        text-transform: uppercase;
-        font-weight: bold;
-        font-size: 0.8em;
-    }
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: 0.8em;
+        }
 
-    ff-sortbox-item.selected {
-        min-width: 200px;
-        color: white;
-    }
+        ff-sortbox-item.selected {
+            min-width: 200px;
+            color: white;
+        }
 
-    ff-sortbox-item:hover {
-        background-color: rgba(40, 40, 40, 0.1);
-    }
+        ff-sortbox-item:hover {
+            background-color: rgba(40, 40, 40, 0.1);
+        }
 
-    .sortBoxCaption {
-        height: 75px;
-        margin: 0;
-        padding: 10px;
-        cursor: pointer;
-        display: inline-block;
-        user-select: none;
-    }
+        .sortBoxCaption {
+            height: 75px;
+            margin: 0;
+            padding: 10px;
+            cursor: pointer;
+            display: inline-block;
+            user-select: none;
+        }
 
-    #sortbox {
-        border: none;
-        display: block;
-        margin-top: -1px;
-        margin-left: 1px;
-    }
+        #sortbox {
+            border: none;
+            display: block;
+            margin-top: -1px;
+            margin-left: 1px;
+        }
 
-    /*hide the currently selected sortbox item*/
-    #sortbox ff-sortbox-item.selected {
-        display: none !important;
-    }
+        /*hide the currently selected sortbox item*/
+        #sortbox ff-sortbox-item.selected {
+            display: none !important;
+        }
 
-    #sortbox ff-sortbox-item.showSelected {
-        background-color: rgba(40, 40, 40, 0.1);
-    }
-</style>
+        #sortbox ff-sortbox-item.showSelected {
+            background-color: rgba(40, 40, 40, 0.1);
+        }
+    </style>
+</custom-style>

@@ -1,239 +1,241 @@
-<style is="custom-style">
-    ff-asn {
-        background: rgba(0, 0, 0, 0.05);
-        width: 16%;
-        left: 0;
-        min-width: 320px;
-        float: left;
-    }
-
-    ff-asn-remove-all-filter {
-        width: 100%;
-        padding-top: 25px;
-        padding-left: 35px;
-        text-transform: uppercase;
-        cursor: pointer;
-    }
-
-    ff-asn-group,
-    ff-asn-group-slider {
-        max-width: 100% !important;
-        min-width: 100% !important;
-        padding: 1.94444rem 2.22222rem;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-        box-sizing: border-box;
-        box-shadow: none;
-
-        --ff-asn-group-container: {
-            padding: 0px;
-        };
-
-        --all-links-container: {
-            overflow-y: auto !important;
-            -webkit-transition-duration: 400ms !important;;
-            -moz-transition-duration: 400ms !important;;
-            -ms-transition-duration: 400ms !important;;
-            -o-transition-duration: 400ms !important;;
-            transition-duration: 400ms !important;
-            padding: 0;
+<custom-style>
+    <style>
+        ff-asn {
+            background: rgba(0, 0, 0, 0.05);
+            width: 16%;
+            left: 0;
+            min-width: 320px;
+            float: left;
         }
-    }
 
-    ff-asn-group-slider {
-        --all-links-container: {
-            max-height: none !important;
-            overflow: hidden !important;
+        ff-asn-remove-all-filter {
+            width: 100%;
+            padding-top: 25px;
+            padding-left: 35px;
+            text-transform: uppercase;
+            cursor: pointer;
         }
-    }
 
-    ff-asn-group h3,
-    ff-asn-group-slider h3 {
-        line-height: 40px;
-        cursor: pointer;
-        font-size: 1.2rem;
-        text-transform: uppercase;
-        color: rgba(0, 0, 0, 0.45);
-    }
+        ff-asn-group,
+        ff-asn-group-slider {
+            max-width: 100% !important;
+            min-width: 100% !important;
+            padding: 1.94444rem 2.22222rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
+            box-shadow: none;
 
-    ff-asn-group-element {
-        cursor: pointer;
-        transition: all 0.3s;
-        /*text-transform: uppercase;*/
-    }
+            --ff-asn-group-container: {
+                padding: 0px;
+            };
 
-    ff-asn-group-element:hover {
-        padding-left: 10px;
-    }
+            --all-links-container: {
+                overflow-y: auto !important;
+                -webkit-transition-duration: 400ms !important;;
+                -moz-transition-duration: 400ms !important;;
+                -ms-transition-duration: 400ms !important;;
+                -o-transition-duration: 400ms !important;;
+                transition-duration: 400ms !important;
+                padding: 0;
+            }
+        }
 
-    ff-asn-group-element {
-        font-size: 0.9rem;
-        line-height: 26px;
-        font-weight: 700;
-        margin: 0px;
-        position: relative;
-        clear: both;
-    }
+        ff-asn-group-slider {
+            --all-links-container: {
+                max-height: none !important;
+                overflow: hidden !important;
+            }
+        }
 
-    ff-asn-group p {
-        margin-bottom: 0.3rem !important;
-    }
+        ff-asn-group h3,
+        ff-asn-group-slider h3 {
+            line-height: 40px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            color: rgba(0, 0, 0, 0.45);
+        }
 
-    ff-asn-group[for-group="Color"] ff-asn-group-element:hover,
-    ff-asn-group[for-group="Color"] ff-asn-group-element[selected] {
-        /*color: lightgray;*/
-        text-decoration: underline;
-    }
+        ff-asn-group-element {
+            cursor: pointer;
+            transition: all 0.3s;
+            /*text-transform: uppercase;*/
+        }
 
-    ff-asn-group[for-group="Color"] ff-asn-group-element:hover .circle,
-    ff-asn-group[for-group="Color"] ff-asn-group-element[selected] .circle {
-        border: 1px solid white;
-        top: 2px;
-        width: 20px;
-        height: 20px;
-    }
+        ff-asn-group-element:hover {
+            padding-left: 10px;
+        }
 
-    ff-asn-group ff-asn-group-element .indent {
-        padding-left: 23px;
-    }
+        ff-asn-group-element {
+            font-size: 0.9rem;
+            line-height: 26px;
+            font-weight: 700;
+            margin: 0px;
+            position: relative;
+            clear: both;
+        }
 
-    ff-asn-group ff-asn-group-element .selected {
-        color: #375765;
-        font-weight: bold;
-    }
+        ff-asn-group p {
+            margin-bottom: 0.3rem !important;
+        }
 
-    ff-asn-group ff-asn-group-element .circle {
-        border: 1px solid #555;
-        border-radius: 50%;
-        background-color: #FFF;
-        width: 15px;
-        height: 15px;
-        position: absolute;
-        top: 5px;
-        left: 0px;
-        transition: 300ms;
-    }
+        ff-asn-group[for-group="Color"] ff-asn-group-element:hover,
+        ff-asn-group[for-group="Color"] ff-asn-group-element[selected] {
+            /*color: lightgray;*/
+            text-decoration: underline;
+        }
 
-    ff-asn-group ff-asn-group-element:hover .circle {
-        background-color: #0b97c4;
-    }
+        ff-asn-group[for-group="Color"] ff-asn-group-element:hover .circle,
+        ff-asn-group[for-group="Color"] ff-asn-group-element[selected] .circle {
+            border: 1px solid white;
+            top: 2px;
+            width: 20px;
+            height: 20px;
+        }
 
-    ff-asn-group ff-asn-group-element .count {
-        transition: all 0.2s;
-        color: rgba(0, 0, 0, 0.35);
-        float: right;
-        font-size: 1.1em;
-        line-height: 1.2em;
-        font-size: 1em;
-        padding: 1px 4px;
-        margin-top: 4px;
-    }
+        ff-asn-group ff-asn-group-element .indent {
+            padding-left: 23px;
+        }
 
-    ff-asn-group ff-asn-group-element:hover .count {
-        color: black;
-    }
+        ff-asn-group ff-asn-group-element .selected {
+            color: #375765;
+            font-weight: bold;
+        }
 
-    ff-asn-group ff-asn-group-element .selected .circle {
-        background-color: #0b97c4;
-    }
+        ff-asn-group ff-asn-group-element .circle {
+            border: 1px solid #555;
+            border-radius: 50%;
+            background-color: #FFF;
+            width: 15px;
+            height: 15px;
+            position: absolute;
+            top: 5px;
+            left: 0px;
+            transition: 300ms;
+        }
 
-    ff-asn-group ff-asn-group-element .checkbox {
-        width: 15px;
-        height: 15px;
-        position: absolute;
-        top: 6px;
-        left: 0px;
-        background: url("images/checkbox_inactive.png") no-repeat transparent;
-    }
-
-    ff-asn-group ff-asn-group-element .selected .checkbox,
-    ff-asn-group ff-asn-group-element:hover .checkbox {
-        background-image: url("images/checkbox_active.png");
-    }
-
-    ff-asn-group ff-asn-group-element .selected .count {
-        background-color: #375765;
-        color: #FFF;
-    }
-
-    ff-asn-group ff-asn-group-element.clusterLevel1 {
-        margin-left: 10px;
-    }
-
-    ff-asn-group ff-asn-group-element.clusterLevel2 {
-        margin-left: 20px;
-    }
-
-    ff-asn-group ff-asn-group-element.clusterLevel3 {
-        margin-left: 30px;
-    }
-
-    ff-asn-group ff-asn-group-element.clusterLevel4 {
-        margin-left: 40px;
-    }
-
-    .sliderBtn {
-        border-radius: 50px;
-        background: repeat-x scroll 50% 50% #f6f6f6;
-        border: 1px solid #7f7f7f;
-        color: #fff;
-        font-weight: bold;
-        outline: medium none;
-        margin-left: -0.5em;
-        top: -0.4em;
-        cursor: default;
-        height: 18px;
-        position: absolute;
-        width: 1em;
-        z-index: 3;
-        /*-moz-border-radius: 4px;*/
-        /*-webkit-border-radius: 4px;*/
-        font-family: Verdana, Arial, sans-serif;
-        font-size: 1.1em;
-        text-align: left;
-        text-decoration: none;
-        top: -5px;
-        cursor: pointer;
-    }
-
-    ff-asn-group-slider {
-        max-width: 100% !important;
-    }
-
-    ff-asn-group-slider ff-slider-control {
-        padding: 5px 0 10px;
-        /*border-top: 1px solid #CCC;*/
-    }
-
-    ff-asn-group-slider ff-slider-control input {
-        border: 0px;
-        background-color: #cecece;
-        position: inherit !important;
-        left: 0px !important;
-        text-align: center;
-        width: 65px;
-    }
-
-    ff-asn-group-slider ff-slider-control input:nth-of-type(2) {
-        right: 0px !important;
-        float: right;
-    }
-
-    ff-asn-group-slider ff-slider-control #ffSliderSection {
-        clear: both;
-    }
-
-    ff-asn-group-slider ff-slider-control ff-slider {
-        width: 90% !important;
-        --slidebar-mixin: {
+        ff-asn-group ff-asn-group-element:hover .circle {
             background-color: #0b97c4;
-        };
-        border: 1px solid #375765;
-    }
+        }
 
-    ff-asn-group-slider ff-slider-control ff-slider .slider.ff-slider {
-        width: 1.4em;
-        height: 1.4em;
-        border-radius: 5px;
-        border: 1px solid #375765;
-    }
-</style>
+        ff-asn-group ff-asn-group-element .count {
+            transition: all 0.2s;
+            color: rgba(0, 0, 0, 0.35);
+            float: right;
+            font-size: 1.1em;
+            line-height: 1.2em;
+            font-size: 1em;
+            padding: 1px 4px;
+            margin-top: 4px;
+        }
+
+        ff-asn-group ff-asn-group-element:hover .count {
+            color: black;
+        }
+
+        ff-asn-group ff-asn-group-element .selected .circle {
+            background-color: #0b97c4;
+        }
+
+        ff-asn-group ff-asn-group-element .checkbox {
+            width: 15px;
+            height: 15px;
+            position: absolute;
+            top: 6px;
+            left: 0px;
+            background: url("../images/checkbox_inactive.png") no-repeat transparent;
+        }
+
+        ff-asn-group ff-asn-group-element .selected .checkbox,
+        ff-asn-group ff-asn-group-element:hover .checkbox {
+            background-image: url("../images/checkbox_active.png");
+        }
+
+        ff-asn-group ff-asn-group-element .selected .count {
+            background-color: #375765;
+            color: #FFF;
+        }
+
+        ff-asn-group ff-asn-group-element.clusterLevel1 {
+            margin-left: 10px;
+        }
+
+        ff-asn-group ff-asn-group-element.clusterLevel2 {
+            margin-left: 20px;
+        }
+
+        ff-asn-group ff-asn-group-element.clusterLevel3 {
+            margin-left: 30px;
+        }
+
+        ff-asn-group ff-asn-group-element.clusterLevel4 {
+            margin-left: 40px;
+        }
+
+        .sliderBtn {
+            border-radius: 50px;
+            background: repeat-x scroll 50% 50% #f6f6f6;
+            border: 1px solid #7f7f7f;
+            color: #fff;
+            font-weight: bold;
+            outline: medium none;
+            margin-left: -0.5em;
+            top: -0.4em;
+            cursor: default;
+            height: 18px;
+            position: absolute;
+            width: 1em;
+            z-index: 3;
+            /*-moz-border-radius: 4px;*/
+            /*-webkit-border-radius: 4px;*/
+            font-family: Verdana, Arial, sans-serif;
+            font-size: 1.1em;
+            text-align: left;
+            text-decoration: none;
+            top: -5px;
+            cursor: pointer;
+        }
+
+        ff-asn-group-slider {
+            max-width: 100% !important;
+        }
+
+        ff-asn-group-slider ff-slider-control {
+            padding: 5px 0 10px;
+            /*border-top: 1px solid #CCC;*/
+        }
+
+        ff-asn-group-slider ff-slider-control input {
+            border: 0px;
+            background-color: #cecece;
+            position: inherit !important;
+            left: 0px !important;
+            text-align: center;
+            width: 65px;
+        }
+
+        ff-asn-group-slider ff-slider-control input:nth-of-type(2) {
+            right: 0px !important;
+            float: right;
+        }
+
+        ff-asn-group-slider ff-slider-control #ffSliderSection {
+            clear: both;
+        }
+
+        ff-asn-group-slider ff-slider-control ff-slider {
+            width: 90% !important;
+            --slidebar-mixin: {
+                background-color: #0b97c4;
+            };
+            border: 1px solid #375765;
+        }
+
+        ff-asn-group-slider ff-slider-control ff-slider .slider.ff-slider {
+            width: 1.4em;
+            height: 1.4em;
+            border-radius: 5px;
+            border: 1px solid #375765;
+        }
+    </style>
+</custom-style>
