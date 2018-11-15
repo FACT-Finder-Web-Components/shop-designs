@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Shop Design</title>
+
     <script src="./bower_components/ff-web-components/dist/vendor/custom-elements-es5-adapter.js"></script>
     <script src="./bower_components/ff-web-components/dist/vendor/webcomponents-loader.js"></script>
+    <link rel="import" href="styles.html"> <!-- todo: remove after no more shadow dom -->
     <script defer src="./bower_components/ff-web-components/dist/bundle.js"></script>
     <script defer src="custom.js"></script>
 
@@ -66,96 +68,110 @@
         });
     </script>
 
-    <style is="custom-style">
-        [unresolved] {
-            opacity: 0;
-        }
+    <custom-style>
+        <style>
+            [unresolved] {
+                opacity: 0;
+            }
 
-        html, body {
-            font-size: 14px;
-            transition: opacity 0.4s;
-            margin: 0;
-            padding: 0;
-        }
+            html, body {
+                font-size: 14px;
+                transition: opacity 0.4s;
+                margin: 0;
+                padding: 0;
+            }
 
-        body {
-            overflow-y: scroll;
-            padding-top: 150px;
-        }
+            body {
+                overflow-y: scroll;
+                padding-top: 150px;
+            }
 
-        header {
-            width: 100%;
-            height: 150px;
-            background: #0b97c4;
-            color: white;
-            position: fixed;
-            top: 0;
-            z-index: 99991;
-        }
+            header {
+                width: 100%;
+                height: 150px;
+                background: #0b97c4;
+                color: white;
+                position: fixed;
+                top: 0;
+                z-index: 99991;
+            }
 
-        .sortboxContainer {
-            height: 75px;
-            position: absolute;
-            left: 15px;
-        }
+            .sortboxContainer {
+                height: 75px;
+                position: absolute;
+                left: 15px;
+            }
 
-        nav {
-            height: 75px;
-            background-color: #23282d;
-        }
+            .sortboxContainer .sortBoxCaption {
+                box-sizing: border-box;
+            }
 
-        #searchHeader {
-            font-size: 34px;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-        }
+            nav {
+                height: 75px;
+                background-color: #23282d;
+            }
 
-        input[is="ff-searchbox"] {
-            outline: none;
-            background: #0b97c4;
-            border: none;
-            color: white;
-            margin-top: 10px;
-            height: 55px;
-            width: 50%;
-            font-size: 34px;
-            line-height: 35px;
-            border-bottom: 1px solid white;
-            text-align: center;
-        }
+            #searchHeader {
+                font-size: 34px;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+            }
 
-        button {
-            cursor: pointer;
-            background: none;
-            outline: none !important;
-            border: none;
-        }
+            ff-searchbox {
+                width: 50%;
+            }
 
-        main {
-            display: block;
-            transition: all 0.3s;
-        }
+            ff-searchbox input {
+                width: 100%;
+                outline: none;
+                background: #0b97c4;
+                border: none;
+                color: white;
+                margin-top: 10px;
+                height: 55px;
+                font-size: 34px;
+                line-height: 35px;
+                border-bottom: 1px solid white;
+                text-align: center;
+            }
 
-        ff-campaign-feedbacktext {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: row;
-        }
+            ff-searchbutton {
+                display: flex;
+            }
 
-        #rightColumn {
-            display: flex;
-            justify-content: center;
-            flex-direction: column;
-        }
+            button {
+                cursor: pointer;
+                background: none;
+                outline: none !important;
+                border: none;
+            }
 
-        span.rating {
-            color: gold;
-            font-size: 1.5rem;
-        }
-    </style>
+            main {
+                display: block;
+                transition: all 0.3s;
+            }
+
+            ff-campaign-feedbacktext {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: row;
+            }
+
+            #rightColumn {
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+            }
+
+            span.rating {
+                color: gold;
+                font-size: 1.5rem;
+            }
+        </style>
+    </custom-style>
 </head>
 <body>
 <ff-campaign-redirect></ff-campaign-redirect>
@@ -179,15 +195,19 @@
              width="42px"/>
     </nav>
     <div id="searchHeader">
-        <input type="text" is="ff-searchbox" hidesuggest-onblur="true">
-        <button is="ff-searchbutton">
-            <img src="images/ic_search_black_24px.svg" alt="search icon" style="color: white" height="42px"
-                 width="42px">
-        </button>
+        <ff-searchbox hidesuggest-onblur="true">
+            <input type="text" />
+        </ff-searchbox>
+        <ff-searchbutton>
+            <button>
+                <img src="images/ic_search_black_24px.svg" alt="search icon" style="color: white" height="42px"
+                     width="42px" />
+            </button>
+        </ff-searchbutton>
 
         <div class="sortboxContainer">
             <div class="sortBoxCaption" onclick="toggleSortbox()">
-                <img src="images/sort_by_V1.png" alt="sorting icons">
+                <img src="images/sort_by_V1.png" alt="sorting icons" style="vertical-align: middle">
             </div>
             <ff-sortbox show-selected="true" id="sortbox"></ff-sortbox>
         </div>
@@ -289,18 +309,18 @@
 
         <ff-asn-group for-group="all" class="group" opened>
             <ff-asn-group-element class="ff-asn-group">
-                <div data-selected>
+                <div slot="selected">
                     <p class="selected indent"><span class="checkbox"></span> {{element.name}}&nbsp;{{group.unit}}
                     </p>
                 </div>
 
-                <div data-unselected class="ff-asn-group">
+                <div slot="unselected" class="ff-asn-group">
                     <p class="indent"><span class="checkbox"></span> {{element.name}}&nbsp;{{group.unit}}<span
                             class="count">{{element.recordCount}}</span></p>
                 </div>
             </ff-asn-group-element>
 
-            <div data-container="groupCaption">
+            <div slot="groupCaption">
                 <h3>{{group.name}}</h3>
             </div>
 
@@ -313,7 +333,7 @@
             </div>
         </ff-asn-group>
         <ff-asn-group-slider class="group" opened>
-            <div data-container="groupCaption" class="groupCaption">
+            <div slot="groupCaption" class="groupCaption">
                 <h3>{{group.name}}</h3>
             </div>
             <ff-slider-control>
@@ -321,8 +341,8 @@
                 <input data-control="2" type="text">
 
                 <ff-slider>
-                    <div data-slider="1" class="sliderBtn">&nbsp;</div>
-                    <div data-slider="2" class="sliderBtn">&nbsp;</div>
+                    <div slot="slider1" id="slider1" class="sliderBtn">&nbsp;</div>
+                    <div slot="slider2" id="slider2" class="sliderBtn">&nbsp;</div>
                 </ff-slider>
 
                 <div data-container="removeFilter" id="removeFilter"
@@ -336,14 +356,14 @@
         </ff-asn-group-slider>
         <ff-asn-group for-group="Color" class="group" opened>
             <ff-asn-group-element class="ff-asn-group" style="width: 40%;padding-left: 2%">
-                <div data-selected>
+                <div slot="selected">
                     <p class="selected indent"><span class="circle"
                                                      style="background-color: {{element.previewImageURL}} !important"></span>
                         {{element.name}}&nbsp;{{group.unit}}
                     </p>
                 </div>
 
-                <div data-unselected class="ff-asn-group">
+                <div slot="unselected" class="ff-asn-group">
                     <p class="indent"><span class="circle"
                                             style="background-color: {{element.previewImageURL}} !important"></span>
                         {{element.name}}&nbsp;{{group.unit}}
@@ -351,7 +371,7 @@
                 </div>
             </ff-asn-group-element>
 
-            <div data-container="groupCaption" class="groupCaption">
+            <div slot="groupCaption" class="groupCaption">
                 <h3>{{group.name}}</h3>
             </div>
 
@@ -364,19 +384,19 @@
         </ff-asn-group>
         <ff-asn-group filter-style="DEFAULT" class="group" opened>
             <ff-asn-group-element class="ff-asn-group">
-                <div data-selected>
+                <div slot="selected">
                     <p class="selected indent"><span class="circle"></span> {{element.name}}&nbsp;{{group.unit}}
                     </p>
                 </div>
 
-                <div data-unselected class="ff-asn-group">
+                <div slot="unselected" class="ff-asn-group">
                     <p class="indent"><span class="circle"></span> {{element.name}}&nbsp;{{group.unit}}
                         <span class="count">{{element.recordCount}}</span>
                     </p>
                 </div>
             </ff-asn-group-element>
 
-            <div data-container="groupCaption" class="groupCaption">
+            <div slot="groupCaption" class="groupCaption">
                 <h3>{{group.name}}</h3>
             </div>
 
@@ -389,17 +409,17 @@
         </ff-asn-group>
         <ff-asn-group opened filter-style="TREE" class="group">
             <ff-asn-group-element class="ff-asn-group">
-                <div data-selected>
+                <div slot="selected">
                     <p class="selected" style="color: #0b97c4 !important;">- {{element.name}}&nbsp;{{group.unit}}</p>
                 </div>
 
-                <div data-unselected class="ff-asn-group">
+                <div slot="unselected" class="ff-asn-group">
                     <p>+ {{element.name}}&nbsp;{{group.unit}} <span class="count">{{element.recordCount}}</span>
                     </p>
                 </div>
             </ff-asn-group-element>
 
-            <div data-container="groupCaption" class="groupCaption">
+            <div slot="groupCaption" class="groupCaption">
                 <h3>{{group.name}}</h3>
             </div>
 
@@ -427,7 +447,10 @@
             <ff-template scope="result" unresolved>produced <u>{{resultCount}}</u> hits</ff-template>
         </div>
 
-        <div id="tagCloudContainer"></div>
+        <div id="tagCloudContainer">
+
+
+        </div>
 
         <!--<ff-campaign-pushed-products unresolved style="border-top: 1px solid lightgray;padding-top: 15px">-->
             <!--<h2 style="text-align: center">You may be interested in</h2>-->
