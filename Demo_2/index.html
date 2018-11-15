@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <title>FACT-Finder Search</title>
 
+    <!-- needs to be loaded before loading FACT-Finder Web Components. Otherwise you might miss "ffReady" event -->
     <script>
         var Polymer = Polymer || {};
         Polymer.dom = 'shady';
     </script>
 
-    <!--needs to be inserted before fact-finder web components html import or ffReady will not trigger-->
     <script src="resources/fieldMapping.js"></script>
 
     <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
