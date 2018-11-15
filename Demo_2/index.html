@@ -2,18 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>FACT-Finder Search</title>
+    <title>Shop Design 2</title>
 
     <!-- needs to be loaded before loading FACT-Finder Web Components. Otherwise you might miss "ffReady" event -->
-    <script>
-        var Polymer = Polymer || {};
-        Polymer.dom = 'shady';
-    </script>
+    <script src="./resources/fieldMapping.js"></script>
 
-    <script src="resources/fieldMapping.js"></script>
-
-    <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
-    <link rel="import" href="bower_components/ff-web-components/dist/elements.build_with_dependencies.html">
+    <script src="../bower_components/ff-web-components/dist/vendor/custom-elements-es5-adapter.js"></script>
+    <script src="../bower_components/ff-web-components/dist/vendor/webcomponents-loader.js"></script>
+    <script defer src="../bower_components/ff-web-components/dist/bundle.js"></script>
     <link rel="stylesheet" href="resources/css/ff-asn.css">
     <link rel="stylesheet" href="resources/css/ff-record-list.css">
     <link rel="stylesheet" href="resources/css/ff-breadcrumb-trail.css">
@@ -34,16 +30,6 @@
 </ff-communication>
 
 <style>
-    #searchContent {
-        display: flex;
-        flex-wrap: nowrap;
-        justify-content: space-around;
-        align-items: flex-start;
-        max-width: 1240px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
     main {
         padding-left: 25px;
     }
@@ -53,7 +39,7 @@
         opacity: 0;
     }
 
-    input[is="ff-searchbox"] {
+    ff-searchbox input {
         height: 16px;
         width: 70%;
         padding: 8px;
@@ -64,7 +50,7 @@
         outline: none;
     }
 
-    button[is="ff-searchbutton"] {
+    ff-searchbutton button {
         height: 33px;
         cursor: pointer;
         outline: none;
@@ -73,13 +59,25 @@
         border-bottom: 1px solid lightgray;
     }
 
+    #searchContent {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: space-around;
+        align-items: flex-start;
+        max-width: 1240px;
+        margin-left: auto;
+        margin-right: auto;
+    }
 </style>
 
-<div style="max-width: 1024px;margin-left: auto;margin-right: auto;display: flex;
-            justify-content: center;align-items: center;margin-bottom: 35px; margin-top: 25px;
-            flex-wrap: wrap;">
-    <input is="ff-searchbox" select-onclick="true" placeholder="Type Your Search..." hidesuggest-onblur="true"/>
-    <button is="ff-searchbutton">Search</button>
+<div style="max-width: 1024px; margin: 25px auto 35px auto;">
+    <ff-searchbox select-onclick="true" hidesuggest-onblur="true">
+        <input placeholder="Type Your Search..."/>
+    </ff-searchbox>
+
+    <ff-searchbutton>
+        <button>Search</button>
+    </ff-searchbutton>
 </div>
 
 <div style="max-width: 1240px;margin-left: auto;margin-right: auto;display: flex;
@@ -145,16 +143,16 @@
             <ff-asn-group filter-style="TREE" opened>
                 <!--filter element template-->
                 <ff-asn-group-element>
-                    <div data-selected>
+                    <div slot="selected">
                         [-] {{element.name}} {{group.unit}}
                     </div>
 
-                    <div data-unselected>
+                    <div slot="unselected">
                         [+] {{element.name}} {{group.unit}}
                     </div>
                 </ff-asn-group-element>
 
-                <div data-container="groupCaption">
+                <div slot="groupCaption">
                     <span>{{group.name}}</span> <span class="openState"></span>
                 </div>
 
@@ -173,16 +171,16 @@
             <ff-asn-group filter-style="MULTISELECT">
                 <!--filter element template-->
                 <ff-asn-group-element>
-                    <div data-selected>
+                    <div slot="selected">
                         {{element.name}} {{group.unit}}
                     </div>
 
-                    <div data-unselected>
+                    <div slot="unselected">
                         {{element.name}} {{group.unit}}
                     </div>
                 </ff-asn-group-element>
 
-                <div data-container="groupCaption">
+                <div slot="groupCaption">
                     <span>{{group.name}}</span> <span class="openState"></span>
                 </div>
 
@@ -207,16 +205,16 @@
             <ff-asn-group filter-style="DEFAULT">
                 <!--filter element template-->
                 <ff-asn-group-element>
-                    <div data-selected>
+                    <div slot="selected">
                         {{element.name}} {{group.unit}}
                     </div>
 
-                    <div data-unselected>
+                    <div slot="unselected">
                         {{element.name}} {{group.unit}}
                     </div>
                 </ff-asn-group-element>
 
-                <div data-container="groupCaption">
+                <div slot="groupCaption">
                     <span>{{group.name}}</span> <span class="openState"></span>
                 </div>
 
@@ -235,7 +233,7 @@
 
             <!--template for SLIDER groups-->
             <ff-asn-group-slider>
-                <div data-container="groupCaption">
+                <div slot="groupCaption">
                     <span>{{group.name}}</span> <span class="openState"></span>
                 </div>
 
@@ -249,8 +247,8 @@
                                 data-control='2' style="width: 60px;">
                     </div>
                     <ff-slider>
-                        <div data-slider="1" class="sliderBtn"></div>
-                        <div data-slider="2" class="sliderBtn"></div>
+                        <div slot="slider1" id="slider1" class="sliderBtn"></div>
+                        <div slot="slider2" id="slider2"  class="sliderBtn"></div>
                     </ff-slider>
                 </ff-slider-control>
             </ff-asn-group-slider>
