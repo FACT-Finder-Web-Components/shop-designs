@@ -1,0 +1,124 @@
+ff-products-per-page-dropdown {
+    display: inline-block;
+    outline: none;
+}
+
+ff-products-per-page-dropdown .ff-ppp-dropdown-closed {
+    display: none;
+}
+
+ff-products-per-page-dropdown .ff-ppp-dropdown-container {
+    position: absolute;
+    background-color: white;
+    outline: none;
+    z-index: 1001;
+
+    -webkit-transition: height .4s;
+    -moz-transition: height .4s;
+    -ms-transition: height .4s;
+    -o-transition: height .4s;
+    transition: height .4s;
+    box-sizing: border-box;
+}
+
+ff-products-per-page-item {
+    display: block;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+ff-products-per-page-list {
+    display: inline-block;
+    outline: none;
+}
+
+ff-products-per-page-list ff-products-per-page-item {
+    display: inline-block;
+}
+
+ff-products-per-page-select {
+    display: inline-block;
+}
+
+ff-record {
+    display: inline-block;
+    vertical-align: top;
+}
+
+ff-sortbox {
+    display: inline-block;
+    outline: none;
+}
+
+ff-sortbox .ff-sort-closed {
+    display: none;
+}
+
+ff-sortbox .ff-sort-dropdown-container {
+    position: absolute;
+    background-color: white;
+    z-index: 1001;
+
+    -webkit-transition: height .4s;
+    -moz-transition: height .4s;
+    -ms-transition: height .4s;
+    -o-transition: height .4s;
+    transition: height .4s;
+
+    box-sizing: border-box;
+}
+
+ff-sortbox-item {
+    display: none;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.ff-hidden {
+    display: none !important;
+}
+
+ff-paging,
+ff-paging-item,
+ff-paging-set,
+ff-paging-dropdown {
+    display: inline-block;
+}
+
+ff-paging-item .ffw-cursor {
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+ff-paging-dropdown {
+    outline: none;
+}
+
+.ff-paging-dropdown-container {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    outline: none;
+    z-index: 1001;
+
+    -webkit-transition: height .4s;
+    -moz-transition: height .4s;
+    -ms-transition: height .4s;
+    -o-transition: height .4s;
+    transition: height .4s;
+    box-sizing: border-box;
+}
+
+.ff-paging-dropdown-closed {
+    display: none;
+}
