@@ -48,7 +48,7 @@ ff-asn-group:not([filter-style="TREE"]) ff-asn-group-element:hover {
     /*color: #fff;*/
 }
 
-ff-asn-group-element [data-selected] {
+ff-asn-group-element [slot="selected"] {
     font-weight: bold;
     color: rgb(255, 105, 44);
 }
