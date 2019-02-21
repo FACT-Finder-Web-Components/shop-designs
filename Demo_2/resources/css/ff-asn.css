@@ -29,10 +29,6 @@ ff-asn-group-slider [slot="groupCaption"] .openState::before {
     position: absolute;
     transform: translateY(-50%) translateX(-50%);
     padding-right: 15px;
-}
-
-ff-asn-group [slot="groupCaption"] .openState::before,
-ff-asn-group-slider [slot="groupCaption"] .openState::before {
     content: "+";
 }
 
