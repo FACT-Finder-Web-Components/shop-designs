@@ -98,10 +98,6 @@ ff-asn-group-element [data-selected] {
     padding-left: 28px;
 }
 
-ff-slider-control {
-    padding: 15px;
-}
-
 ff-slider {
     background-color: rgb(255, 105, 44) !important;
     width: 80%;
