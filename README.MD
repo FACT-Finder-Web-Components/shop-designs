@@ -4,7 +4,7 @@ Be sure to have the same version than the one used in the example shop you are w
 We suggest to always integrate the latest version, but if you insist on digging in old versions,
 feel free to use the git history of this project.
 
- > Note that *Demo_2* was originated in [this repo](https://github.com/FACT-Finder-Web-Components/example-shop-impl)
+ > Note that *Demo 2* was originated in [this repo](https://github.com/FACT-Finder-Web-Components/example-shop-impl)
  and hence its older history can be found there.
 
 # Work In Progress
