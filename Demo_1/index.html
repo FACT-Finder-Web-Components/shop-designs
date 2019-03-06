@@ -7,6 +7,13 @@
     <script src="../dist/vendor/custom-elements-es5-adapter.js"></script>
     <script src="../dist/vendor/webcomponents-loader.js"></script>
     <link rel="import" href="styles.html"> <!-- todo: remove after no more shadow dom -->
+    <link rel="stylesheet" href="css/header-navigation.css" />
+    <link rel="stylesheet" href="css/records.css">
+    <link rel="stylesheet" href="css/campaigns.css">
+    <link rel="stylesheet" href="css/spinner.css">
+    <link rel="stylesheet" href="css/tagcloud.css">
+    <link rel="stylesheet" href="css/breadcrumb.css">
+    <link rel="stylesheet" href="css/productDetail.css">
     <script defer src="../dist/bundle.js"></script>
     <script defer src="./custom.js"></script>
 
@@ -68,110 +75,108 @@
         });
     </script>
 
-    <custom-style>
-        <style>
-            [unresolved] {
-                opacity: 0;
-            }
+    <style>
+        [unresolved] {
+            opacity: 0;
+        }
 
-            html, body {
-                font-size: 14px;
-                transition: opacity 0.4s;
-                margin: 0;
-                padding: 0;
-            }
+        html, body {
+            font-size: 14px;
+            transition: opacity 0.4s;
+            margin: 0;
+            padding: 0;
+        }
 
-            body {
-                overflow-y: scroll;
-                padding-top: 150px;
-            }
+        main {
+            display: block;
+            transition: all 0.3s;
+        }
 
-            header {
-                width: 100%;
-                height: 150px;
-                background: #0b97c4;
-                color: white;
-                position: fixed;
-                top: 0;
-                z-index: 99991;
-            }
+        body {
+            overflow-y: scroll;
+            padding-top: 150px;
+        }
 
-            .sortboxContainer {
-                height: 75px;
-                position: absolute;
-                left: 15px;
-            }
+        header {
+            width: 100%;
+            height: 150px;
+            background: #0b97c4;
+            color: white;
+            position: fixed;
+            top: 0;
+            z-index: 99991;
+        }
 
-            .sortboxContainer .sortBoxCaption {
-                box-sizing: border-box;
-            }
+        .sortboxContainer {
+            height: 75px;
+            position: absolute;
+            left: 15px;
+        }
 
-            nav {
-                height: 75px;
-                background-color: #23282d;
-            }
+        .sortboxContainer .sortBoxCaption {
+            box-sizing: border-box;
+        }
 
-            #searchHeader {
-                font-size: 34px;
-                width: 100%;
-                display: flex;
-                justify-content: center;
-            }
+        nav {
+            height: 75px;
+            background-color: #23282d;
+        }
 
-            ff-searchbox {
-                width: 50%;
-            }
+        #searchHeader {
+            font-size: 34px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
 
-            ff-searchbox input {
-                width: 100%;
-                outline: none;
-                background: #0b97c4;
-                border: none;
-                color: white;
-                margin-top: 10px;
-                height: 55px;
-                font-size: 34px;
-                line-height: 35px;
-                border-bottom: 1px solid white;
-                text-align: center;
-            }
+        ff-searchbox {
+            width: 50%;
+        }
 
-            ff-searchbutton {
-                display: flex;
-            }
+        ff-searchbox input {
+            width: 100%;
+            outline: none;
+            background: #0b97c4;
+            border: none;
+            color: white;
+            margin-top: 10px;
+            height: 55px;
+            font-size: 34px;
+            line-height: 35px;
+            border-bottom: 1px solid white;
+            text-align: center;
+        }
 
-            button {
-                cursor: pointer;
-                background: none;
-                outline: none !important;
-                border: none;
-            }
+        ff-searchbutton {
+            display: flex;
+        }
 
-            main {
-                display: block;
-                transition: all 0.3s;
-            }
+        button {
+            cursor: pointer;
+            background: none;
+            outline: none !important;
+            border: none;
+        }
 
-            ff-campaign-feedbacktext {
-                width: 100%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                flex-direction: row;
-            }
+        ff-campaign-feedbacktext {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+        }
 
-            #rightColumn {
-                display: flex;
-                justify-content: center;
-                flex-direction: column;
-            }
+        #rightColumn {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+        }
 
-            span.rating {
-                color: gold;
-                font-size: 1.5rem;
-            }
-        </style>
-    </custom-style>
+        span.rating {
+            color: gold;
+            font-size: 1.5rem;
+        }
+    </style>
 </head>
 <body>
 <ff-campaign-redirect></ff-campaign-redirect>
@@ -185,7 +190,7 @@
 
 <header>
     <nav>
-        <ff-header-navigation group-count="4" unresolved="">
+        <ff-header-navigation group-count="4" unresolved>
             <img slot="container-left-Outdoor clothing" src="images/outdoorClothing.jpg" style="max-width: 1200px"
                  alt="Outdoor Clothing Banner">
         </ff-header-navigation>
@@ -341,14 +346,14 @@
                 <input data-control="2" type="text">
 
                 <ff-slider>
-                    <div slot="slider1" id="slider1" class="sliderBtn">&nbsp;</div>
-                    <div slot="slider2" id="slider2" class="sliderBtn">&nbsp;</div>
+                    <div slot="slider1" class="sliderBtn">&nbsp;</div>
+                    <div slot="slider2" class="sliderBtn">&nbsp;</div>
                 </ff-slider>
 
                 <div data-container="removeFilter" id="removeFilter"
                      style="margin-top: 12px;
-                                         font-size: 12px;
-                                         cursor: pointer;">
+                     font-size: 12px;
+                     cursor: pointer;">
                     [x] Remove
                     Filter
                 </div>
@@ -378,9 +383,6 @@
             <div opened data-container="detailedLinks" style="display: flex;flex-wrap: wrap">
                 <div data-content="detailedLinks"></div>
             </div>
-            <!--<div data-container="hiddenLinks" opened>-->
-            <!--<div data-content="hiddenLinks"></div>-->
-            <!--</div>-->
         </ff-asn-group>
         <ff-asn-group filter-style="DEFAULT" class="group" opened>
             <ff-asn-group-element class="ff-asn-group">
@@ -447,43 +449,7 @@
             <ff-template scope="result" unresolved>produced <u>{{resultCount}}</u> hits</ff-template>
         </div>
 
-        <div id="tagCloudContainer">
-
-
-        </div>
-
-        <!--<ff-campaign-pushed-products unresolved style="border-top: 1px solid lightgray;padding-top: 15px">-->
-            <!--<h2 style="text-align: center">You may be interested in</h2>-->
-            <!--<ff-record-list id="pushedProducts" unresolved style="width: 80%">-->
-                <!--&lt;!&ndash;<ff-carousel per-slide="4">&ndash;&gt;-->
-                    <!--<ff-record onclick="showProductDetail(event)" slot="items">-->
-                        <!--<div style="min-height: 230px" data-track>-->
-                            <!--<img data-image="{{record.ImageName}}">-->
-                        <!--</div>-->
-                        <!--<h2 style="font-size: 1.5rem" data-track>-->
-                            <!--{{record.Title}}-->
-                        <!--</h2>-->
-
-                        <!--<div class="priceContainer" data-track>-->
-                            <!--&lt;!&ndash;<span class="brand">{{record.Manufacturer}}</span>&ndash;&gt;-->
-                            <!--<div>-->
-                                <!--<span class="rating">&#x2605;</span>-->
-                                <!--<span style="font-size: 1.25rem;">{{record.Rating}}</span>-->
-                            <!--</div>-->
-                            <!--<span class="price">{{record.Price}} </span>-->
-                        <!--</div>-->
-                    <!--</ff-record>-->
-                <!--&lt;!&ndash;</ff-carousel>&ndash;&gt;-->
-            <!--</ff-record-list>-->
-        <!--</ff-campaign-pushed-products>-->
-        <!--<script>-->
-            <!--var recordList = document.querySelector("#pushedProducts");-->
-            <!--recordList.addEventListener("dom-upated", function () {-->
-                <!--setTimeout(function () {-->
-                    <!--recordList.querySelector("ff-carousel").calculateSizes();-->
-                <!--}, 1000);-->
-            <!--})-->
-        <!--</script>-->
+        <div id="tagCloudContainer"></div>
 
         <ff-campaign-advisor>
             <ff-campaign-advisor-question>
