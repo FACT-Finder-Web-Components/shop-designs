@@ -7,6 +7,7 @@
     <script src="../dist/vendor/custom-elements-es5-adapter.js"></script>
     <script src="../dist/vendor/webcomponents-loader.js"></script>
     <link rel="import" href="styles.html"> <!-- todo: remove after no more shadow dom -->
+    <link rel="stylesheet" href="css/asn.css" />
     <link rel="stylesheet" href="css/header-navigation.css" />
     <link rel="stylesheet" href="css/records.css">
     <link rel="stylesheet" href="css/campaigns.css">
@@ -380,8 +381,8 @@
                 <h3>{{group.name}}</h3>
             </div>
 
-            <div opened data-container="detailedLinks" style="display: flex;flex-wrap: wrap">
-                <div data-content="detailedLinks"></div>
+            <div opened data-container="detailedLinks">
+                <div data-content="detailedLinks" style="display: flex;flex-wrap: wrap"></div>
             </div>
         </ff-asn-group>
         <ff-asn-group filter-style="DEFAULT" class="group" opened>
