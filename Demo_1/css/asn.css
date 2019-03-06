@@ -74,12 +74,12 @@ ff-asn-group p {
 }
 
 ff-asn-group[for-group="Color"] ff-asn-group-element:hover,
-ff-asn-group[for-group="Color"] ff-asn-group-element[selected] {
+ff-asn-group[for-group="Color"] ff-asn-group-element[selected="true"] {
     text-decoration: underline;
 }
 
 ff-asn-group[for-group="Color"] ff-asn-group-element:hover .circle,
-ff-asn-group[for-group="Color"] ff-asn-group-element[selected] .circle {
+ff-asn-group[for-group="Color"] ff-asn-group-element[selected="true"] .circle {
     border: 1px solid white;
     top: 2px;
     width: 20px;
