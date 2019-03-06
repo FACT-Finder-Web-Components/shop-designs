@@ -1,0 +1,108 @@
+ff-onfocus-suggest {
+    color: black;
+}
+
+ff-onfocus-suggest .ffw-suggestContainerWrapper {
+    width: 100%;
+    -webkit-box-shadow: 0 0 0.3125em rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 0.3125em rgba(0, 0, 0, 0.2);
+
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    border-right: 1px solid #eee;
+}
+
+ff-onfocus-suggest .ffw-suggestContainer {
+    margin-top: -2px;
+}
+
+ff-onfocus-suggest h2 {
+    font-size: 1.7rem;
+}
+
+[data-container="suggestions"] .ff-highlight-suggest-item {
+    background-color: #2b81af;
+    border: 1px solid black;
+    color: white;
+}
+
+[data-container="suggestions"] {
+    display: flex;
+    flex-direction: column;
+}
+
+.productsContainer {
+    display: flex;
+    flex-direction: row;
+    border-left: 1px solid #eee;
+    flex-wrap: wrap
+}
+
+.ff-highlight-suggest-item {
+    background-color: #2b81af;
+    border: 1px solid black;
+}
+
+.ff-highlight-suggest-item {
+    background-color: white;
+    border: none !important;
+}
+
+.containerCaption {
+    font-weight: bold;
+}
+
+ff-onfocus-suggest [data-container="suggestions"] [data-container] {
+    margin: 15px 30px;
+}
+
+[data-container="onfocus"] {
+    border-bottom: 1px solid #eee;
+    background-color: #eee;
+    margin: 0 15px 0 0;
+    padding: 0;
+    min-width: 350px;
+    /*padding-left: 200px;*/
+}
+
+[data-container="suggestions"] {
+    padding-bottom: 15px;
+}
+
+[data-container="onfocus"] ff-suggest-item {
+    padding: 8px 10px 5px 15px;
+    border-left: 1px solid #eee;
+}
+
+ff-suggest-item {
+    cursor: pointer;
+    padding: 2px;
+}
+
+ff-suggest-item[type="productName"] {
+    flex: 1;
+    padding: 15px;
+    border-top: 1px solid #eee;
+    border-right: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    /* margin: 8px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 220px;
+    max-width: 20%;
+}
+
+ff-suggest-item[type="productName"] .product-price {
+    font-weight: bold;
+}
+
+ff-suggest-item[type="productName"] img {
+    height: 180px;
+}
+
+span.query {
+    font-weight: bold;
+    color: #0b97c4;
+}
