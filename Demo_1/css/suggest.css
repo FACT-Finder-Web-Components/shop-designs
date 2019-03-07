@@ -20,7 +20,7 @@ ff-onfocus-suggest h2 {
     font-size: 1.7rem;
 }
 
-[data-container="suggestions"] .ff-highlight-suggest-item {
+[data-container="suggestions"] .ffw-highlight-suggest-item {
     background-color: #2b81af;
     border: 1px solid black;
     color: white;
@@ -38,12 +38,7 @@ ff-onfocus-suggest h2 {
     flex-wrap: wrap
 }
 
-.ff-highlight-suggest-item {
-    background-color: #2b81af;
-    border: 1px solid black;
-}
-
-.ff-highlight-suggest-item {
+.ffw-highlight-suggest-item {
     background-color: white;
     border: none !important;
 }
@@ -102,7 +97,7 @@ ff-suggest-item[type="productName"] img {
     height: 180px;
 }
 
-span.query {
+span.ffw-query {
     font-weight: bold;
     color: #0b97c4;
 }
