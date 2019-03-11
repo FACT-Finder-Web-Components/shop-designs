@@ -7,6 +7,5 @@ feel free to use the git history of this project.
  > Note that *Demo 2* was originated in [this repo](https://github.com/FACT-Finder-Web-Components/example-shop-impl)
  and hence its older history can be found there.
 
-# Work In Progress
 [Demo 1](https://fact-finder-web-components.github.io/shop-designs/Demo_1/index.html)
 [Demo 2](https://fact-finder-web-components.github.io/shop-designs/Demo_2/index.html)
