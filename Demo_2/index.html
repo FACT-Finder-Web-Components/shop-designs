@@ -40,15 +40,21 @@
         opacity: 0;
     }
 
-    ff-searchbox input {
+    ff-searchbox {
+        display: block;
         height: 16px;
         width: 70%;
         padding: 8px;
-        font-size: 18px;
 
         border: none;
         border-bottom: 1px solid lightgray;
         outline: none;
+    }
+
+    ff-searchbox input {
+        border: none;
+        font-size: 18px;
+        height: 100%;
     }
 
     ff-searchbutton button {
@@ -71,7 +77,7 @@
     }
 </style>
 
-<div style="max-width: 1024px; margin: 25px auto 35px auto;">
+<div style="max-width: 1024px;display: flex; justify-content: center; align-items: center; margin: 25px auto 35px; flex-wrap: wrap;">
     <ff-searchbox select-onclick="true" hidesuggest-onblur="true">
         <input placeholder="Type Your Search..."/>
     </ff-searchbox>
