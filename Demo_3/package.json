@@ -1,0 +1,16 @@
+{
+  "name": "new-layout",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "ff-web-components": "https://github.com/FACT-Finder-Web-Components/ff-web-components.git#3.1.1"
+  }
+}

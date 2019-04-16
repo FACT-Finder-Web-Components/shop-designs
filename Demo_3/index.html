@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Record List</title>
+
+    <script src="node_modules/ff-web-components/dist/vendor/custom-elements-es5-adapter.js"></script>
+    <script src="node_modules/ff-web-components/dist/vendor/webcomponents-loader.js"></script>
+    <script defer src="node_modules/ff-web-components/dist/bundle.js"></script>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <style>
+        * {
+            --primary-color: #004587;
+        }
+
+        a:link {
+            text-decoration: inherit;
+            color: inherit;
+        }
+
+        [unresolved] {
+            opacity: 0;
+        }
+
+        #searchBar {
+            padding: 30px 0;
+        }
+
+        ff-searchbox {
+            display: block;
+            width: 620px;
+        }
+
+        ff-searchbox input {
+            width: 100%;
+        }
+
+        nav {
+            background-color: var(--primary-color);
+            margin-bottom: 20px;
+            height: 40px;
+            position: relative;
+        }
+
+        ff-header-navigation {
+            width: 100%;
+            color: #ffffff;
+            padding-bottom: 20px;
+            --header-navigation-height: 40px;
+        }
+
+        ff-header-navigation .ffw-header-nav {
+            position: static;
+        }
+
+        ff-header-navigation .ffw-header {
+            padding: 0 20px;
+            display: flex;
+            justify-content: normal;
+            align-items: normal;
+            height: var(--header-navigation-height);
+            line-height: var(--header-navigation-height);
+        }
+
+        ff-nav-element.ffw-nav-item {
+            /*text-align: center;*/
+            /*vertical-align: middle;*/
+            flex: none;
+            color: #ffffff;
+            cursor: pointer;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        ff-nav-element.ffw-nav-item:hover {
+            background-color: #a45a95;
+        }
+
+        ff-nav-element.ffw-nav-group-caption {
+            font-weight: bold;
+            margin-bottom: 5px;
+            cursor: pointer;
+        }
+
+        ff-nav-element {
+            color: #676767;
+            cursor: pointer;
+        }
+
+        ff-header-navigation .ffw-body {
+            box-shadow: rgba(0, 0, 0, 0.55) 0 2px 4px;
+            width: 100%;
+            position: absolute !important;
+            left: 0;
+            right: 0;
+        }
+
+        .center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap-grid.min.css">
+</head>
+<body>
+<ff-communication url="https://search-web-components.fact-finder.de/FACT-Finder-7.2"
+                  version="7.2"
+                  default-query="bagpack"
+                  channel="bergfreunde-co-uk"
+                  search-immediate>
+</ff-communication>
+<div id="searchBar" class="container center">
+    <ff-searchbox>
+        <input/>
+    </ff-searchbox>
+
+    <ff-searchbutton>
+        <button>Search</button>
+    </ff-searchbutton>
+</div>
+
+<nav>
+    <div class="container">
+        <ff-header-navigation></ff-header-navigation>
+    </div>
+</nav>
+
+
+<main class="container">
+    <ff-record-list unresolved>
+        <ff-record unresolved>
+            <img data-image="{{record.ImageName}}">
+            <a data-anchor="https://www.alpinetrek.co.uk{{record.Deeplink}}"
+               data-redirect="https://www.alpinetrek.co.uk{{record.Deeplink}}" data-redirect-target="_blank">
+                {{record.Title}}
+            </a>
+
+            <div class="priceContainer"><span class="brand">{{record.Manufacturer}}</span> <span class="price">{{record.Price}} €</span>
+            </div>
+        </ff-record>
+    </ff-record-list>
+</main>
+
+</body>
+</html>
