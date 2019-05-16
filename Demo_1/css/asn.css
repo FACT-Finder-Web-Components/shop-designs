@@ -170,7 +170,7 @@ ff-asn-group ff-asn-group-element.clusterLevel4 {
     margin-left: 40px;
 }
 
-.sliderBtn {
+ff-slider .sliderBtn {
     border-radius: 50px;
     background: repeat-x scroll 50% 50% #f6f6f6;
     border: 1px solid #7f7f7f;
