@@ -23,12 +23,6 @@ ff-record-list ff-record {
     transition: 200ms;
 }
 
-/*ff-record-list ff-record:hover {*/
-    /*-webkit-box-shadow: 1px 1px 8px 0px rgba(0,0,0,0.75);*/
-    /*-moz-box-shadow: 1px 1px 8px 0px rgba(0,0,0,0.75);*/
-    /*box-shadow: 1px 1px 8px 0px rgba(0,0,0,0.75);*/
-/*}*/
-
 ff-record-list ff-record .basketIcon {
     height: 32px;
     width: 32px;
@@ -38,7 +32,6 @@ ff-record-list ff-record .basketIcon {
 
 ff-record-list ff-record .recordContent {
     padding-left: 25px;
-    /*padding-right: 25px;*/
     font-size: 16px;
     width: 100%;
     height: 100%;
@@ -59,17 +52,14 @@ ff-record-list ff-record .productDetailLink {
 
 ff-record-list ff-record .productDetailLink:hover {
     color: white;
-    /*color: rgb(255, 105, 44);*/
     background-color: #393b3e;
 }
 
 ff-record-list ff-record .price {
     font-weight: bold;
-    /*text-align: center;*/
     padding-top: 15px;
     padding-bottom: 15px;
     font-size: 22px;
-    /*color: #393b3e;*/
     color: rgb(255, 105, 44);
 }
 

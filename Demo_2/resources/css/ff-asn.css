@@ -78,10 +78,6 @@ ff-asn-group-element [slot="selected"] {
     display: inline-block;
 }
 
-.clusterLevel0 {
-
-}
-
 .clusterLevel1 {
     padding-left: 7px;
 }
@@ -110,8 +106,3 @@ ff-asn-group-slider [data-container="removeFilter"] {
 ff-asn-group[filter-style="TREE"] ff-asn-group-element {
     padding-top: 3px;
 }
-
-/*ff-asn-group [data-container="groupCaption"]::after,*/
-/*ff-asn-group-slider [data-container="groupCaption"]::after {*/
-/*content: "+";*/
-/*}*/
