@@ -1,0 +1,74 @@
+[selected] {
+  .ffw-item-caption {
+    &:active {
+      background-color: #484749;
+      color: white;
+    }
+
+    &:hover {
+      background-color: #484749;
+      color: white;
+    }
+  }
+}
+
+ff-navigation {
+  .ffw-menu-items {
+    .ffw-item-caption {
+      .level-top {
+        border-bottom: 2px solid lightgray;
+      }
+
+      .nav-link {
+        font-size: 26px;
+        color: black;
+
+        &:after {
+          content: arr;
+        }
+      }
+    }
+  }
+}
+
+.ffw-item-container, ff-navigation-item {
+  color: black;
+}
+
+[cluster-level="1"], [cluster-level="2"], [cluster-level="3"] {
+  white-space: nowrap;
+  padding-top: 15px;
+  padding-bottom: 5px;
+}
+
+ff-navigation-item[cluster-level="2"] {
+  padding-left: 15px;
+}
+
+ff-navigation-item[cluster-level="3"] {
+  padding-left: 30px;
+}
+
+
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css");
+
+.ffw-item-caption {
+}
+
+[has-subelements] a:before {
+  float: right !important;
+  font-family: FontAwesome;
+  content: "\f068";
+  padding-right: 5px;
+}
+
+[has-subelements] a:before {
+  float: right !important;
+  content: "\f067";
+}
+
+[has-subelements] > a:hover,
+[has-subelements] > a:active,
+[has-subelements] > a:focus {
+  text-decoration: none;
+}
