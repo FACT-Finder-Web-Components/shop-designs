@@ -1,0 +1,22 @@
+* {
+  box-sizing: border-box;
+}
+
+.page--wrapper {
+  height: 100%;
+  width: 100%;
+}
+
+a {
+  &:hover {
+    text-underline: none;
+    text-decoration: none;
+    transition: color 0.5s;
+  }
+
+  &:active {
+    text-underline: none;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+}

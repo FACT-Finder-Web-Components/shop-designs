@@ -1,0 +1,88 @@
+.header--wrapper {
+  max-width: 1240px;
+  padding: 30 0;
+
+  @media (max-width: 992px) {
+    padding-bottom: 0;
+  }
+}
+
+.header {
+  width: 1240px;
+
+  .searchbar {
+    width: 100%;
+    border: 2px solid #b9b9b9;
+
+    .form-control {
+      padding: 0 0 0 6px;
+      height: 50px;
+      border: 0;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    .input-group {
+      display: table;
+    }
+
+    .input-group-btn {
+      width: 1%;
+      white-space: nowrap;
+      vertical-align: middle;
+      display: table-cell;
+    }
+  }
+
+  .links__item {
+    float: left;
+    padding-right: 25px;
+    cursor: pointer;
+    @media (max-width: 992px) {
+      &:active {
+        background: rgba(0, 173, 255, .54);
+        border: 1px
+      }
+
+      &:hover {
+        background: rgba(0, 173, 255, .54);
+        border: 1px
+      }
+    }
+
+  }
+
+  @media (max-width: 992px) {
+    .navigation {
+      background: $background-navy;
+      height: 100px;
+
+      ul {
+        width: 100%;
+        float: right;
+
+        .links__item {
+          display: inline-block;
+          width: 25%;
+          height: 100%;
+          text-align: center;
+          padding-top: 1.5em;
+          padding-bottom: 1.5em;
+
+          &:active {
+            background: rgba(0, 173, 255, .54);
+            border: 1px
+          }
+
+          &:hover {
+            background: rgba(0, 173, 255, .54);
+            border: 1px
+          }
+        }
+      }
+    }
+  }
+}
+
