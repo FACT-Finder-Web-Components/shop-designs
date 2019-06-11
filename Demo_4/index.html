@@ -2,11 +2,9 @@
     <head>
         <meta charset="UTF-8"/>
         <title>Outdoor</title>
-
         <script src="node_modules/ff-web-components/dist/vendor/custom-elements-es5-adapter.js"></script>
         <script src="node_modules/ff-web-components/dist/vendor/webcomponents-loader.js"></script>
         <script defer src="node_modules/ff-web-components/dist/bundle.js"></script>
-
         <script src="node_modules/jquery/dist/jquery.min.js"></script>
         <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
         <script src="public/js/responsive-toolkit.js"></script>
@@ -16,11 +14,11 @@
         <link rel="stylesheet" href="public/css/styles.css"/>
     </head>
     <body>
-    <ff-communication url="https://search-web-components.fact-finder.de/FACT-Finder-7.2" version="7.2" default-query="jacket" channel="bergfreunde-co-uk"
-                      search-immediate></ff-communication>
-        <div class="page--wrapper">
-        <nav class="d-block navbar navbar-exapnd-md  navbar-fixed-top navbar-dark px-0 py-0">
-            <div class="header--wrapper container-fluid mr-auto ml-auto">
+    <ff-communication url="https://search-web-components.fact-finder.de/FACT-Finder-7.2" 
+        version="7.2" default-query="jacket" channel="bergfreunde-co-uk" search-immediate></ff-communication>
+        <div class="page__wrapper">
+        <nav  id="header" class="d-block navbar navbar-dark px-0 py-0">
+            <div class="header__wrapper container-fluid mr-auto ml-auto">
                 <div class="row header m-0">
                     <!-- Logo start -->
                     <div class="col-md-12 col-lg-3 pb-md-4 d-inline-block">
@@ -40,12 +38,12 @@
                                     <input class="form-control" type="text" name="search" placeholder="I'm looking for"/>
                                 </ff-searchbox>
                                 <span class="input-group-btn d-md-none d-lg-table-cell">
-                        <ff-searchbutton>
-                          <button class="btn btn btn-default btn-link d-none d-sm-block w-40">
-                            <span class="icon icon-search"></span>
-                          </button>
-                        </ff-searchbutton>
-                      </span>
+                                    <ff-searchbutton>
+                                        <button class="btn btn btn-default btn-link d-none d-sm-block w-40">
+                                            <span class="icon icon-search"></span>
+                                        </button>
+                                    </ff-searchbutton>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -62,8 +60,7 @@
                                     data-target="#categoriesNavigation"
                                     aria-controls="categoriesNavigation"
                                     aria-expanded="true"
-                                    aria-label="Toggle navigation"
-                            >
+                                    aria-label="Toggle navigation">
                                 <span class="navbar-toggler-icon float-left"></span>
                             </button>
                             <div class="col-md-10 col-lg-12">
@@ -123,7 +120,7 @@
                     </ff-header-navigation>
                 </div>
             </div>
-            <div class="navbar-collapse collapse position-fixed w-100 categories-menu--mobile d-lg-none px-md-2"
+            <div class="navbar-collapse collapse w-100 categories-menu--mobile d-lg-none px-md-2"
                  id="categoriesNavigation">
                 <ul class="navbar-nav mx-3">
                     <ff-navigation class="d-lg-none d-md-block" fetch-size="3" unresolved layout="vertical" flyout="false"
@@ -141,12 +138,9 @@
                 </ul>
             </div>
         </nav>
-        <div class="row page w-100 m-0">
-            <div class="col-lg-2 d-md-none d-lg-block column--left">
-
-            </div>
-            <div class="col-lg-8 col-md-12 d-block column--main">
-                <div class="row slider--wrapper">
+        <div class="row page w-100 ml-auto mr-auto">
+            <div class="col-12 d-block main-column">
+                <div class="row slider__wrapper">
                     <div id="mainSliderDesktop" class="carousel slide px-2 d-md-none d-lg-block" data-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
@@ -190,7 +184,7 @@
                         </a>
                     </div>
                 </div>
-                <div class=" mx-0 recommended-products--wrapper">
+                <div class=" mx-0 recommended-products__wrapper">
                     <!-- add recommendation component -->
                     <div class="recommended-products-caption w-100">Recommended for You</div>
                     <div class="recommended-products row">
@@ -229,9 +223,6 @@
                         <!-- tile end -->
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-2 d-md-none d-lg-block column--right">
-
             </div>
         </div>
     </div>

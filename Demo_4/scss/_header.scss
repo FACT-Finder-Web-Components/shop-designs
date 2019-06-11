@@ -1,6 +1,15 @@
-.header--wrapper {
+#header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: #fff;
+  z-index: 999;
+}
+
+.header__wrapper {
   max-width: 1240px;
   padding: 30 0;
+  z-index: 999;
 
   @media (max-width: 992px) {
     padding-bottom: 0;
@@ -9,7 +18,7 @@
 
 .header {
   width: 1240px;
-
+  
   .searchbar {
     width: 100%;
     border: 2px solid #b9b9b9;
@@ -42,16 +51,15 @@
     cursor: pointer;
     @media (max-width: 992px) {
       &:active {
-        background: rgba(0, 173, 255, .54);
-        border: 1px
+        background: rgba(0, 173, 255, 0.54);
+        border: 1px;
       }
 
       &:hover {
-        background: rgba(0, 173, 255, .54);
-        border: 1px
+        background: rgba(0, 173, 255, 0.54);
+        border: 1px;
       }
     }
-
   }
 
   @media (max-width: 992px) {
@@ -72,17 +80,16 @@
           padding-bottom: 1.5em;
 
           &:active {
-            background: rgba(0, 173, 255, .54);
-            border: 1px
+            background: rgba(0, 173, 255, 0.54);
+            border: 1px;
           }
 
           &:hover {
-            background: rgba(0, 173, 255, .54);
-            border: 1px
+            background: rgba(0, 173, 255, 0.54);
+            border: 1px;
           }
         }
       }
     }
   }
 }
-

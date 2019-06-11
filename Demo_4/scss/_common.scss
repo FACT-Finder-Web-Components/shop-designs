@@ -2,23 +2,26 @@
   box-sizing: border-box;
 }
 
-.page--wrapper {
+.page__wrapper {
   height: 100%;
   width: 100%;
-  .column--main {
+
+  .page {
+    padding-top: 188px;
     max-width: 1240px;
+    .main-column {
+      max-width: 1240px;
+    }
   }
 }
 
 a {
   &:hover {
-    text-underline: none;
     text-decoration: none;
     transition: color 0.5s;
   }
 
   &:active {
-    text-underline: none;
     text-decoration: none;
     transition: color 0.2s;
   }

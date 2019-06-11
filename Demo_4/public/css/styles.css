@@ -5,19 +5,20 @@
 * {
   box-sizing: border-box; }
 
-.page--wrapper {
+.page__wrapper {
   height: 100%;
   width: 100%; }
-  .page--wrapper .column--main {
+  .page__wrapper .page {
+    padding-top: 188px;
     max-width: 1240px; }
+    .page__wrapper .page .main-column {
+      max-width: 1240px; }
 
 a:hover {
-  text-underline: none;
   text-decoration: none;
   transition: color 0.5s; }
 
 a:active {
-  text-underline: none;
   text-decoration: none;
   transition: color 0.2s; }
 
@@ -83,11 +84,19 @@ a:active {
     background-image: url(../assets/mobile/cart.svg);
     width: 60px; } }
 
-.header--wrapper {
+#header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: #fff;
+  z-index: 999; }
+
+.header__wrapper {
   max-width: 1240px;
-  padding: 30 0; }
+  padding: 30 0;
+  z-index: 999; }
   @media (max-width: 992px) {
-    .header--wrapper {
+    .header__wrapper {
       padding-bottom: 0; } }
 
 .header {
@@ -279,28 +288,28 @@ ff-navigation {
       ff-navigation .ffw-menu-items ff-navigation-item:not([cluster-level="0"]):not([has-subelements]) .ffw-item-caption:before {
         display: none; }
 
-.slider--wrapper {
+.slider__wrapper {
   padding: 20px; }
-  .slider--wrapper #mainSliderDesktop .carousel-control-prev {
+  .slider__wrapper #mainSliderDesktop .carousel-control-prev {
     width: 7%; }
-    .slider--wrapper #mainSliderDesktop .carousel-control-prev .carousel-control-prev-icon {
+    .slider__wrapper #mainSliderDesktop .carousel-control-prev .carousel-control-prev-icon {
       background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%2300' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E") !important;
       z-index: 98; }
-  .slider--wrapper #mainSliderDesktop .carousel-control-next {
+  .slider__wrapper #mainSliderDesktop .carousel-control-next {
     width: 7%; }
-    .slider--wrapper #mainSliderDesktop .carousel-control-next .carousel-control-next-icon {
+    .slider__wrapper #mainSliderDesktop .carousel-control-next .carousel-control-next-icon {
       background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%2300' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E") !important;
       z-index: 98; }
-  .slider--wrapper #mainSliderMobile {
+  .slider__wrapper #mainSliderMobile {
     max-height: 910px; }
-    .slider--wrapper #mainSliderMobile .carousel-control-prev-icon {
+    .slider__wrapper #mainSliderMobile .carousel-control-prev-icon {
       background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E") !important;
       z-index: 98; }
-    .slider--wrapper #mainSliderMobile .carousel-control-next-icon {
+    .slider__wrapper #mainSliderMobile .carousel-control-next-icon {
       background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E") !important;
       z-index: 98; }
 
-.recommended-products--wrapper .recommended-products-caption {
+.recommended-products__wrapper .recommended-products-caption {
   margin-left: auto;
   height: 50px;
   text-transform: uppercase;
@@ -308,18 +317,24 @@ ff-navigation {
   font-size: 28px;
   margin-right: auto; }
 
-.recommended-products--wrapper .recommended-products-tile {
+.recommended-products__wrapper .recommended-products-tile {
+  padding-left: 0;
+  padding-right: 20px;
   max-width: 100%; }
-  .recommended-products--wrapper .recommended-products-tile .recommended-product-links .recommended-product-add-to-wishlist {
-    bottom: 15px;
-    right: 18px;
+  .recommended-products__wrapper .recommended-products-tile .recommended-product-links .recommended-product-add-to-wishlist {
+    right: 45px;
+    bottom: 35px;
     position: absolute; }
-    .recommended-products--wrapper .recommended-products-tile .recommended-product-links .recommended-product-add-to-wishlist:before {
+    .recommended-products__wrapper .recommended-products-tile .recommended-product-links .recommended-product-add-to-wishlist:before {
       position: absolute;
       background-image: url(../assets/desktop/wishlist.svg);
       height: 40px;
       width: 32px;
       content: " ";
       background-repeat: round; }
-  .recommended-products--wrapper .recommended-products-tile img {
+  .recommended-products__wrapper .recommended-products-tile img {
     max-width: 100%; }
+
+@media (max-width: 992px) {
+  .recommended-products__wrapper {
+    padding-bottom: 20px; } }

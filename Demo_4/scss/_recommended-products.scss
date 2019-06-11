@@ -1,4 +1,4 @@
-.recommended-products--wrapper {
+.recommended-products__wrapper {
   .recommended-products-caption {
     margin-left: auto;
     height: 50px;
@@ -8,11 +8,13 @@
     margin-right: auto;
   }
   .recommended-products-tile {
+    padding-left: 0;
+    padding-right: 20px;
     max-width: 100%;
     .recommended-product-links {
       .recommended-product-add-to-wishlist {
-        bottom: 15px;
-        right: 18px;
+        right: 45px;
+        bottom: 35px;
         position: absolute;
         &:before {
           position: absolute;
@@ -28,5 +30,8 @@
     img {
       max-width: 100%;
     }
+  }
+  @media (max-width: 992px) {
+    padding-bottom: 20px;
   }
 }
