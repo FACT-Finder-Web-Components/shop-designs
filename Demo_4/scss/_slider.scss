@@ -1,0 +1,26 @@
+.column--main {
+  max-width: 1240px;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+
+  outline: black;
+  background-size: 100%, 100%;
+  background-image: none;
+}
+
+.carousel-control-next-icon:after
+{
+  margin-left: -20px;
+  content: '>';
+  font-size: 55px;
+  color: black;
+}
+
+.carousel-control-prev-icon:after {
+  content: '<';
+  margin-left: 20px;
+  font-size: 55px;
+  color: black;
+}

@@ -218,48 +218,69 @@ ff-header-navigation {
               padding: 5 0px;
               cursor: pointer; }
 
-[selected] .ffw-item-caption:active {
-  background-color: #484749;
-  color: white; }
-
-[selected] .ffw-item-caption:hover {
-  background-color: #484749;
-  color: white; }
-
-ff-navigation .ffw-menu-items .ffw-item-caption .level-top {
-  border-bottom: 2px solid lightgray; }
-
-ff-navigation .ffw-menu-items .ffw-item-caption .nav-link {
-  font-size: 26px;
-  color: black; }
-  ff-navigation .ffw-menu-items .ffw-item-caption .nav-link:after {
-    content: arr; }
-
-.ffw-item-container, ff-navigation-item {
-  color: black; }
-
-[cluster-level="1"], [cluster-level="2"], [cluster-level="3"] {
-  white-space: nowrap;
-  padding-top: 15px;
-  padding-bottom: 5px; }
-
-ff-navigation-item[cluster-level="2"] {
-  padding-left: 15px; }
-
-ff-navigation-item[cluster-level="3"] {
-  padding-left: 30px; }
-
-[has-subelements] a:before {
-  float: right !important;
+ff-navigation {
   font-family: FontAwesome;
-  content: "\f068";
-  padding-right: 5px; }
+  color: black; }
+  ff-navigation .ffw-menu-items ff-navigation-item {
+    white-space: nowrap; }
+    ff-navigation .ffw-menu-items ff-navigation-item[cluster-level="0"] .ffw-item-caption .level-top {
+      border-bottom: 2px solid lightgray; }
+    ff-navigation .ffw-menu-items ff-navigation-item[cluster-level="0"] .ffw-item-caption .nav-link {
+      font-size: 26px;
+      color: black; }
+    ff-navigation .ffw-menu-items ff-navigation-item[cluster-level="0"][has-subelements][selected] li {
+      background-color: #484749; }
+      ff-navigation .ffw-menu-items ff-navigation-item[cluster-level="0"][has-subelements][selected] li .nav-link {
+        padding-left: 20px;
+        color: white; }
+        ff-navigation .ffw-menu-items ff-navigation-item[cluster-level="0"][has-subelements][selected] li .nav-link:before {
+          float: right !important;
+          content: "\f068";
+          padding-right: 15px;
+          color: white; }
+    ff-navigation .ffw-menu-items ff-navigation-item[cluster-level="0"][has-subelements] .nav-link:before {
+      float: right !important;
+      content: "\f067";
+      padding-right: 15px; }
+    ff-navigation .ffw-menu-items ff-navigation-item[cluster-level="1"] {
+      padding-left: 15px;
+      color: gray; }
+    ff-navigation .ffw-menu-items ff-navigation-item[cluster-level="2"] {
+      padding-left: 30px; }
+    ff-navigation .ffw-menu-items ff-navigation-item[cluster-level="3"] {
+      padding-left: 45px; }
+    ff-navigation .ffw-menu-items ff-navigation-item:not([cluster-level="0"]) .ffw-item-caption {
+      padding-top: 15px; }
+    ff-navigation .ffw-menu-items ff-navigation-item:not([cluster-level="0"])[has-subelements][selected] .ffw-item-caption:before {
+      float: right !important;
+      content: "\f068";
+      padding-right: 15px;
+      color: gray; }
+    ff-navigation .ffw-menu-items ff-navigation-item:not([cluster-level="0"])[has-subelements]:not([selected]) .ffw-item-caption:before {
+      float: right !important;
+      content: "\f067";
+      color: gray;
+      padding-right: 15px; }
+    ff-navigation .ffw-menu-items ff-navigation-item:not([cluster-level="0"]):not([has-subelements]) .ffw-item-caption:before {
+      display: none; }
 
-[has-subelements] a:before {
-  float: right !important;
-  content: "\f067"; }
+.column--main {
+  max-width: 1240px; }
 
-[has-subelements] > a:hover,
-[has-subelements] > a:active,
-[has-subelements] > a:focus {
-  text-decoration: none; }
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  outline: black;
+  background-size: 100%, 100%;
+  background-image: none; }
+
+.carousel-control-next-icon:after {
+  margin-left: -20px;
+  content: '>';
+  font-size: 55px;
+  color: black; }
+
+.carousel-control-prev-icon:after {
+  content: '<';
+  margin-left: 20px;
+  font-size: 55px;
+  color: black; }

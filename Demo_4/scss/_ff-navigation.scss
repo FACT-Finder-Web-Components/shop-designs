@@ -1,74 +1,94 @@
-[selected] {
-  .ffw-item-caption {
-    &:active {
-      background-color: #484749;
-      color: white;
-    }
-
-    &:hover {
-      background-color: #484749;
-      color: white;
-    }
-  }
-}
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css");
 
 ff-navigation {
+  font-family: FontAwesome;
+  color: black;
+
   .ffw-menu-items {
-    .ffw-item-caption {
-      .level-top {
-        border-bottom: 2px solid lightgray;
+    ff-navigation-item {
+      white-space: nowrap;
+
+      &[cluster-level="0"] {
+        .ffw-item-caption {
+          .level-top {
+            border-bottom: 2px solid lightgray;
+          }
+          .nav-link {
+            font-size: 26px;
+            color: black;
+          }
+        }
+        &[has-subelements] {
+          &[selected] {
+            li {
+              background-color: #484749;
+
+              .nav-link {
+                padding-left: 20px;
+                color: white;
+
+                &:before {
+                  float: right !important;
+                  content: "\f068";
+                  padding-right: 15px;
+                  color: white;
+                }
+              }
+            }
+          }
+
+          .nav-link {
+            &:before {
+              float: right !important;
+              content: "\f067";
+              padding-right: 15px;
+            }
+          }
+        }
       }
 
-      .nav-link {
-        font-size: 26px;
-        color: black;
+      &[cluster-level="1"] {
+        padding-left: 15px;
+        color: gray;
+      }
 
-        &:after {
-          content: arr;
+      &[cluster-level="2"] {
+        padding-left: 30px;
+      }
+
+      &[cluster-level="3"] {
+        padding-left: 45px;
+      }
+
+      &:not([cluster-level="0"]) {
+        .ffw-item-caption {
+          padding-top: 15px;
+        }
+        &[has-subelements] {
+          &[selected] {
+            .ffw-item-caption:before {
+              float: right !important;
+              content: "\f068";
+              padding-right: 15px;
+              color: gray;
+            }
+          }
+          &:not([selected]) {
+            .ffw-item-caption:before {
+              float: right !important;
+              content: "\f067";
+              color: gray;
+              padding-right: 15px;
+            }
+          }
+        }
+
+        &:not([has-subelements]) {
+          .ffw-item-caption:before {
+            display: none;
+          }
         }
       }
     }
   }
-}
-
-.ffw-item-container, ff-navigation-item {
-  color: black;
-}
-
-[cluster-level="1"], [cluster-level="2"], [cluster-level="3"] {
-  white-space: nowrap;
-  padding-top: 15px;
-  padding-bottom: 5px;
-}
-
-ff-navigation-item[cluster-level="2"] {
-  padding-left: 15px;
-}
-
-ff-navigation-item[cluster-level="3"] {
-  padding-left: 30px;
-}
-
-
-@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css");
-
-.ffw-item-caption {
-}
-
-[has-subelements] a:before {
-  float: right !important;
-  font-family: FontAwesome;
-  content: "\f068";
-  padding-right: 5px;
-}
-
-[has-subelements] a:before {
-  float: right !important;
-  content: "\f067";
-}
-
-[has-subelements] > a:hover,
-[has-subelements] > a:active,
-[has-subelements] > a:focus {
-  text-decoration: none;
 }
