@@ -1,0 +1,32 @@
+.recommended-products--wrapper {
+  .recommended-products-caption {
+    margin-left: auto;
+    height: 50px;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 28px;
+    margin-right: auto;
+  }
+  .recommended-products-tile {
+    max-width: 100%;
+    .recommended-product-links {
+      .recommended-product-add-to-wishlist {
+        bottom: 15px;
+        right: 18px;
+        position: absolute;
+        &:before {
+          position: absolute;
+          background-image: url(../assets/desktop/wishlist.svg);
+          height: 40px;
+          width: 32px;
+          content: " ";
+          background-repeat: round;
+        }
+      }
+    }
+
+    img {
+      max-width: 100%;
+    }
+  }
+}

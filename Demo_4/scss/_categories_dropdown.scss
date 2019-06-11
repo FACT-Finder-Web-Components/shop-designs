@@ -1,4 +1,4 @@
-.category-menu__wrapper {
+.categories-menu__wrapper {
   width: 100%;
   background: $background-navy;
 
@@ -9,6 +9,10 @@
     margin-left: auto;
     margin-right: auto;
   }
+}
+
+.navbar-collapse {
+  z-index: 99;
 }
 
 .navbar-toggler-icon {

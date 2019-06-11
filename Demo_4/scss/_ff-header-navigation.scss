@@ -1,6 +1,6 @@
 ff-header-navigation {
   float: left;
-
+  z-index: 99;
   .ffw-header-nav {
     height: 100%;
 
@@ -44,6 +44,7 @@ ff-header-navigation {
       position: fixed;
       filter: drop-shadow(10px 0px 4px);
       width: 100%;
+      z-index: 99;
       margin-left: 100vm/2;
       margin-right: auto;
 
@@ -83,5 +84,4 @@ ff-header-navigation {
     }
   }
 }
-
 
