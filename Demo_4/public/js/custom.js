@@ -1,4 +1,3 @@
-
 (function($, viewport) {
     $(document).ready(function(){
         const mobileMenuInput =  $('#navigation-menu');

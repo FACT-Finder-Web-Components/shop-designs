@@ -1,3 +1,7 @@
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/mixins";
+
 @import "colors";
 @import "common";
 @import "icons";
@@ -7,3 +11,4 @@
 @import "ff-navigation";
 @import "slider";
 @import "recommended-products";
+@import "footer";
