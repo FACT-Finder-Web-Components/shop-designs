@@ -29,7 +29,7 @@
             <div class="header__wrapper container-fluid mr-auto ml-auto">
                 <div class="row header m-0">
                     <!-- Logo start -->
-                    <div class="col-md-12 col-lg-3 pb-md-4 d-inline-block">
+                    <div class="col-12 col-lg-3 pb-4 d-inline-block">
                         <div class="logo text-center">
                             <a href="#">
                                 <img alt="Outdoor" src="public/assets/logo.png"/>
@@ -39,13 +39,13 @@
                     <!-- logo end-->
 
                     <!-- searchbox start-->
-                    <div class="col-md-12 col-lg-6 order-md-10 px-md-0 px-lg-0">
+                    <div class="col-12 col-lg-6 order-10 px-0 px-lg-0">
                         <div class="searchbar">
                             <div class="input-group">
                                 <ff-searchbox unresolved>
                                     <input class="form-control" type="text" name="search" placeholder="I'm looking for"/>
                                 </ff-searchbox>
-                                <span class="input-group-btn d-md-none d-lg-table-cell">
+                                <span class="input-group-btn d-none d-lg-table-cell">
                                     <ff-searchbutton>
                                         <button class="btn btn btn-default btn-link d-none d-sm-block w-40">
                                             <span class="icon icon-search"></span>
@@ -58,11 +58,11 @@
                     <!--searchbox end-->
 
                     <!-- links start-->
-                    <div class="navigation col-md-12 col-lg-3 order-lg-10 px-md-0 ">
+                    <div class="navigation col-12 col-lg-3 order-lg-10 px-0 ">
                         <!-- p-0 -->
-                        <div class="row h-100 m-lg-0 mx-md-0">
+                        <div class="row h-100 m-lg-0 mx-0">
                             <button
-                                    class="col-md-2 navbar-toggler d-md-inline d-lg-none h-100"
+                                    class="col-2 navbar-toggler d-inline d-lg-none h-100"
                                     type="button"
                                     data-toggle="collapse"
                                     data-target="#categoriesNavigation"
@@ -71,38 +71,38 @@
                                     aria-label="Toggle navigation">
                                 <span class="navbar-toggler-icon float-left"></span>
                             </button>
-                            <div class="col-md-10 col-lg-12">
+                            <div class="col-10 col-lg-12">
                                 <div class="row h-100">
-                                    <div class="col-md-12 d-inline mr-0 h-100">
-                                        <ul class="links list-unstyled d-md-inline-block float-right">
-                                            <li class="links__item d-lg-none col-md-3">
+                                    <div class="col-12 d-inline mr-0 h-100">
+                                        <ul class="links list-unstyled d-inline-block float-right">
+                                            <li class="links__item d-lg-none col-3">
                                                 <a href="#" id="searchMobile">
                                                     <div>
                                                         <span class="icon icon-search search-mobile"></span>
                                                     </div>
                                                 </a>
                                             </li>
-                                            <li class="links__item col-md-3 col-lg-4">
+                                            <li class="links__item col-3 col-lg-4">
                                                 <a href="#">
                                                     <div>
                                                         <span class="icon icon-account"></span>
-                                                        <span class="icon-caption d-md-none d-lg-block">Log In</span>
+                                                        <span class="icon-caption d-none d-lg-block">Log In</span>
                                                     </div>
                                                 </a>
                                             </li>
-                                            <li class="links__item col-md-3 col-lg-4">
+                                            <li class="links__item col-3 col-lg-4">
                                                 <a href="#">
                                                     <div>
                                                         <span class="icon icon-wishlist"></span>
-                                                        <span class="icon-caption d-md-none d-lg-block">Wishlist</span>
+                                                        <span class="icon-caption d-none d-lg-block">Wishlist</span>
                                                     </div>
                                                 </a>
                                             </li>
-                                            <li class="links__item col-md-3 col-lg-4">
+                                            <li class="links__item col-3 col-lg-4">
                                                 <a href="#">
                                                     <div>
                                                         <span class="icon icon icon-cart"></span>
-                                                        <span class="icon-caption d-md-none d-lg-block">Cart</span>
+                                                        <span class="icon-caption d-none d-lg-block">Cart</span>
                                                     </div>
                                                 </a>
                                             </li>
@@ -116,8 +116,8 @@
                 </div>
             </div>
             <div class="categories-menu__wrapper">
-                <div class="categories-menu d-md-none d-lg-block">
-                    <ff-header-navigation class="d-md-none d-lg-block w-100" group-count="6">
+                <div class="categories-menu d-none  d-lg-block">
+                    <ff-header-navigation class="d-none d-sm-none d-lg-block w-100" group-count="6">
                         <div slot="Outdoor jackets"><a href="http://www.myshop.de">>> See all...</a></div>
                         <div slot="Outdoor pants"><a href="http://www.myshop.de">>> See all...</a></div>
                         <div slot="Long and short sleeve shirts"><a href="http://www.myshop.de"> >> See all...</a></div>
@@ -128,10 +128,10 @@
                     </ff-header-navigation>
                 </div>
             </div>
-            <div class="navbar-collapse collapse w-100 categories-menu--mobile d-lg-none px-md-2"
+            <div class="navbar-collapse collapse w-100 categories-menu--mobile d-lg-none px-2"
                  id="categoriesNavigation">
                 <ul class="navbar-nav mx-3">
-                    <ff-navigation class="d-lg-none d-md-block" fetch-size="3" unresolved layout="vertical" flyout="false"
+                    <ff-navigation class="d-lg-none d-block" fetch-size="3" unresolved layout="vertical" flyout="false"
                                    mobile="true" fetch-initial="false" unresolved>
                         <div id="ffMenu" slot="menu" style="display: none">Navigation</div>
                         <ff-navigation-item type="header" class="level0 level-top">
@@ -149,7 +149,7 @@
         <div class="row page w-100 ml-auto mr-auto">
             <div class="col-12 d-block main-column">
                 <div class="row slider__wrapper">
-                    <div id="mainSliderDesktop" class="carousel slide px-2 d-md-none d-lg-block" data-ride="carousel">
+                    <div id="mainSliderDesktop" class="carousel slide px-2 d-none d-lg-block" data-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
                                 <img class="d-block w-100" src="public/assets/desktop/slider.png" alt="First slide">
@@ -170,7 +170,7 @@
                             <span class="sr-only">Next</span>
                         </a>
                     </div>
-                    <div id="mainSliderMobile" class="carousel slide px-2 d-md-block col-12 d-lg-none" data-ride="carousel">
+                    <div id="mainSliderMobile" class="carousel slide px-2 d-block col-12 d-lg-none" data-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
                                 <img class="d-block w-100 h-100" src="public/assets/mobile/slider.jpg" alt="First slide">
@@ -197,7 +197,7 @@
                     <div class="recommended-products__caption w-100">Recommended for You</div>
                     <div class="row row mx-0">
                         <!-- tile start -->
-                        <div class="product__wrapper col-lg-3 col-md-6">
+                        <div class="product__wrapper col-lg-3 col-6">
                             <div class="product__tile">
                                 <div class="product__image-wrapper">
                                     <img class="product__image" src="public/assets/recommended-products/backpack.jpg"
@@ -227,7 +227,7 @@
                         </div>
                         <!-- tile end -->
                         <!-- tile start -->
-                        <div class="product__wrapper col-lg-3 col-md-6">
+                        <div class="product__wrapper col-lg-3 col-6">
                             <div class="product__tile">
                                 <div class="product__image-wrapper">
                                     <div class="product__links">
@@ -255,12 +255,12 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="product__separator"></div>
+                            <div class="product__separator"></div>   <div class="product__separator"></div>
                         </div>
 
                         <!-- tile end -->
                         <!-- tile start -->
-                        <div class="product__wrapper col-lg-3 col-md-6">
+                        <div class="product__wrapper col-lg-3 col-6">
                             <div class="product__tile">
                                 <div class="product__image-wrapper">
                                     <div class="product__links">
@@ -290,7 +290,7 @@
 
                         <!-- tile end -->
                         <!-- tile start -->
-                        <div class="product__wrapper last col-lg-3 col-md-6">
+                        <div class="product__wrapper last col-lg-3 col-6">
                             <div class="product__tile">
                                 <div class="product__image-wrapper">
                                     <div class="product__links">
@@ -318,6 +318,19 @@
                         </div>
                         <!-- tile end -->
                     </div>
+                </div>
+                <div class="campaign-banner d-none d-lg-block row mx-0">
+                    <div class="col-12 campaign-banner__text text-center">
+                        <h2><a href="#">Full speed & Ice climbing</a></h2>
+                        <span class="campaign-banner__cta">discover now</span>
+                    </div>
+                </div>
+                <div class="campaign-banner--mobile d-lg-none row mx-0">
+                    <div class="row">
+                        <div class="col-12 campaign-banner__text text-center">
+                            <h2><a href="#">Start Your Free Trial Today</a></h2>
+                            <span>discover now</span>
+                        </div>
                 </div>
             </div>
         </div>

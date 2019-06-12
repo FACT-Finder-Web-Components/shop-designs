@@ -1,0 +1,41 @@
+.campaign-banner {
+  width: 1240px;
+  height: 280px;
+  background: url("../assets/desktop/campaign-banner.png");
+}
+
+.campaign-banner--mobile {
+  width: 100%;
+  height: 350px;
+  background: url("../assets/mobile/campaign-banner.jpg");
+
+  .banner-text {
+    padding: 0;
+  }
+}
+
+
+.campaign-banner__text {
+  text-transform: uppercase;
+  font-size: 25px;
+  font-size: 2.5rem;
+
+  color: #fff;
+  margin-top: 39px;
+  margin-bottom: 41px;
+  display: inline-block;
+  position: relative;
+
+  h2 {
+    margin-bottom: 40px;
+    a {
+      color: #fff;
+      font-size:46px;
+    }
+  }
+}
+.campaign-banner__cta {
+  cursor: pointer;
+  border: 2px solid white;
+  padding:15px;
+}

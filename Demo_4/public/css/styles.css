@@ -361,13 +361,17 @@ ff-navigation {
       background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E") !important;
       z-index: 98; }
 
-.recommended-products .recommended-products__caption {
-  margin-left: auto;
-  height: 50px;
-  text-transform: uppercase;
-  text-align: center;
-  font-size: 28px;
-  margin-right: auto; }
+.recommended-products {
+  padding-bottom: 20px; }
+  .recommended-products .recommended-products__caption {
+    margin-left: auto;
+    height: 50px;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 28px;
+    margin-right: auto; }
+  .recommended-products .last {
+    width: 100%; }
 
 .product__wrapper {
   height: 495px;
@@ -410,8 +414,8 @@ ff-navigation {
       text-align: center; }
       .product__wrapper .product__tile .product__colors .product__color {
         cursor: pointer;
-        padding-left: 10px;
-        padding-right: 10px;
+        padding-left: 5px;
+        padding-right: 5px;
         display: inline-block; }
       .product__wrapper .product__tile .product__colors .color-swatch {
         border-radius: 50%;
@@ -425,7 +429,8 @@ ff-navigation {
         background: #3c3c3b; }
     .product__wrapper .product__tile .product__info {
       text-align: center;
-      line-height: 19px; }
+      line-height: 19px;
+      white-space: nowrap; }
       .product__wrapper .product__tile .product__info .product__name {
         margin: 0;
         text-transform: uppercase; }
@@ -436,3 +441,35 @@ ff-navigation {
         text-align: center; }
         .product__wrapper .product__tile .product__info .product__add-to-cart a {
           background-color: #004587; }
+
+.campaign-banner {
+  width: 1240px;
+  height: 280px;
+  background: url("../assets/desktop/campaign-banner.png"); }
+
+.campaign-banner--mobile {
+  width: 100%;
+  height: 350px;
+  background: url("../assets/mobile/campaign-banner.jpg"); }
+  .campaign-banner--mobile .banner-text {
+    padding: 0; }
+
+.campaign-banner__text {
+  text-transform: uppercase;
+  font-size: 25px;
+  font-size: 2.5rem;
+  color: #fff;
+  margin-top: 39px;
+  margin-bottom: 41px;
+  display: inline-block;
+  position: relative; }
+  .campaign-banner__text h2 {
+    margin-bottom: 40px; }
+    .campaign-banner__text h2 a {
+      color: #fff;
+      font-size: 46px; }
+
+.campaign-banner__cta {
+  cursor: pointer;
+  border: 2px solid white;
+  padding: 15px; }
