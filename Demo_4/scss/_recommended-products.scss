@@ -1,5 +1,5 @@
-.recommended-products__wrapper {
-  .recommended-products-caption {
+.recommended-products {
+  .recommended-products__caption {
     margin-left: auto;
     height: 50px;
     text-transform: uppercase;
@@ -7,31 +7,108 @@
     font-size: 28px;
     margin-right: auto;
   }
-  .recommended-products-tile {
-    padding-left: 0;
-    padding-right: 20px;
-    max-width: 100%;
-    .recommended-product-links {
-      .recommended-product-add-to-wishlist {
-        right: 45px;
-        bottom: 35px;
-        position: absolute;
-        &:before {
+}
+
+.product__wrapper {
+  height: 495px;
+  padding: 0;
+  @media (max-width: 992px) {
+    padding-bottom: 20px;
+  }
+
+  .product__separator {
+    @media (min-width: 992px) {
+      width: 20px;
+      height: 100%;
+    }
+  }
+
+  .product__tile {
+    @media (min-width: 992px) {
+      width: 295px;
+      height: 100%;
+    }
+    border: #b9b9b9 1px solid;
+
+    .product__image-wrapper {
+      padding:5px;
+      .product__links {
+        .product-add-to-wishlist {
+          right: 55px;
+          top: 280px;
           position: absolute;
-          background-image: url(../assets/desktop/wishlist.svg);
-          height: 40px;
-          width: 32px;
-          content: " ";
-          background-repeat: round;
+
+          &:before {
+            position: absolute;
+            background-image: url(../assets/desktop/wishlist.svg);
+            height: 40px;
+            width: 32px;
+            content: " ";
+            background-repeat: round;
+          }
         }
+      }
+
+      .product__image {
+        width: 100%;
+        cursor: pointer;
+        height: 295px;
+        padding: 15px;
       }
     }
 
-    img {
-      max-width: 100%;
+    .product__colors {
+      list-style: none;
+      margin: 0;
+      padding: 5 0;
+      text-align: center;
+
+      .product__color {
+        cursor: pointer;
+        padding-left: 10px;
+        padding-right: 10px;
+        display: inline-block;
+      }
+
+      .color-swatch {
+        border-radius: 50%;
+        height: 20px;
+        width: 20px;
+      }
+
+      .swatch-blue {
+        background: #0886ff;
+      }
+
+      .swatch-red {
+        background: #ff3546;
+      }
+
+      .swatch-grey{
+        background: #3c3c3b;
+      }
     }
-  }
-  @media (max-width: 992px) {
-    padding-bottom: 20px;
+
+    .product__info {
+      text-align: center;
+      line-height: 19px;
+
+      .product__name {
+        margin: 0;
+        text-transform: uppercase;
+      }
+
+      span {
+        display: block;
+      }
+
+      .product__add-to-cart {
+        padding-top:15px;
+        text-align: center;
+        a {
+          background-color: $background-navy;
+        }
+      }
+    }
   }
 }
