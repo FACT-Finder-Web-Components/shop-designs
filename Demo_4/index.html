@@ -1,23 +1,31 @@
 <html lang="en">
-    <head>
-        <meta charset="UTF-8"/>
-        <title>Outdoor</title>
-        <script src="node_modules/ff-web-components/dist/vendor/custom-elements-es5-adapter.js"></script>
-        <script src="node_modules/ff-web-components/dist/vendor/webcomponents-loader.js"></script>
-        <script defer src="node_modules/ff-web-components/dist/bundle.js"></script>
-        <script src="node_modules/jquery/dist/jquery.min.js"></script>
-        <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="public/js/responsive-toolkit.js"></script>
-        <script src="public/js/custom.js"></script>
-        <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css"/>
-        <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap-grid.min.css"/>
-        <link rel="stylesheet" href="public/css/styles.css"/>
-    </head>
-    <body>
-    <ff-communication url="https://search-web-components.fact-finder.de/FACT-Finder-7.2" 
-        version="7.2" default-query="jacket" channel="bergfreunde-co-uk" search-immediate></ff-communication>
-        <div class="page__wrapper">
-        <nav  id="header" class="d-block navbar navbar-dark px-0 py-0">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <title>Outdoor</title>
+
+    <script src="node_modules/ff-web-components/dist/vendor/custom-elements-es5-adapter.js"></script>
+    <script src="node_modules/ff-web-components/dist/vendor/webcomponents-loader.js"></script>
+    <script defer src="node_modules/ff-web-components/dist/bundle.js"></script>
+
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="public/js/responsive-toolkit.js"></script>
+    <script src="public/js/custom.js"></script>
+
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap-grid.min.css"/>
+    <link rel="stylesheet" href="public/css/styles.css"/>
+</head>
+<body>
+    <ff-communication url="https://search-web-components.fact-finder.de/FACT-Finder-7.2"
+                      version="7.2"
+                      default-query="jacket"
+                      channel="bergfreunde-co-uk"
+                      search-immediate></ff-communication>
+
+    <div class="page__wrapper">
+        <nav id="header" class="d-block navbar navbar-dark px-0 py-0">
             <div class="header__wrapper container-fluid mr-auto ml-auto">
                 <div class="row header m-0">
                     <!-- Logo start -->
@@ -226,5 +234,5 @@
             </div>
         </div>
     </div>
-    </body>
+</body>
 </html>
