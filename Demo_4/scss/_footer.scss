@@ -1,0 +1,24 @@
+.page--footer {
+  background: $bg-gray;
+
+  h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin: 0;
+  }
+}
+
+.service-nav {
+  font-size:  .75rem;
+
+  .card, .card-header {
+    background: transparent;
+    border: 0;
+  }
+
+  .card-header {
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+}
