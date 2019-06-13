@@ -22,13 +22,6 @@
     padding-bottom: 20px;
   }
 
-  .product__separator {
-    @media (min-width: 992px) {
-      width: 20px;
-      height: 100%;
-    }
-  }
-
   .product__tile {
     @media (min-width: 992px) {
       width: 295px;
@@ -37,11 +30,11 @@
     border: #b9b9b9 1px solid;
 
     .product__image-wrapper {
-      padding:5px;
+      //padding:5px;
       .product__links {
         .product-add-to-wishlist {
           right: 55px;
-          top: 280px;
+          top: 260px;
           position: absolute;
 
           &:before {
@@ -59,8 +52,8 @@
         width: 100%;
         cursor: pointer;
         max-height: 295px;
-        object-fit: contain;
-        padding: 15px;
+        object-fit: fill;
+        //padding: 15px;
       }
     }
 
@@ -93,6 +86,30 @@
 
       .swatch-grey{
         background: #3c3c3b;
+      }
+      .swatch-white{
+        background: white;
+        border: 1px solid black;
+      }
+
+      .swatch-purple{
+        background: purple;
+      }
+
+      .swatch-lightblue{
+        background: lightblue;
+      }
+
+      .swatch-olive{
+        background: olive;
+      }
+
+      .swatch-orange{
+        background: darkorange;
+      }
+
+      .swatch-brown{
+        background: saddlebrown;
       }
     }
 
