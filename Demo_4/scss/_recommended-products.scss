@@ -1,6 +1,9 @@
 .recommended-products {
+  padding-top:20px;
   padding-bottom: 20px;
   .recommended-products__caption {
+    border-top: 1px black solid;
+    border-bottom: 1px black solid;
     margin-left: auto;
     height: 90px;
     padding: 20 0px;
@@ -8,10 +11,13 @@
     text-align: center;
     font-size: 28px;
     margin-right: auto;
+    @media (max-width: 500px) {
+      font-size: 22px;
+    }
   }
-
-  .last {
-    width:100%;
+  .recommended-product__list {
+    margin:0;
+    padding-top:20px;
   }
 }
 
@@ -24,7 +30,7 @@
 
   .product__tile {
     @media (min-width: 992px) {
-      width: 295px;
+     // width: 295px;
       height: 100%;
     }
     border: #b9b9b9 1px solid;
@@ -117,13 +123,16 @@
       text-align: center;
       line-height: 19px;
       white-space: nowrap;
-
+      @media (max-width: 992px) {
+        font-size: 18px;
+      }
+      @media (max-width: 500px) {
+        font-size: 12px;
+      }
       .product__name {
         margin: 0;
         text-transform: uppercase;
-        @media (max-width: 992px) {
-          font-size: 18px;
-        }
+        font-size: inherit;
       }
 
       span {

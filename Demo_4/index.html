@@ -54,6 +54,61 @@
                                     </ff-searchbutton>
                                 </span>
                             </div>
+                            <!-- suggest start -->
+                            <ff-suggest id="ffSuggest" layout="block" unresolved>
+                                <section id="searchContainer" class="searchTermContainer">
+                                    <div data-container="searchTerm">
+                                        <p class="containerCaption">Search suggestions</p>
+                                        <ff-suggest-item class="ff-suggest-element" type="searchTerm">
+                                            <span class="ff-search-term">{{{name}}}</span>
+                                        </ff-suggest-item>
+                                    </div>
+
+                                    <div data-container="category">
+                                        <p class="containerCaption">Category suggestions</p>
+                                        <ff-suggest-item class="ff-suggest-element" type="category">
+                                            <span class="ff-category">{{{name}}}</span>
+                                        </ff-suggest-item>
+                                    </div>
+
+                                    <div data-container="brand">
+                                        <p class="containerCaption">Brands</p>
+                                        <ff-suggest-item class="ff-suggest-element" type="brand">
+                                            <span class="ff-brand">{{{name}}}</span>
+                                        </ff-suggest-item>
+                                    </div>
+                                </section>
+
+                                <section id="productContainer" class="productsContainer">
+                                    <div data-container="productName">
+                                        <p class="containerCaption">Suggested products</p>
+                                        <div>
+                                            <ff-suggest-item class="ff-suggest-element ff-suggest-product" type="productName">
+                                                <a href="{{attributes.deeplink}}"
+                                                   data-redirect="{{attributes.deeplink}}" data-redirect-target="_blank">
+                                                    <div class="container-image">
+                                                        <img class="img-fluid" data-image="{{image}}" />
+                                                    </div>
+                                                </a>
+                                                <div class="product-info">
+                                                    <a href="{{attributes.deeplink}}"
+                                                       data-redirect="{{attributes.deeplink}}" data-redirect-target="_blank">
+                                                        <div class="product-name">{{{name}}}</div>
+                                                        <div class="product-brand">{{{attributes.Brand}}}</div>
+                                                        <div class="product-availability">
+                                                            {{#attributes.Availability}}{{/attributes.Availability}}
+                                                            {{^attributes.Availability}}{{/attributes.Availability}}
+                                                        </div>
+                                                        <div class="product-price">{{attributes.Price}}</div>
+                                                    </a>
+                                                </div>
+                                            </ff-suggest-item>
+                                        </div
+
+                                    </div>
+                                </section>
+                            </ff-suggest>
+                            <!-- suggest stop -->
                         </div>
                     </div>
                     <!--searchbox end-->
@@ -202,7 +257,7 @@
                     <div class="recommended-products">
                         <!-- add recommendation component -->
                         <div class="recommended-products__caption">Recommended for You</div>
-                        <div class="row mx-0">
+                        <div class="row recommended-product__list">
                             <!-- tile start -->
                             <div class="product__wrapper col-lg-3  col-6">
                                 <div class="product__tile">
@@ -331,7 +386,7 @@
                     <div class="recommended-products">
                         <!-- add recommendation component -->
                         <div class="recommended-products__caption">New Arrivals</div>
-                        <div class="row row mx-0">
+                        <div class="row recommended-product__list">
                             <!-- tile start -->
                             <div class="product__wrapper col-lg-3 col-6">
                                 <div class="product__tile">

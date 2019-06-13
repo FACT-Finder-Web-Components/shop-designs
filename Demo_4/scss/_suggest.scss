@@ -1,0 +1,15 @@
+.ffw-suggestContainerWrapper {
+  width: 100%;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+  border: 1px solid #b9b9b9;
+  .ffw-suggestContainer {
+    padding:20px;
+    .containerCaption {
+      font-weight: bold;
+      font-size:18px;
+    }
+    div[data-container] {
+      padding-top:20px;
+    }
+  }
+}
