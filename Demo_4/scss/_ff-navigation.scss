@@ -1,11 +1,6 @@
 @import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css");
-.navbar {
-  position: static;
-  z-index:99;
-}
 ff-navigation {
   z-index: 99;
-  font-family: FontAwesome;
   color: black;
 
   .ffw-menu-items {
@@ -24,6 +19,7 @@ ff-navigation {
             color: black;
           }
         }
+
         &[has-subelements] {
           &[selected] {
             li {
@@ -35,6 +31,7 @@ ff-navigation {
 
                 &:before {
                   float: right !important;
+                  font-family: FontAwesome;
                   content: "\f068";
                   padding-right: 15px;
                   color: white;
@@ -46,6 +43,7 @@ ff-navigation {
           .nav-link {
             &:before {
               float: right !important;
+              font-family: FontAwesome;
               content: "\f067";
               padding-right: 15px;
             }
@@ -56,24 +54,28 @@ ff-navigation {
       &[cluster-level="1"] {
         padding-left: 15px;
         color: gray;
+        font-size:20px;
       }
 
       &[cluster-level="2"] {
         padding-left: 30px;
+        font-size:18px;
       }
 
       &[cluster-level="3"] {
         padding-left: 45px;
+        font-size:16px;
       }
 
       &:not([cluster-level="0"]) {
         .ffw-item-caption {
-          padding-top: 15px;
+          padding: 15 0px;
         }
         &[has-subelements] {
           &[selected] {
             .ffw-item-caption:before {
               float: right !important;
+              font-family: FontAwesome;
               content: "\f068";
               padding-right: 15px;
               color: gray;
@@ -82,6 +84,7 @@ ff-navigation {
           &:not([selected]) {
             .ffw-item-caption:before {
               float: right !important;
+              font-family: FontAwesome;
               content: "\f067";
               color: gray;
               padding-right: 15px;

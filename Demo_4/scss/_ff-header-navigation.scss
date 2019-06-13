@@ -9,6 +9,9 @@ ff-header-navigation {
 
       .ffw-nav-item-separator {
         width: 30px;
+        @media (max-width: 1200px) {
+          width: 20px;
+        }
       }
 
       .ffw-nav-item {

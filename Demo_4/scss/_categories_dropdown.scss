@@ -1,7 +1,6 @@
 .categories-menu__wrapper {
   width: 100%;
   background: $background-navy;
-
   .categories-menu {
     height: 40px;
     color: black;
@@ -11,14 +10,8 @@
   }
 }
 
-.navbar-collapse {
-  z-index: 99;
-}
-
-.navbar-toggler-icon {
-  height: 70px;
-  margin-left: auto;
-  margin-right: auto;
+.categories-menu--mobile {
+  padding-top: 20px;
   width: 100%;
 }
 
@@ -27,6 +20,14 @@
     background: rgba(0, 173, 255, .54);
     border: 1px
   }
+
+  .navbar-toggler-icon {
+    height: 70px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+  }
+
 
   &:hover {
     background: rgba(0, 173, 255, .54);

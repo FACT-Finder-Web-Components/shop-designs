@@ -2,7 +2,8 @@
   padding-bottom: 20px;
   .recommended-products__caption {
     margin-left: auto;
-    height: 50px;
+    height: 90px;
+    padding: 20 0px;
     text-transform: uppercase;
     text-align: center;
     font-size: 28px;
@@ -57,7 +58,8 @@
       .product__image {
         width: 100%;
         cursor: pointer;
-        height: 295px;
+        max-height: 295px;
+        object-fit: contain;
         padding: 15px;
       }
     }
@@ -102,6 +104,9 @@
       .product__name {
         margin: 0;
         text-transform: uppercase;
+        @media (max-width: 992px) {
+          font-size: 18px;
+        }
       }
 
       span {
