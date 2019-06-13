@@ -1,24 +1,157 @@
-.page--footer {
-  background: $bg-gray;
+.page-footer {
+  padding: 1rem 0 0;
+  margin-top: 1.5rem;
+
+  .container-fluid {
+    max-width: 1140px;
+  }
+
+  &__container {
+    background: $bg-gray;
+  }
 
   h4 {
-    font-size: 1rem;
-    font-weight: 700;
+    font-size: 1.25rem;
+    margin-top: .5rem;
     text-transform: uppercase;
-    margin: 0;
+    color: $bg-light-blue;
+
+    @include media-breakpoint-up(md) {
+      line-height: 2rem;
+    }
+  }
+
+  .btn-primary {
+    @include button-variant($bg-light-blue, $bg-light-blue);
+    color: #fff;
+  }
+}
+
+.social-links {
+  a {
+    display: block;
+    height: 44px;
+    width: 46px;
+    overflow: hidden;
+    text-indent: -999px;
+    background-size: contain;
+    background: transparent none no-repeat 50% 50%;
+  }
+
+  @each $social in 'facebook', 'instagram', 'twitter', 'youtube' {
+    .#{$social} > a {
+      background-image: url("../assets/icons/#{$social}.png");
+    }
   }
 }
 
 .service-nav {
-  font-size:  .75rem;
+  font-size: .75rem;
+
+  a {
+    color: $text-primary;
+  }
 
   .card, .card-header {
     background: transparent;
+  }
+
+  .card {
+    border-radius: 0;
     border: 0;
+    border-top: 1px solid #e0e0e0;
+
+    &.collapsed .card-body {
+      display: block;
+    }
+
+    @include media-breakpoint-up(md) {
+      border: 0;
+    }
   }
 
   .card-header {
     font-weight: 700;
     text-transform: uppercase;
+    padding: .75rem 0;
+    border: 0;
+  }
+
+  .card-body {
+    padding: 0;
+    display: none;
+
+    @include media-breakpoint-up(md) {
+      display: block;
+    }
+  }
+
+  @include media-breakpoint-up(md) {
+    padding-top: 1.5rem;
+  }
+}
+
+.legal-info {
+  font-size: .75rem;
+  line-height: 1.5rem;
+
+  .copyright {
+    text-align: center;
+
+    @include media-breakpoint-up(lg) {
+      text-align: right;
+    }
+  }
+
+  .payment-methods {
+    > span {
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    ul {
+      display: flex;
+      justify-content: space-evenly;
+      margin-bottom: .5rem;
+    }
+
+    &--logo {
+      display: inline-block;
+      height: 44px;
+      width: 44px;
+      overflow: hidden;
+      text-indent: -999px;
+      background-size: cover;
+      background: transparent none no-repeat 50% 50%;
+
+      &.mastercard {
+        background-image: url("../assets/icons/mastercard.svg");
+        background-size: 54px 54px;
+      }
+
+      &.paypal {
+        background-image: url("../assets/icons/paypal.svg");
+        width: 120px;
+        background-size: 120px 32px;
+      }
+
+      &.visa {
+        background-size: 99px 32px;
+        background-image: url("../assets/icons/visa.svg");
+        width: 99px;
+      }
+
+      @include media-breakpoint-up(lg) {
+        height: 24px;
+
+        &.mastercard { background-size: 36px 36px; }
+        &.paypal { background-size: 80px 24px; }
+        &.visa { background-size: 66px 24px; }
+      }
+    }
+
+    @include media-breakpoint-up(lg) {
+      display: flex;
+    }
   }
 }

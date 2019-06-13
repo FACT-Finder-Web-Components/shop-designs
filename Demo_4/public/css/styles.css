@@ -5,6 +5,10 @@
 * {
   box-sizing: border-box; }
 
+body {
+  color: #575757;
+  font-family: "Open Sans", sans-serif; }
+
 .page__wrapper {
   height: 100%;
   width: 100%; }
@@ -536,20 +540,142 @@ ff-navigation {
         .product__wrapper .product__tile .product__info .product__add-to-cart a {
           background-color: #004587; }
 
-.page--footer h4 {
-  font-size: 1rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  margin: 0; }
+.page-footer {
+  padding: 1rem 0 0;
+  margin-top: 1.5rem; }
+  .page-footer .container-fluid {
+    max-width: 1140px; }
+  .page-footer__container {
+    background: #f9f9fa; }
+  .page-footer h4 {
+    font-size: 1.25rem;
+    margin-top: .5rem;
+    text-transform: uppercase;
+    color: #47bfe9; }
+    @media (min-width: 768px) {
+      .page-footer h4 {
+        line-height: 2rem; } }
+  .page-footer .btn-primary {
+    color: #212529;
+    background-color: #47bfe9;
+    border-color: #47bfe9;
+    color: #fff; }
+    .page-footer .btn-primary:hover {
+      color: #fff;
+      background-color: #25b3e5;
+      border-color: #1baee2; }
+    .page-footer .btn-primary:focus, .page-footer .btn-primary.focus {
+      box-shadow: 0 0 0 0.2rem rgba(65, 168, 204, 0.5); }
+    .page-footer .btn-primary.disabled, .page-footer .btn-primary:disabled {
+      color: #212529;
+      background-color: #47bfe9;
+      border-color: #47bfe9; }
+    .page-footer .btn-primary:not(:disabled):not(.disabled):active, .page-footer .btn-primary:not(:disabled):not(.disabled).active,
+    .show > .page-footer .btn-primary.dropdown-toggle {
+      color: #fff;
+      background-color: #1baee2;
+      border-color: #1aa6d7; }
+      .page-footer .btn-primary:not(:disabled):not(.disabled):active:focus, .page-footer .btn-primary:not(:disabled):not(.disabled).active:focus,
+      .show > .page-footer .btn-primary.dropdown-toggle:focus {
+        box-shadow: 0 0 0 0.2rem rgba(65, 168, 204, 0.5); }
+
+.social-links a {
+  display: block;
+  height: 44px;
+  width: 46px;
+  overflow: hidden;
+  text-indent: -999px;
+  background-size: contain;
+  background: transparent none no-repeat 50% 50%; }
+
+.social-links .facebook > a {
+  background-image: url("../assets/icons/facebook.png"); }
+
+.social-links .instagram > a {
+  background-image: url("../assets/icons/instagram.png"); }
+
+.social-links .twitter > a {
+  background-image: url("../assets/icons/twitter.png"); }
+
+.social-links .youtube > a {
+  background-image: url("../assets/icons/youtube.png"); }
 
 .service-nav {
   font-size: .75rem; }
+  .service-nav a {
+    color: #575757; }
   .service-nav .card, .service-nav .card-header {
-    background: transparent;
-    border: 0; }
+    background: transparent; }
+  .service-nav .card {
+    border-radius: 0;
+    border: 0;
+    border-top: 1px solid #e0e0e0; }
+    .service-nav .card.collapsed .card-body {
+      display: block; }
+    @media (min-width: 768px) {
+      .service-nav .card {
+        border: 0; } }
   .service-nav .card-header {
     font-weight: 700;
-    text-transform: uppercase; }
+    text-transform: uppercase;
+    padding: .75rem 0;
+    border: 0; }
+  .service-nav .card-body {
+    padding: 0;
+    display: none; }
+    @media (min-width: 768px) {
+      .service-nav .card-body {
+        display: block; } }
+  @media (min-width: 768px) {
+    .service-nav {
+      padding-top: 1.5rem; } }
+
+.legal-info {
+  font-size: .75rem;
+  line-height: 1.5rem; }
+  .legal-info .copyright {
+    text-align: center; }
+    @media (min-width: 992px) {
+      .legal-info .copyright {
+        text-align: right; } }
+  .legal-info .payment-methods > span {
+    text-transform: uppercase;
+    font-weight: 700; }
+  .legal-info .payment-methods ul {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: .5rem; }
+  .legal-info .payment-methods--logo {
+    display: inline-block;
+    height: 44px;
+    width: 44px;
+    overflow: hidden;
+    text-indent: -999px;
+    background-size: cover;
+    background: transparent none no-repeat 50% 50%; }
+    .legal-info .payment-methods--logo.mastercard {
+      background-image: url("../assets/icons/mastercard.svg");
+      background-size: 54px 54px; }
+    .legal-info .payment-methods--logo.paypal {
+      background-image: url("../assets/icons/paypal.svg");
+      width: 120px;
+      background-size: 120px 32px; }
+    .legal-info .payment-methods--logo.visa {
+      background-size: 99px 32px;
+      background-image: url("../assets/icons/visa.svg");
+      width: 99px; }
+    @media (min-width: 992px) {
+      .legal-info .payment-methods--logo {
+        height: 24px; }
+        .legal-info .payment-methods--logo.mastercard {
+          background-size: 36px 36px; }
+        .legal-info .payment-methods--logo.paypal {
+          background-size: 80px 24px; }
+        .legal-info .payment-methods--logo.visa {
+          background-size: 66px 24px; } }
+  @media (min-width: 992px) {
+    .legal-info .payment-methods {
+      display: flex; } }
 
 .banner {
   max-width: 1240px;

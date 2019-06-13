@@ -1,22 +1,24 @@
-(function($, viewport) {
-    $(document).ready(function(){
-        const mobileMenuInput =  $('#navigation-menu');
-        const mobileMenuLabel =  $('.ffw-navigation-label');
+(function ($, viewport) {
+    $(document).ready(function () {
+        var mobileMenuInput = $('#navigation-menu');
+        var mobileMenuLabel = $('.ffw-navigation-label');
 
-        $("#searchMobile").on('click', function() {
+        $("#searchMobile").on('click', function () {
             $('.searchbar').slideToggle(300);
-            }
-        );
+        });
 
         if (viewport.is('<=md')) {
             mobileMenuInput.click();
             mobileMenuLabel.hide();
         }
 
+        $('.service-nav .card').on('click', '.card-header', function (e) {
+            $(e.delegateTarget).toggleClass('collapsed');
+        });
+
         $(window).resize(
-            viewport.changed(function() {
-                console.log(viewport.current());
-                if(viewport.is('<=md')) {
+            viewport.changed(function () {
+                if (viewport.is('<=md')) {
                     mobileMenuInput.click();
                     mobileMenuLabel.hide();
                 }
