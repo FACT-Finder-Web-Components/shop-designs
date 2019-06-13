@@ -1,151 +1,97 @@
 .recommended-products {
-  padding-top:20px;
-  padding-bottom: 20px;
-  .recommended-products__caption {
-    border-top: 1px black solid;
-    border-bottom: 1px black solid;
-    margin-left: auto;
-    height: 90px;
-    padding: 20 0px;
+  margin-bottom: 1.5rem;
+  max-width: 1140px;
+
+  &__caption {
     text-transform: uppercase;
     text-align: center;
-    font-size: 28px;
-    margin-right: auto;
-    @media (max-width: 500px) {
-      font-size: 22px;
-    }
-  }
-  .recommended-product__list {
-    margin:0;
-    padding-top:20px;
+    padding: 1.25rem 0;
+    margin: 0 0 1rem;
+    border: 1px solid #b9b9b9;
+    border-left: 0;
+    border-right: 0;
   }
 }
 
-.product__wrapper {
-  height: 495px;
-  padding: 0;
-  @media (max-width: 992px) {
-    padding-bottom: 20px;
+.product {
+  &__wrapper {
+    margin-bottom: 1rem;
   }
 
-  .product__tile {
-    @media (min-width: 992px) {
-     // width: 295px;
-      height: 100%;
+  &__tile {
+    border: 1px solid #b9b9b9;
+  }
+
+  &__image-wrapper {
+    @include responsive-image();
+  }
+
+  .recommended-products__outfit &__image-wrapper {
+    @include responsive-image(percentage(1250 / 900));
+  }
+
+  &__links {
+    position: absolute;
+    z-index: 1;
+    right: .5rem;
+    top: .5rem;
+  }
+
+  &-add-to-wishlist {
+    display: inline-block;
+    background: transparent url("../assets/desktop/wishlist.svg") no-repeat;
+    height: 24px;
+    width: 30px;
+    background-size: 30px 24px;
+  }
+
+  &__colors {
+    margin: .75rem 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+
+    li {
+      display: inline-block;
     }
-    border: #b9b9b9 1px solid;
 
-    .product__image-wrapper {
-      //padding:5px;
-      .product__links {
-        .product-add-to-wishlist {
-          right: 55px;
-          top: 260px;
-          position: absolute;
+    .color-swatch {
+      border-radius: 50%;
+      height: 1.25rem;
+      width: 1.25rem;
+      margin: 0 .25rem;
+    }
 
-          &:before {
-            position: absolute;
-            background-image: url(../assets/desktop/wishlist.svg);
-            height: 40px;
-            width: 32px;
-            content: " ";
-            background-repeat: round;
-          }
+    @each $name,$hex in $color-swatches {
+      .swatch-#{$name} {
+        background: $hex;
+        @if (lightness($hex) > 95) {
+          border: 1px solid darken(#b9b9b9, 50%);
         }
       }
-
-      .product__image {
-        width: 100%;
-        cursor: pointer;
-        max-height: 295px;
-        object-fit: fill;
-        //padding: 15px;
-      }
     }
+  }
 
-    .product__colors {
-      list-style: none;
+  &__info {
+    padding: 0 1rem 1rem;
+    text-align: center;
+
+    h3 {
+      font-size: 1rem;
+      line-height: 1.25rem;
       margin: 0;
-      padding: 5 0;
-      text-align: center;
-
-      .product__color {
-        cursor: pointer;
-        padding-left: 5px;
-        padding-right: 5px;
-        display: inline-block;
-      }
-
-      .color-swatch {
-        border-radius: 50%;
-        height: 20px;
-        width: 20px;
-      }
-
-      .swatch-blue {
-        background: #0886ff;
-      }
-
-      .swatch-red {
-        background: #ff3546;
-      }
-
-      .swatch-grey{
-        background: #3c3c3b;
-      }
-      .swatch-white{
-        background: white;
-        border: 1px solid black;
-      }
-
-      .swatch-purple{
-        background: purple;
-      }
-
-      .swatch-lightblue{
-        background: lightblue;
-      }
-
-      .swatch-olive{
-        background: olive;
-      }
-
-      .swatch-orange{
-        background: darkorange;
-      }
-
-      .swatch-brown{
-        background: saddlebrown;
-      }
     }
+  }
 
-    .product__info {
-      text-align: center;
-      line-height: 19px;
-      white-space: nowrap;
-      @media (max-width: 992px) {
-        font-size: 18px;
-      }
-      @media (max-width: 500px) {
-        font-size: 12px;
-      }
-      .product__name {
-        margin: 0;
-        text-transform: uppercase;
-        font-size: inherit;
-      }
+  &__price {
+    margin: .5rem 0;
+    font-weight: 700;
+    font-size: 1.25rem;
+  }
 
-      span {
-        display: block;
-      }
-
-      .product__add-to-cart {
-        padding-top:15px;
-        text-align: center;
-        a {
-          background-color: $background-navy;
-        }
-      }
-    }
+  &__desc {
+    height: 3rem;
+    overflow: hidden;
   }
 }

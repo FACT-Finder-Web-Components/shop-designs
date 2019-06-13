@@ -76,6 +76,10 @@ a {
   font-size: 12px;
 }
 
+.btn-primary {
+  @include button-variant($bg-navy, $bg-navy);
+}
+
 .button--primary {
   width:170px;
   height: 50px;

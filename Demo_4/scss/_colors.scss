@@ -9,6 +9,14 @@ $category-menu-highlight: #a45a95;
 
 $navbar-dark-toggler-icon-bg: str-replace(url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='#{$navbar-dark-color}' stroke-width='4' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"), "#", "%23") !default;
 
-.background-primary {
-  background: $background-navy;
-}
+$color-swatches: (
+  blue: #0886ff,
+  red: #ff3546,
+  grey: #3c3c3b,
+  white: #fff,
+  purple: purple,
+  lightblue: lightblue,
+  olive: olive,
+  orange: darkorange,
+  brown: saddlebrown,
+);
