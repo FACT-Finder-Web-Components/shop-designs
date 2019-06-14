@@ -46,7 +46,6 @@
                                 <input type="hidden" autocomplete="false"/>
                                 <div class="input-group">
                                     <ff-searchbox unresolved>
-                                        <input type="hidden" autocomplete="false"/>
                                         <input class="form-control" type="text" name="search"
                                                placeholder="I'm looking for"/>
                                     </ff-searchbox>
@@ -61,16 +60,16 @@
                             </form>
                             <!-- suggest start -->
                             <ff-suggest id="ffSuggest" layout="block" unresolved>
-                                <section id="searchContainer" class="searchTermContainer">
+                                <section id="searchContainer" class="searchTermContainer container-fluid">
                                     <div data-container="searchTerm">
-                                        <p class="containerCaption">Search suggestions</p>
+                                        <p class="containerCaption">Search terms</p>
                                         <ff-suggest-item class="ff-suggest-element" type="searchTerm">
                                             <span class="ff-search-term">{{{name}}}</span>
                                         </ff-suggest-item>
                                     </div>
 
                                     <div data-container="category">
-                                        <p class="containerCaption">Category suggestions</p>
+                                        <p class="containerCaption">Categories</p>
                                         <ff-suggest-item class="ff-suggest-element" type="category">
                                             <span class="ff-category">{{{name}}}</span>
                                         </ff-suggest-item>
@@ -84,27 +83,24 @@
                                     </div>
                                 </section>
 
-                                <section id="productContainer" class="productsContainer">
+                                <section id="productContainer" class="productsContainer row">
                                     <div data-container="productName">
                                         <p class="containerCaption">Suggested products</p>
-                                        <div>
-                                            <ff-suggest-item class="ff-suggest-element ff-suggest-product" type="productName">
+                                        <div class="row">
+                                            <ff-suggest-item class="col-lg-4 col-md-6 col-12 ff-suggest-element ff-suggest-product d-table-cell" type="productName">
                                                 <a href="{{attributes.deeplink}}"
                                                    data-redirect="{{attributes.deeplink}}" data-redirect-target="_blank">
                                                     <div class="container-image">
-                                                        <img class="img-fluid" data-image="{{image}}" />
+                                                        <img class="img-fluid" data-image="public/assets/recommended-products/backpack.jpg"/>
                                                     </div>
                                                 </a>
                                                 <div class="product-info">
                                                     <a href="{{attributes.deeplink}}"
-                                                       data-redirect="{{attributes.deeplink}}" data-redirect-target="_blank">
+                                                       data-redirect="{{attributes.deeplink}}"
+                                                       data-redirect-target="_blank">
                                                         <div class="product-name">{{{name}}}</div>
                                                         <div class="product-brand">{{{attributes.Brand}}}</div>
-                                                        <div class="product-availability">
-                                                            {{#attributes.Availability}}{{/attributes.Availability}}
-                                                            {{^attributes.Availability}}{{/attributes.Availability}}
-                                                        </div>
-                                                        <div class="product-price">{{attributes.Price}}</div>
+                                                        <!--                                                    <div class="product-price">{{attributes.Price}}</div>-->
                                                     </a>
                                                 </div>
                                             </ff-suggest-item>

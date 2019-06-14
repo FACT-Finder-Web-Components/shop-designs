@@ -47,9 +47,10 @@
     margin: 0;
     background: url("../assets/desktop/slider.png");
     @media (max-width: 768px) {
-      background: url("../assets/mobile/slider.jpg") center no-repeat;
+      background: url("../assets/mobile/slider.jpg") right no-repeat;
       width: 100%;
       height: 910px;
+      display: table;
     }
     .slider__text--left {
       @extend .banner__text;
@@ -64,6 +65,9 @@
        color:white;
         width: 100%;
         padding:30% 25%;
+        display: table-cell;
+        padding: 0;
+        vertical-align: middle;
         font-weight: bold;
       }
 
@@ -71,6 +75,9 @@
         margin:0;
         font-size: 50px;
         display: block;
+        @media (max-width: 400px) {
+          font-size:35px;
+        }
 
         a {
           font-size:inherit;
@@ -85,6 +92,9 @@
             @extend .banner__cta;
             border:none;
             font-size:70px;
+            @media (max-width: 400px) {
+              font-size:45px;
+            }
           }
         }
       }
