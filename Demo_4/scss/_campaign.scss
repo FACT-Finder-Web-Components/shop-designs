@@ -1,8 +1,8 @@
 .banner {
-  max-width: 1240px;
+  max-width: 1140px;
   height: 280px;
   margin: 0;
-  background: url("../assets/desktop/campaign-banner.png");
+  background: url("../assets/desktop/campaign-banner.png") round;
   @media (max-width: 992px) {
     font-size: 18px;
     width: 100%;
