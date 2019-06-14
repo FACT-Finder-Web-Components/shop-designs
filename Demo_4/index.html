@@ -42,18 +42,23 @@
                     <!-- searchbox start-->
                     <div class="col-12 col-lg-6 order-10 px-0 px-lg-0">
                         <div class="searchbar">
-                            <div class="input-group">
-                                <ff-searchbox unresolved>
-                                    <input class="form-control" type="text" name="search" placeholder="I'm looking for"/>
-                                </ff-searchbox>
-                                <span class="input-group-btn d-none d-lg-table-cell">
-                                    <ff-searchbutton>
-                                        <button class="btn btn btn-default btn-link d-none d-sm-block w-40">
-                                            <span class="icon icon-search"></span>
-                                        </button>
-                                    </ff-searchbutton>
-                                </span>
-                            </div>
+                            <form autocomplete="off" class="d-inline">
+                                <input type="hidden" autocomplete="false"/>
+                                <div class="input-group">
+                                    <ff-searchbox unresolved>
+                                        <input type="hidden" autocomplete="false"/>
+                                        <input class="form-control" type="text" name="search"
+                                               placeholder="I'm looking for"/>
+                                    </ff-searchbox>
+                                    <span class="input-group-btn d-none d-lg-table-cell">
+                                            <ff-searchbutton>
+                                                <button class="btn btn btn-default btn-link d-none d-sm-block w-40">
+                                                    <span class="icon icon-search"></span>
+                                                </button>
+                                            </ff-searchbutton>
+                                        </span>
+                                </div>
+                            </form>
                             <!-- suggest start -->
                             <ff-suggest id="ffSuggest" layout="block" unresolved>
                                 <section id="searchContainer" class="searchTermContainer">
@@ -103,8 +108,7 @@
                                                     </a>
                                                 </div>
                                             </ff-suggest-item>
-                                        </div
-
+                                        </div>
                                     </div>
                                 </section>
                             </ff-suggest>
