@@ -1,16 +1,16 @@
 (function ($, viewport) {
     $(document).ready(function () {
-        var mobileMenuInput = $('#navigation-menu');
-        var mobileMenuLabel = $('.ffw-navigation-label');
+        let mobileMenuInput = $('#navigation-menu'),
+            mobileMenuLabel = $('.ffw-navigation-label'),
+            searchbarIcon = $('#searchMobile'),
+            searchbar = $('.searchbar');
 
-        $("#searchMobile").on('click', function () {
-            $('.searchbar').slideToggle(300);
+        mobileMenuInput.click();
+        changeViewport();
+
+        searchbarIcon.on('click', function () {
+            searchbar.slideToggle(200);
         });
-
-        if (viewport.is('<=md')) {
-            mobileMenuInput.click();
-            mobileMenuLabel.hide();
-        }
 
         $('.service-nav .card').on('click', '.card-header', function (e) {
             $(e.delegateTarget).toggleClass('collapsed');
@@ -18,12 +18,18 @@
 
         $(window).resize(
             viewport.changed(function () {
-                if (viewport.is('<=md')) {
-                    mobileMenuInput.click();
-                    mobileMenuLabel.hide();
-                }
+                changeViewport();
             })
         );
+
+        function changeViewport() {
+            if (viewport.is('<=md')) {
+                searchbar.hide();
+                mobileMenuLabel.hide();
+            } else {
+                searchbar.show();
+            }
+        }
     });
 
 })(jQuery, ResponsiveBootstrapToolkit);

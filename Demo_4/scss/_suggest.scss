@@ -1,6 +1,10 @@
 .ffw-suggestContainerWrapper {
   font-size: 18px;
-  overflow:scroll;
+  overflow: scroll;
+  @media (max-width: 786px) {
+    overflow: scroll;
+  }
+
   filter: drop-shadow(1px 0px 1px);
   width: 100%;
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
