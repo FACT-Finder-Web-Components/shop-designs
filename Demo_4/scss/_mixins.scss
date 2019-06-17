@@ -9,3 +9,31 @@
     height: 100%;
   }
 }
+
+@mixin banner($text-color: #fff) {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-transform: uppercase;
+  color: $text-color;
+  text-align: center;
+  font-size: 2rem;
+
+  @include media-breakpoint-up(lg) {
+    font-size: 3rem;
+  }
+
+  &__text {
+    margin-bottom: 1.5rem;
+  }
+
+  &__cta {
+    @include button-size(1rem, 2rem, 2rem, 2.5rem, 0);
+    @include button-outline-variant($text-color, $text-color, transparentize($text-color, .9));
+    border-width: 2px;
+    border-style: solid;
+  }
+}

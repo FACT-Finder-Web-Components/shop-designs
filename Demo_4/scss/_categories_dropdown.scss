@@ -1,37 +1,31 @@
-.categories-menu__wrapper {
-  width: 100%;
-  background: $bg-navy;
+.categories-menu {
+  height: 40px;
+  color: black;
+  max-width: 1140px;
+  margin-left: auto;
+  margin-right: auto;
 
-  .categories-menu {
-    height: 40px;
-    color: black;
-    max-width: 1140px;
-    margin-left: auto;
-    margin-right: auto;
+  &__wrapper {
+    width: 100%;
+    background: $bg-navy;
+  }
+
+  &--mobile {
+    padding-top: 20px;
+    width: 100%;
   }
 }
 
-.categories-menu--mobile {
-  padding-top: 20px;
-  width: 100%;
-}
-
 .navbar-toggler {
-  &:active {
+  &:active, &:hover {
     background: rgba(0, 173, 255, .54);
     border: 1px
   }
 
-  .navbar-toggler-icon {
+  &-icon {
     height: 70px;
     margin-left: auto;
     margin-right: auto;
     width: 100%;
-  }
-
-
-  &:hover {
-    background: rgba(0, 173, 255, .54);
-    border: 1px
   }
 }

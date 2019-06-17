@@ -1,7 +1,5 @@
 .recommended-products {
   margin-bottom: 1.5rem;
-  padding-top:20px;
-  max-width: 1140px;
 
   &__caption {
     text-transform: uppercase;
@@ -25,11 +23,10 @@
 
   &__image-wrapper {
     @include responsive-image();
-  }
 
-  .recommended-products__outfit &__image-wrapper {
-    @include responsive-image(percentage(1250 / 900));
-
+    .recommended-products__outfit & {
+      @include responsive-image(percentage(1250 / 900));
+    }
   }
 
   &__links {

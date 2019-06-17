@@ -10,19 +10,18 @@ body {
 .page__wrapper {
   height: 100%;
   width: 100%;
+}
 
-  .page {
-    padding-top: 188px;
-    max-width: 1140px;
-    width:100%;
-    margin-left: auto;
-    margin-right: auto;
+.page {
+  margin-top: 220px;
 
-    .main-column {
-      max-width: 1140px;
-      padding:0;
-    }
+  @include media-breakpoint-up(lg) {
+    margin-top: 192px;
   }
+}
+
+.main-column {
+  max-width: 1140px;
 }
 
 a {
@@ -106,35 +105,5 @@ a {
     margin: 0;
     cursor: not-allowed;
     box-shadow: inset 0 0 0 1px #bbb;
-  }
-}
-
-.banner__cta {
-  cursor: pointer;
-  border: 2px solid white;
-  padding: 15px;
-
-  &:hover {
-    text-shadow: 1px 1px white;
-  }
-}
-
-.banner__text {
-  text-transform: uppercase;
-  font-size: 25px;
-  color: #fff;
-  position: relative;
-  text-align: center;
-  height: 100%;
-  display: block;
-  margin: 0 auto;
-
-  h2 {
-    margin-bottom: 40px;
-
-    a {
-      color: #fff;
-      font-size: 46px;
-    }
   }
 }
