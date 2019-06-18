@@ -1,43 +1,93 @@
+
 .ffw-suggestContainerWrapper {
-  font-size: 18px;
-  overflow: scroll;
-  @media (max-width: 786px) {
-    overflow: scroll;
+  font-size: calc(1em + 0.01vw);
+  @include media-breakpoint-down(xs) {
+    font-size: calc(1em + 0.005vw);
   }
+  @include scrollbar();
+  z-index: 999;
 
   filter: drop-shadow(1px 0px 1px);
   width: 100%;
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
   border: 1px solid #b9b9b9;
+
   .ffw-suggestContainer {
-    padding:20px;
-    .containerCaption {
+    flex-direction: row-reverse;
+
+    .container-caption {
+      font-size: calc(1em + 0.5vw);
+      @include media-breakpoint-down(xs) {
+        font-size: calc(1em + 0.025vw);
+      }
       font-weight: bold;
-      font-size:18px;
       text-align: left;
     }
+
     div[data-container] {
-      padding-top:20px;
+      padding-top: 1em;
     }
-    .searchTermContainer {
-      padding-right: 20px;
-      max-width: 40%;
+
+    .search-terms-container {
+      height: 60vh;
+      overflow-y: auto;
+      overflow-x: hidden;
+      margin: 0;
+      @include media-breakpoint-down(lg) {
+        height: 40vh;
+      }
+
+      .ff-suggest-element {
+        cursor: pointer;
+      }
     }
-    .productsContainer {
-      max-width: 60%;
+
+    .products-container {
+      height: 60vh;
       text-align: center;
-      a {
-        text-decoration: none;
-        color:black;
+      @include media-breakpoint-down(lg) {
+        height: 40vh;
+      }
+
+      &div[data-container="productName"] {
+        height: 100%;
+      }
+
+      &--scrollable {
+        height: 100%;
+        width: 100%;
+        overflow-y: auto;
+        overflow-x: hidden;
+
+        a {
+          text-decoration: none;
+          color: black;
+          font-size: inherit;
+        }
+      }
+    }
+
+    .all-results-container {
+      padding: 1em;
+
+      .all-results {
+        background-color: $background-navy;
+        color: white;
+        height: 5%;
+        vertical-align: middle;
+        font-weight: bolder;
+        text-transform: uppercase;
       }
     }
   }
-}
-ff-suggest-item.ffw-highlight-suggest-item {
-  background-color: $background-navy;
-  color:white;
-}
-.ffw-query {
-  color:$background-navy;
-  font-weight: bold;
+
+  ff-suggest-item.ffw-highlight-suggest-item {
+    background-color: $background-navy;
+    color: white;
+  }
+
+  .ffw-query {
+    color: $background-navy;
+    font-weight: bold;
+  }
 }

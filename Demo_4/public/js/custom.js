@@ -16,6 +16,14 @@
             $(e.delegateTarget).toggleClass('collapsed');
         });
 
+        factfinder.communication.ResultDispatcher.subscribe('suggest', function (suggestion) {
+            suggestion.forEach(function (element) {
+                if (element.type == 'searchTerm') {
+                    element.name = element.name.charAt(0).toUpperCase() + element.name.slice(1).toLowerCase();
+                }
+            });
+        });
+
         $(window).resize(
             viewport.changed(function () {
                 changeViewport();
