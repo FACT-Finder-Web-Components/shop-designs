@@ -1,0 +1,66 @@
+.search-result-header__sortbox {
+  color: black;
+  padding-top: 20px;
+  text-align: end;
+  @include media-breakpoint-down(sm) {
+    text-align: center;
+  }
+
+  .sortbox {
+    font-size: calc(1em + 0.01vw);
+    color: #444;
+    width: 100%;
+    margin: 0;
+    border: 1px solid $border-light-gray;
+    box-shadow: 0 1px 0 1px rgba(0, 0, 0, .04);
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    background-image: url(../assets/icons/black/angle-down.svg);
+    background-repeat: no-repeat, repeat;
+    background-position: right .7em top 50%, 0 0;
+    background-size: 1em auto, 100%;
+
+    &[opened] {
+      background-image: url(../assets/icons/black/angle-up.svg);
+    }
+
+    &::-ms-expand {
+      display: none;
+    }
+
+    &__caption {
+      font-size: inherit;
+      white-space: nowrap;
+      margin: auto;
+    }
+
+    &__wrapper {
+      text-align: left;
+      padding: 0;
+      font-size: inherit;
+    }
+
+    .ffw-selected-container {
+      padding: 0.4em;
+    }
+
+    .ffw-dropdown-container {
+      width: 100%;
+
+      &:not([ffw-closed]) {
+        ff-sortbox-item {
+          padding: 0.4em;
+          margin: 0;
+          border: 1px solid $border-light-gray;
+          background: #fff;
+
+          &:hover {
+            color: white;
+            background-color: $background-navy;
+          }
+        }
+      }
+    }
+  }
+}

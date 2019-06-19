@@ -1,0 +1,16 @@
+.search-result-header {
+  &__breadcrumbs {
+    color: black;
+    padding-top: 20px;
+    font-size: calc(1em + 0.01vw);
+    @include media-breakpoint-down(sm) {
+      text-align: center;
+    }
+    font-weight: bolder;
+  }
+
+  .product-counter {
+    font-weight: normal;
+  }
+}
+

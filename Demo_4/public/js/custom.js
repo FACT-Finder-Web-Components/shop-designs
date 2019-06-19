@@ -16,14 +16,6 @@
             $(e.delegateTarget).toggleClass('collapsed');
         });
 
-        factfinder.communication.ResultDispatcher.subscribe('suggest', function (suggestion) {
-            suggestion.forEach(function (element) {
-                if (element.type == 'searchTerm') {
-                    element.name = element.name.charAt(0).toUpperCase() + element.name.slice(1).toLowerCase();
-                }
-            });
-        });
-
         $(window).resize(
             viewport.changed(function () {
                 changeViewport();
@@ -41,3 +33,23 @@
     });
 
 })(jQuery, ResponsiveBootstrapToolkit);
+
+function showSearchResult() {
+    var main = document.querySelector("#searchResult");
+    main.style.display = "";
+    main.style.opacity = "1";
+}
+
+function showSection(event, sectionId) {
+    event.preventDefault();
+    const sections = ['homePage','searchResult'];
+    var section = document.querySelector('#' + sectionId);
+    section.style.display = "";
+    section.style.opacity = "1";
+
+    sections.map(section => {
+        if (section !== sectionId) {
+            jQuery('#' + section).css('display', 'none');
+        }
+    })
+}
