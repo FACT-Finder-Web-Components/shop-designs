@@ -1,0 +1,432 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <title>Outdoor</title>
+
+    <script src="node_modules/ff-web-components/dist/vendor/custom-elements-es5-adapter.js"></script>
+    <script src="node_modules/ff-web-components/dist/vendor/webcomponents-loader.js"></script>
+    <script defer src="node_modules/ff-web-components/dist/bundle.js"></script>
+
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="public/js/responsive-toolkit.js"></script>
+    <script src="public/js/select-togglebutton.js"></script>
+    <script src="public/js/custom.js"></script>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans&amp;display=swap"/>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="public/css/styles.css"/>
+</head>
+<body>
+    <ff-communication url="https://search-web-components.fact-finder.de/FACT-Finder-7.2"
+                      version="7.2"
+                      default-query="jacket"
+                      channel="bergfreunde-co-uk"
+                      search-immediate></ff-communication>
+
+    <div class="svgsprite-inline">
+        <svg xmlns="http://www.w3.org/2000/svg">
+            <path id="icon-heart" d="M1356.99,42.024c-3.36-7.975-12.93-6.114-12.99,3.142-0.04,5.084,4.55,6.984,7.61,9.017,2.96,1.971,5.07,4.667,5.4,5.815,0.29-1.125,2.64-3.9,5.38-5.87,3-2.157,7.65-3.933,7.61-9.017C1369.94,35.831,1360.2,34.367,1356.99,42.024Z" transform="translate(-1344 -36.969)"/>
+            <path id="icon-star" d="M505.222,456.49l1.869,3.853a0.868,0.868,0,0,0,.654.483l4.18,0.618a0.888,0.888,0,0,1,.482,1.507l-3.025,3a0.9,0.9,0,0,0-.25.783l0.714,4.234a0.872,0.872,0,0,1-1.261.932l-3.738-2a0.853,0.853,0,0,0-.809,0l-3.739,2a0.872,0.872,0,0,1-1.26-.932l0.714-4.234a0.9,0.9,0,0,0-.25-0.783l-3.025-3a0.887,0.887,0,0,1,.482-1.507l4.18-.618a0.87,0.87,0,0,0,.654-0.483l1.869-3.853A0.863,0.863,0,0,1,505.222,456.49Z" transform="translate(-496.219 -456.031)"/>
+        </svg>
+    </div>
+
+    <div class="page__wrapper">
+        <nav id="header" class="d-block navbar navbar-dark px-0 py-0">
+            <div class="header__wrapper container-fluid mr-auto ml-auto">
+                <div class="row header m-0">
+                    <!-- Logo start -->
+                    <div class="col-12 col-lg-3 pb-4 d-inline-block">
+                        <div class="logo text-center">
+                            <a href="#">
+                                <img alt="Outdoor" src="public/assets/logo.png"/>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- logo end-->
+
+                    <!-- searchbox start-->
+                    <div class="col-12 col-lg-6 order-10 px-0 px-lg-0">
+                        <div class="searchbar">
+                            <form autocomplete="off" class="d-inline">
+                                <input type="hidden" autocomplete="false"/>
+                                <div class="input-group">
+                                    <ff-searchbox unresolved>
+                                        <input class="form-control" type="text" name="search"
+                                               placeholder="I'm looking for"/>
+                                    </ff-searchbox>
+                                    <span class="input-group-btn d-none d-lg-table-cell">
+                                            <ff-searchbutton>
+                                                <button class="btn btn btn-default btn-link d-none d-sm-block w-40">
+                                                    <span class="icon icon-search"></span>
+                                                </button>
+                                            </ff-searchbutton>
+                                        </span>
+                                </div>
+                            </form>
+                            <!-- suggest start -->
+                            <ff-suggest id="ffSuggest" layout="block" unresolved>
+                                <section id="searchContainer" class="searchTermContainer container-fluid">
+                                    <div data-container="searchTerm">
+                                        <p class="containerCaption">Search terms</p>
+                                        <ff-suggest-item class="ff-suggest-element" type="searchTerm">
+                                            <span class="ff-search-term">{{{name}}}</span>
+                                        </ff-suggest-item>
+                                    </div>
+
+                                    <div data-container="category">
+                                        <p class="containerCaption">Categories</p>
+                                        <ff-suggest-item class="ff-suggest-element" type="category">
+                                            <span class="ff-category">{{{name}}}</span>
+                                        </ff-suggest-item>
+                                    </div>
+
+                                    <div data-container="brand">
+                                        <p class="containerCaption">Brands</p>
+                                        <ff-suggest-item class="ff-suggest-element" type="brand">
+                                            <span class="ff-brand">{{{name}}}</span>
+                                        </ff-suggest-item>
+                                    </div>
+                                </section>
+
+                                <section id="productContainer" class="productsContainer row">
+                                    <div data-container="productName">
+                                        <p class="containerCaption">Suggested products</p>
+                                        <div class="row">
+                                            <ff-suggest-item class="col-lg-4 col-md-6 col-12 ff-suggest-element ff-suggest-product d-table-cell" type="productName">
+                                                <a href="{{attributes.deeplink}}"
+                                                   data-redirect="{{attributes.deeplink}}" data-redirect-target="_blank">
+                                                    <div class="container-image">
+                                                        <img class="img-fluid" data-image="public/assets/recommended-products/backpack.jpg"/>
+                                                    </div>
+                                                </a>
+                                                <div class="product-info">
+                                                    <a href="{{attributes.deeplink}}"
+                                                       data-redirect="{{attributes.deeplink}}"
+                                                       data-redirect-target="_blank">
+                                                        <div class="product-name">{{{name}}}</div>
+                                                        <div class="product-brand">{{{attributes.Brand}}}</div>
+                                                        <!--                                                    <div class="product-price">{{attributes.Price}}</div>-->
+                                                    </a>
+                                                </div>
+                                            </ff-suggest-item>
+                                        </div>
+                                    </div>
+                                </section>
+                            </ff-suggest>
+                            <!-- suggest stop -->
+                        </div>
+                    </div>
+                    <!--searchbox end-->
+
+                    <!-- links start-->
+                    <div class="navigation col-12 col-lg-3 order-lg-10">
+                        <div class="row h-100 m-lg-0 mx-0">
+                            <button
+                                    class="col-2 navbar-toggler d-inline d-lg-none h-100"
+                                    type="button"
+                                    data-toggle="collapse"
+                                    data-target="#categoriesNavigation"
+                                    aria-controls="categoriesNavigation"
+                                    aria-expanded="true"
+                                    aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon float-left"></span>
+                            </button>
+                            <div class="col-10 col-lg-12">
+                                <div class="row h-100">
+                                    <div class="col-12 d-inline mr-0 h-100">
+                                        <ul class="links list-unstyled d-inline-block float-right text-center">
+                                            <li class="links__item d-lg-none col-3">
+                                                <a href="#" id="searchMobile">
+                                                    <div>
+                                                        <span class="icon icon-search search-mobile"></span>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li class="links__item col-3 col-lg-4">
+                                                <a href="#">
+                                                    <div>
+                                                        <span class="icon icon-account"></span>
+                                                        <span class="icon-caption d-none d-lg-block">Log In</span>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li class="links__item col-3 col-lg-4">
+                                                <a href="#">
+                                                    <div>
+                                                        <span class="icon icon-wishlist"></span>
+                                                        <span class="icon-caption d-none d-lg-block">Wishlist</span>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li class="links__item col-3 col-lg-4">
+                                                <a href="#">
+                                                    <div>
+                                                        <span class="icon icon icon-cart"></span>
+                                                        <span class="icon-caption d-none d-lg-block">Cart</span>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- links end-->
+                </div>
+            </div>
+            <div class="categories-menu__wrapper">
+                <div class="categories-menu d-none d-lg-block">
+                    <ff-header-navigation group-count="6">
+                        <div slot="Outdoor jackets"><a href="http://www.myshop.de"> >> See all...</a></div>
+                        <div slot="Outdoor pants"><a href="http://www.myshop.de"> >> See all...</a></div>
+                        <div slot="Long and short sleeve shirts"><a href="http://www.myshop.de"> >> See all...</a></div>
+                        <div slot="Functional underwear"><a href="http://www.myshop.de"> >> See all...</a></div>
+                        <div slot="Sweaters & hoodies"><a href="http://www.myshop.de"> >> See all...</a></div>
+                        <div slot="Headwear"><a href="http://www.myshop.de"> >> See all...</a></div>
+                    </ff-header-navigation>
+                </div>
+            </div>
+            <div class="categories-menu--mobile navbar-collapse collapse d-lg-none " id="categoriesNavigation">
+                <ul class="navbar-nav mx-3">
+                    <ff-navigation class="d-lg-none d-block" fetch-size="3" unresolved layout="vertical" flyout="false" mobile="true" fetch-initial="false" unresolved>
+                        <div id="ffMenu" slot="menu" style="display: none">Navigation</div>
+                        <ff-navigation-item type="header" class="level0 level-top">
+                            <li class="level0 level-top parent">
+                                <a class="nav-link">
+                                    <span>{{ name }}</span>
+                                </a>
+                            </li>
+                        </ff-navigation-item>
+                    </ff-navigation>
+
+                </ul>
+            </div>
+        </nav>
+
+        <div class="page">
+            <main class="product">
+                <div class="container py-4">
+                    <form>
+                        <div class="row">
+                            <section class="col-md-6 product__shop order-last">
+                                <h1 class="product__name">EVOC - Line 28 - Skitourenrucksack</h1>
+
+                                <div class="product__rating order-md-first" data-rating="4">
+                                    <svg class="rating-star" width="20px" height="20px" viewBox="0 0 16.469 15.969"><use xlink:href="#icon-star"></use><use xlink:href="#icon-star"></use></svg>
+                                    <svg class="rating-star" width="20px" height="20px" viewBox="0 0 16.469 15.969"><use xlink:href="#icon-star"></use><use xlink:href="#icon-star"></use></svg>
+                                    <svg class="rating-star" width="20px" height="20px" viewBox="0 0 16.469 15.969"><use xlink:href="#icon-star"></use><use xlink:href="#icon-star"></use></svg>
+                                    <svg class="rating-star" width="20px" height="20px" viewBox="0 0 16.469 15.969"><use xlink:href="#icon-star"></use><use xlink:href="#icon-star"></use></svg>
+                                    <svg class="rating-star" width="20px" height="20px" viewBox="0 0 16.469 15.969"><use xlink:href="#icon-star"></use><use xlink:href="#icon-star"></use></svg>
+                                    <span class="rating-reviews">57 Reviews</span>
+                                </div>
+
+                                <div class="product__price">
+                                    <div class="price-box">
+                                    <span class="regular-price">
+                                        <span class="price">€ 219,95</span>
+                                    </span>
+                                        <span class="vat-hint">inkl. MwSt.</span>
+                                    </div>
+                                </div>
+                                <div class="availability">
+                                    <div class="delivery-time">Lieferzeit: 1-3 Werktage</div>
+                                    <div class="stock-qty">Nur noch einmal auf Lager!</div>
+                                </div>
+
+                                <div class="product__options">
+                                    <div class="row opt-product-qty">
+                                        <label for="product-qty" class="col-sm-2 col-form-label">Menge</label>
+                                        <div class="col-sm-10">
+                                            <select name="qty" id="product-qty" class="form-control">
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row opt-product-color">
+                                        <label for="product-color" class="col-sm-2 col-form-label">Farbe</label>
+                                        <div class="col-sm-10">
+                                            <select name="qty" id="product-color" class="form-control">
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row opt-product-size">
+                                        <label for="product-size" class="col-sm-2 col-form-label">Größe</label>
+                                        <div class="col-sm-10">
+                                            <select name="qty" id="product-size" class="form-control">
+                                                <option>20 l</option>
+                                                <option>25 l</option>
+                                                <option>30 l</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="product__addtocart btn-group">
+                                    <button class="btn btn-primary">In den Warenkorb</button>
+                                    <button class="btn btn-primary btn-wishlist">
+                                        <svg width="32px" height="32px" viewBox="0 0 26 23.031"><use xlink:href="#icon-heart"></use></svg>
+                                    </button>
+                                </div>
+                            </section>
+                            <section class="col-md-6 product__gallery">
+                                <div class="product__gallery__big-image product-image">
+                                    <img src="public/assets/recommended-products/sweater.jpg" alt="EVOC - Line 28 - Skitourenrucksack" />
+                                </div>
+                                <div class="row gallery-thumbnails">
+                                    <div class="col"><div class="product-image"><img src="public/assets/recommended-products/sweater.jpg" alt="EVOC - Line 28 - Skitourenrucksack" /></div></div>
+                                    <div class="col"><div class="product-image"><img src="public/assets/recommended-products/sweater.jpg" alt="EVOC - Line 28 - Skitourenrucksack" /></div></div>
+                                    <div class="col"><div class="product-image"><img src="public/assets/recommended-products/sweater.jpg" alt="EVOC - Line 28 - Skitourenrucksack" /></div></div>
+                                </div>
+                            </section>
+                        </div>
+                    </form>
+                </div>
+                <section class="product__details">
+                    <h3 class="heading">Produktbeschreibung</h3>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p>Im Backcountry zählen Funktionalität und Ergonomie und je weiter man sich von der
+                                    Piste entfernt, desto höher werden die Ansprüche an eine leichte Ausrüstung. Der
+                                    Evoc Line 28 ist sehr vielseitig einsetzbar. Beim entspannten Tag auf und neben der
+                                    Piste, ebenso wie bei größeren Abstechern ins Gelände.</p>
+                                <p>Kern des durchdachten Ski- und Snowboardrucksack ist das Hauptfach. Darin ist die
+                                    Ausrüstung für den Tag bequem verstaut. Zusätzlich hat der Line 28 ein Fach für die
+                                    Lawinenausrüstung (mit Notfallplan) und ein Fleece-gefüttertes Schneebrillenfach. In
+                                    der Hüftgurttasche sind benötigte Kleinteile gut aufgehoben, zusätzliche Ausrüstung
+                                    lässt sich in den beiden elastischen Seitenfächern oder an den Gurtbandschlaufen
+                                    verstauen. Die Schlauchführung für das Trinksystem ist isoliert im Schulterriemen,
+                                    so bleibt der Flüssigkeitsnachschub auf Tour auch bei tiefen Temperaturen
+                                    gewährleistet.</p>
+                                <p>Für den Aufstieg lassen sich die Ski an den Seiten oder diagonal über die Front, das
+                                    Snowboard auf der Vorderseite befestigen. Die Snowboard- bzw. Schneeschuhalterung
+                                    lässt sich dank der soliden Aluminiumschnallen auch mit Handschuhen bequem
+                                    bedienen.</p>
+                                <p>Ein durchdachter, sehr robuster und hochwertiger Rucksack mit großem Einsatzbereich.
+                                    Das ist der Evoc Line 28.</p>
+                            </div>
+                            <div class="col-md-6">
+                                <dl class="attributes">
+                                    <dt class="attr-title">Volumen</dt>
+                                    <dd class="attr-value">28 l</dd>
+                                    <dt class="attr-title">Konstruktion</dt>
+                                    <dd class="attr-value">Ski- und Snowboardrucksack</dd>
+                                    <dt class="attr-title">Einsatzbereich</dt>
+                                    <dd class="attr-value">Snowboarden, Backcountry; Ski- und Snowboard-Touren</dd>
+                                    <dt class="attr-title">Material</dt>
+                                    <dd class="attr-value">Nylon 210D Ripstop; PU-beschichtet (100% Polyamid), Air Mesh, Neopren</dd>
+                                    <dt class="attr-title">Tragesystem</dt>
+                                    <dd class="attr-value">Brust- und Hüftgurt</dd>
+                                    <dt class="attr-title">Trinksystem</dt>
+                                    <dd class="attr-value">kompatibel bis 3L Volumen, isoliert</dd>
+                                    <dt class="attr-title">Extra-Fächer</dt>
+                                    <dd class="attr-value">Sonnenbrillenfach, Fach für Sicherheitsausrüstung, Kleinteilefach im Hüftgurt</dd>
+                                    <dt class="attr-title">Gewicht</dt>
+                                    <dd class="attr-value">1140 g</dd>
+                                    <dt class="attr-title">Extras</dt>
+                                    <dd class="attr-value">Signalpfeife, Notfallplan, Eisgerätschlaufen</dd>
+                                    <dt class="attr-title">Art.Nr.</dt>
+                                    <dd class="attr-value" itemprop="sku">502-0698</dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+
+        <footer class="page-footer">
+            <div class="page-footer__container">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-6 order-md-last col-lg-4 offset-lg-2">
+                            <h4>Join us now!</h4>
+                            <form class="newsletter-subscription">
+                                <div class="input-group">
+                                    <input class="form-control" type="search" placeholder="Deine E-Mail Adresse" aria-label="Deine E-Mail Adresse">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-primary" type="submit">Anmelden</button>
+                                    </div>
+                                </div>
+                            </form>
+                            <div class="social-links">
+                                <ul class="list-unstyled row justify-content-around">
+                                    <li class="facebook"><a href="#" title="Facebook">Facebook</a></li>
+                                    <li class="instagram"><a href="#" title="Instagram">Instagram</a></li>
+                                    <li class="youtube"><a href="#" title="Youtube">Youtube</a></li>
+                                    <li class="twitter"><a href="#" title="Twitter">Twitter</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="service-nav col-md-6">
+                            <div class="row">
+                                <div class="card col-md-4">
+                                    <div class="card-header text-truncate">Informationen</div>
+                                    <div class="card-body">
+                                        <ul class="list-unstyled">
+                                            <li><a href="#">Kontakt</a></li>
+                                            <li><a href="#">Über uns</a></li>
+                                            <li><a href="#">Service</a></li>
+                                            <li><a href="#">FAQ</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="card col-md-4">
+                                    <div class="card-header text-truncate">Top Kategorien</div>
+                                    <div class="card-body">
+                                        <ul class="list-unstyled">
+                                            <li><a href="#">Women</a></li>
+                                            <li><a href="#">Men</a></li>
+                                            <li><a href="#">Products A-Z</a></li>
+                                            <li><a href="#">Our Brands</a></li>
+                                            <li><a href="#">Buy a Gift Card</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="card col-md-4">
+                                    <div class="card-header text-truncate">Top Marken</div>
+                                    <div class="card-body">
+                                        <ul class="list-unstyled">
+                                            <li><a href="#">Cooperation</a></li>
+                                            <li><a href="#">Partners</a></li>
+                                            <li><a href="#">Terms &amp; Conditions</a></li>
+                                            <li><a href="#">Privacy Policy</a></li>
+                                            <li><a href="#">Address</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <div class="row legal-info my-3">
+                    <div class="col-lg-8 payment-methods">
+                        <span>Zahlungsarten:</span>
+                        <ul class="list-unstyled">
+                            <li><span class="payment-methods--logo paypal">PayPal</span></li>
+                            <li><span class="payment-methods--logo mastercard">MasterCard</span></li>
+                            <li><span class="payment-methods--logo visa">Visa</span></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4 copyright">Copyright 2019 by <a href="https://web-components.fact-finder.com/">Omikron Data Quality GmbH</a></div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

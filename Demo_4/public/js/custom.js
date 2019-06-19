@@ -38,6 +38,8 @@
                 searchbar.show();
             }
         }
+
+        $('#product-color, #product-size').togglebutton();
     });
 
 })(jQuery, ResponsiveBootstrapToolkit);

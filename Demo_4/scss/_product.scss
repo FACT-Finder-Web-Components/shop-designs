@@ -1,0 +1,149 @@
+.product {
+  &-image {
+    @include responsive-image();
+  }
+
+  &__gallery {
+    margin-bottom: 2rem;
+
+    .gallery-thumbnails {
+      margin-top: 2.5rem;
+      margin-left: 2rem;
+      margin-right: 2rem;
+      display: none;
+
+      @include media-breakpoint-up(md) {
+        display: flex;
+      }
+    }
+  }
+
+  &__name {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  &__details {
+    background: $bg-gray;
+    padding: 2rem 0;
+
+    .heading {
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+  }
+
+  &__shop {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__rating {
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: baseline;
+
+    .rating-star {
+      margin-right: 5px;
+      fill: #b9b9b9;
+
+      &:last-of-type {
+        margin-right: 1rem;
+      }
+    }
+
+    @for $i from 1 through 5 {
+      &[data-rating="#{$i}"] .rating-star:nth-child(-n + #{$i}) {
+        fill: #f7ba66;
+      }
+    }
+  }
+
+  & &__price {
+    margin: 1rem 0;
+
+    .price {
+      font-size: 2rem;
+    }
+  }
+
+  .availability, .vat-hint {
+    font-weight: .75rem;
+    font-size: .75rem;
+  }
+
+  .delivery-time {
+    color: $bg-light-blue;
+  }
+
+  &__options {
+    margin: 2rem 0;
+
+    label::after {
+      content: ":";
+    }
+
+    select.form-control {
+      width: auto;
+    }
+
+    @include media-breakpoint-up(sm) {
+      margin-top: 4rem;
+
+      .row {
+        margin-bottom: 1rem;
+      }
+    }
+  }
+
+  &__addtocart {
+    .btn {
+      border-radius: 0;
+    }
+
+    .btn-wishlist {
+      background: $bg-light-blue;
+      border-color: $bg-light-blue;
+      margin-left: 5px !important;
+      flex: 0 0 32px;
+
+      svg {
+        fill: #fff;
+      }
+    }
+  }
+}
+
+.opt-product {
+  &-size .btn {
+    border-radius: 50% !important;
+    border: 1px solid #ced4da;
+    padding: .5rem !important;
+    margin-left: 10px !important;
+
+    &.active {
+      border-color: $text-primary;
+    }
+  }
+}
+
+.attributes .attr {
+  &-title {
+    font-weight: bold;
+    display: inline;
+
+    &::after {
+      content: ":";
+    }
+  }
+
+  &-value {
+    display: inline;
+    @include clearfix();
+
+    &::after {
+      margin-bottom: .75rem;
+    }
+  }
+}
