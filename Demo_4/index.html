@@ -33,7 +33,11 @@
 </head>
 <body>
 <ff-communication url="https://search-web-components.fact-finder.de/FACT-Finder-7.2" version="7.2"
-                  default-query="jacket" channel="bergfreunde-co-uk"></ff-communication>
+                  default-query="jacket" channel="bergfreunde-co-uk" currency-code="EUR"
+                  currency-country-code="de-DE"
+                  search-immediate
+                  currency-max-digits="5"
+                  currency-min-digits="1">></ff-communication>
 
 <div class="page__wrapper">
     <nav id="header" class="d-block navbar navbar-dark px-0 py-0">
@@ -46,7 +50,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-12 col-lg-6 order-10 px-0 px-lg-0">
+                <div class="col-12 col-lg-6 order-10 searchbar__wrapper">
                     <div class="searchbar">
                         <form autocomplete="off" class="d-inline" onsubmit="showSection(event,'searchResult')">
                             <input type="hidden" autocomplete="false"/>
@@ -520,193 +524,196 @@
             </section>
         </main>
         <main id="searchResult" class="container-fluid main-column" style="display: none">
-            <div class="container-fluid">
-                <div class="search-result__campaign">
-                    <a href="#">
-                        <img src="public/assets/desktop/campaign-category-banner.png" class="img-fluid"/>
-                    </a>
-                    <ff-campaign-feedbacktext label="below breadcrumbs" style="width: 100%" unresolved>
-                        {{{text}}}
-                    </ff-campaign-feedbacktext>
+            <div class="search-result__campaign">
+                <a href="#">
+                    <img src="public/assets/desktop/campaign-category-banner.png" class="img-fluid"/>
+                </a>
+                <ff-campaign-feedbacktext label="below breadcrumbs" unresolved>
+                    {{{text}}}
+                </ff-campaign-feedbacktext>
+            </div>
+            <div class="row search-result-header">
+                <div class="col-12 col-lg-6 search-result-header__breadcrumbs">
+                    <ff-breadcrumb-trail unresolved>
+                        <ff-breadcrumb-trail-item type="search">&quot;<strong>{{text}}</strong>&quot;
+                        </ff-breadcrumb-trail-item>
+                        <ff-breadcrumb-trail-item type="filter"><span
+                                class="filterItem"><strong>{{text}}</strong></span></ff-breadcrumb-trail-item>
+                        <ff-breadcrumb-trail-item type="advisor">{{{text}}}</ff-breadcrumb-trail-item>
+                    </ff-breadcrumb-trail>
+                    <ff-template scope="result" class="product-counter" unresolved>({{resultCount}} products)
+                    </ff-template>
                 </div>
-                <div class="row search-result-header">
-                        <div class="col-12 col-lg-6  search-result-header__breadcrumbs">
-                            <ff-breadcrumb-trail unresolved>
-                                <ff-breadcrumb-trail-item type="search">&quot;{{text}}&quot;</ff-breadcrumb-trail-item>
-                                <ff-breadcrumb-trail-item type="filter"><span class="filterItem"><strong>{{text}}</strong></span></ff-breadcrumb-trail-item>
-                                <ff-breadcrumb-trail-item type="advisor">{{{text}}}</ff-breadcrumb-trail-item>
-                            </ff-breadcrumb-trail>
-                            <ff-template scope="result" class="product-counter" unresolved>({{resultCount}} products)</ff-template>
+                <div class="col-12 col-lg-6 search-result-header__sortbox ">
+                    <div class="row">
+                        <span class="col-12 col-lg-4 sortbox__caption">Sort by</span>
+                        <div class="col-12 col-lg-8 sortbox__wrapper">
+                            <ff-sortbox class="sortbox" collapse-onblur="true" unresolved>
+                                <ff-sortbox-item key="null.desc">Relevance</ff-sortbox-item>
+                                <ff-sortbox-item key="Name.asc">Name (Ascending)</ff-sortbox-item>
+                                <ff-sortbox-item key="Name.desc">Name (Descending)</ff-sortbox-item>
+                                <ff-sortbox-item key="Price.asc">Price (Ascending)</ff-sortbox-item>
+                                <ff-sortbox-item key="Price.desc">Price (Descending)</ff-sortbox-item>
+                            </ff-sortbox>
                         </div>
-                        <div class="col-12 col-lg-6 search-result-header__sortbox ">
-                            <div class="row">
-                                <span class="col-12 col-lg-4 sortbox__caption">Sort by</span>
-                                <div class="col-12 col-lg-8 sortbox__wrapper">
-                                    <ff-sortbox class="sortbox" collapse-onblur="true" unresolved>
-                                        <ff-sortbox-item key="null.desc">Relevance</ff-sortbox-item>
-                                        <ff-sortbox-item key="Name.asc">Name (Ascending)></ff-sortbox-item>
-                                        <ff-sortbox-item key="Name.desc">Name (Descending)></ff-sortbox-item>
-                                        <ff-sortbox-item key="Price.asc">Price (Ascending)></ff-sortbox-item>
-                                        <ff-sortbox-item key="Price.desc">Price (Descending)></ff-sortbox-item>
-                                    </ff-sortbox>
+                        <button class=" d-lg-none col-12 btn btn-primary search-result-header__filter-button"
+                                type="button" data-toggle="collapse" data-target="#asn" aria-expanded="false"
+                                aria-controls="collapseExample">
+                            <span class="filter-button-show">Show filters</span>
+                            <span class="filter-button-hide">Hide filters</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="row search-result">
+                <div class="col-lg-4 col-12 collapse show search-result__filters" id="asn">
+                    <ff-asn unresolved class="asn">
+                        <ff-asn-remove-all-filter>[X] Remove all Filter</ff-asn-remove-all-filter>
+                        <ff-asn-group for-group="all" class="group">
+                            <ff-asn-group-element class="ff-asn-group">
+                                <div slot="selected">
+                                    <p class="selected indent">
+                                        <span class="checkbox"></span> {{element.name}}&nbsp;{{group.unit}}
+                                    </p>
+                                </div>
+
+                                <div slot="unselected" class="ff-asn-group">
+                                    <p class="indent"><span class="checkbox"></span> {{element.name}}&nbsp;{{group.unit}}
+                                        <span class="count">({{element.recordCount}})</span>
+                                    </p>
+                                </div>
+                            </ff-asn-group-element>
+
+                            <div slot="groupCaption" class="groupCaption">
+                                <h3>{{group.name}}</h3>
+                            </div>
+
+                            <div opened data-container="detailedLinks">
+                                <div data-content="detailedLinks"></div>
+                            </div>
+
+                            <div data-container="hiddenLinks">
+                                <div data-content="hiddenLinks"></div>
+                            </div>
+                        </ff-asn-group>
+                        <ff-asn-group-slider class="group">
+                            <div slot="groupCaption" class="groupCaption">
+                                <h3>{{group.name}}</h3>
+                            </div>
+                            <ff-slider-control>
+                                <input data-control="1" type="text">
+                                <input data-control="2" type="text">
+
+                                <ff-slider>
+                                    <div slot="slider1" class="sliderBtn">&nbsp;</div>
+                                    <div slot="slider2" class="sliderBtn">&nbsp;</div>
+                                </ff-slider>
+
+                                <div data-container="removeFilter" class="slider-remove-filter" id="removeFilter">
+                                    [x] Remove Filter
+                                </div>
+                            </ff-slider-control>
+                        </ff-asn-group-slider>
+                        <ff-asn-group for-group="Color" class="group">
+                            <ff-asn-group-element class="ff-asn-group">
+                                <div slot="selected">
+                                    <p class="selected indent">
+                                        <span class="circle" style="background-color:{{element.previewImageURL}} !important"></span>
+                                        {{element.name}}&nbsp;{{group.unit}}
+                                    </p>
+                                </div>
+
+                                <div slot="unselected" class="ff-asn-group">
+                                    <p class="indent">
+                                        <span class="circle" style="background-color:{{element.previewImageURL}} !important"></span>
+                                        {{element.name}}&nbsp;{{group.unit}}
+                                    </p>
+                                </div>
+                            </ff-asn-group-element>
+
+                            <div slot="groupCaption" class="groupCaption">
+                                <h3>{{group.name}}</h3>
+                            </div>
+
+                            <div opened data-container="detailedLinks">
+                                <div data-content="detailedLinks"></div>
+                            </div>
+                        </ff-asn-group>
+                        <ff-asn-group filter-style="DEFAULT" class="group">
+                            <ff-asn-group-element class="ff-asn-group">
+                                <div slot="selected">
+                                    <p class="selected indent"><span class="circle">
+                                        </span> {{element.name}}&nbsp;{{group.unit}}
+                                    </p>
+                                </div>
+
+                                <div slot="unselected" class="ff-asn-group">
+                                    <p class="indent"><span class="circle"></span> {{element.name}}&nbsp;{{group.unit}}
+                                        <span class="count">({{element.recordCount}})</span>
+                                    </p>
+                                </div>
+                            </ff-asn-group-element>
+
+                            <div slot="groupCaption" class="groupCaption">
+                                <h3>{{group.name}}</h3>
+                            </div>
+
+                            <div opened data-container="detailedLinks">
+                                <div data-content="detailedLinks"></div>
+                            </div>
+                            <div data-container="hiddenLinks">
+                                <div data-content="hiddenLinks"></div>
+                            </div>
+                        </ff-asn-group>
+                        <ff-asn-group opened filter-style="TREE" class="group" collapsible="false">
+                            <ff-asn-group-element class="ff-asn-group">
+                                <div slot="selected">
+                                    <p class="selected">{{element.name}}&nbsp;{{group.unit}}</p>
+                                </div>
+                                <div slot="unselected" class="ff-asn-group">
+                                    <p>{{element.name}}&nbsp;{{group.unit}} <span class="count">({{element.recordCount}})</span>
+                                    </p>
+                                </div>
+                            </ff-asn-group-element>
+
+                            <div slot="groupCaption" class="groupCaption">
+                                <h3>{{group.name}}</h3>
+                            </div>
+
+                            <div opened data-container="detailedLinks">
+                                <div data-content="detailedLinks"></div>
+                            </div>
+
+                            <div data-container="hiddenLinks">
+                                <div data-content="hiddenLinks"></div>
+                            </div>
+                        </ff-asn-group>
+                    </ff-asn>
+                </div>
+                <div class="col-lg-8 col-12 search-result__products">
+                    <ff-record-list unresolved>
+                        <ff-record class="product__wrapper col-12 col-sm-6 col-lg-4">
+                            <div class="product__tile">
+                                <div class="product__image-wrapper">
+                                    <img class="product__image"
+                                         src="public/assets/recommended-products/backpack.jpg"
+                                         alt="backpack"/>
+                                    <div class="product__links">
+                                        <a href="#" class="product-add-to-wishlist"></a>
+                                    </div>
+                                </div>
+
+                                <div class="product__info">
+                                    <h3 class="product__name">{{record.Title}}</h3>
+                                    <div class="product__desc">{{record.Manufacturer}}</div>
+                                    <div class="product__price">{{record.Price}}</div>
+                                    <div class="product__add-to-cart">
+                                        <a href="#" class="btn btn-primary btn-block">In den Warenkorb</a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                <div class="row search-result">
-                    <div class="col-4">
-                        <ff-asn unresolved class="asn">
-                            <ff-asn-remove-all-filter>[X] Remove all Filter</ff-asn-remove-all-filter>
-
-                            <ff-asn-group for-group="all" class="group" opened>
-                                <ff-asn-group-element class="ff-asn-group">
-                                    <div slot="selected">
-                                        <p class="selected indent"><span class="checkbox"></span> {{element.name}}&nbsp;{{group.unit}}
-                                        </p>
-                                    </div>
-
-                                    <div slot="unselected" class="ff-asn-group">
-                                        <p class="indent"><span class="checkbox"></span> {{element.name}}&nbsp;{{group.unit}}<span
-                                                class="count">{{element.recordCount}}</span></p>
-                                    </div>
-                                </ff-asn-group-element>
-
-                                <div slot="groupCaption" class="groupCaption">
-                                    <h3>{{group.name}}</h3>
-                                </div>
-
-                                <div opened data-container="detailedLinks">
-                                    <div data-content="detailedLinks"></div>
-                                </div>
-
-                                <div data-container="hiddenLinks">
-                                    <div data-content="hiddenLinks"></div>
-                                </div>
-                            </ff-asn-group>
-                            <ff-asn-group-slider class="group" opened>
-                                <div slot="groupCaption" class="groupCaption">
-                                    <h3>{{group.name}}</h3>
-                                </div>
-                                <ff-slider-control>
-                                    <input data-control="1" type="text">
-                                    <input data-control="2" type="text">
-
-                                    <ff-slider>
-                                        <div slot="slider1" class="sliderBtn">&nbsp;</div>
-                                        <div slot="slider2" class="sliderBtn">&nbsp;</div>
-                                    </ff-slider>
-
-                                    <div data-container="removeFilter" id="removeFilter"
-                                         style="margin-top: 12px;font-size: 12px;cursor: pointer;">
-                                        [x] Remove Filter
-                                    </div>
-                                </ff-slider-control>
-                            </ff-asn-group-slider>
-                            <ff-asn-group for-group="Color" class="group" opened>
-                                <ff-asn-group-element class="ff-asn-group" style="width: 40%;padding-left: 2%">
-                                    <div slot="selected">
-                                        <p class="selected indent"><span class="circle"
-                                                                         style="background-color: {{element.previewImageURL}} !important"></span>
-                                            {{element.name}}&nbsp;{{group.unit}}
-                                        </p>
-                                    </div>
-
-                                    <div slot="unselected" class="ff-asn-group">
-                                        <p class="indent"><span class="circle"
-                                                                style="background-color: {{element.previewImageURL}} !important"></span>
-                                            {{element.name}}&nbsp;{{group.unit}}
-                                        </p>
-                                    </div>
-                                </ff-asn-group-element>
-
-                                <div slot="groupCaption" class="groupCaption">
-                                    <h3>{{group.name}}</h3>
-                                </div>
-
-                                <div opened data-container="detailedLinks">
-                                    <div data-content="detailedLinks" style="display: flex;flex-wrap: wrap"></div>
-                                </div>
-                            </ff-asn-group>
-                            <ff-asn-group filter-style="DEFAULT" class="group" opened>
-                                <ff-asn-group-element class="ff-asn-group">
-                                    <div slot="selected">
-                                        <p class="selected indent"><span class="circle"></span> {{element.name}}&nbsp;{{group.unit}}
-                                        </p>
-                                    </div>
-
-                                    <div slot="unselected" class="ff-asn-group">
-                                        <p class="indent"><span class="circle"></span> {{element.name}}&nbsp;{{group.unit}}
-                                            <span class="count">{{element.recordCount}}</span>
-                                        </p>
-                                    </div>
-                                </ff-asn-group-element>
-
-                                <div slot="groupCaption" class="groupCaption">
-                                    <h3>{{group.name}}</h3>
-                                </div>
-
-                                <div opened data-container="detailedLinks">
-                                    <div data-content="detailedLinks"></div>
-                                </div>
-                                <div data-container="hiddenLinks">
-                                    <div data-content="hiddenLinks"></div>
-                                </div>
-                            </ff-asn-group>
-                            <ff-asn-group opened filter-style="TREE" class="group" collapsible="false">
-                                <ff-asn-group-element class="ff-asn-group">
-                                    <div slot="selected">
-                                        <p class="selected" style="color: #0b97c4 !important;">- {{element.name}}&nbsp;{{group.unit}}</p>
-                                    </div>
-
-                                    <div slot="unselected" class="ff-asn-group">
-                                        <p>+ {{element.name}}&nbsp;{{group.unit}} <span class="count">{{element.recordCount}}</span>
-                                        </p>
-                                    </div>
-                                </ff-asn-group-element>
-
-                                <div slot="groupCaption" class="groupCaption">
-                                    <h3>{{group.name}}</h3>
-                                </div>
-
-                                <div opened data-container="detailedLinks">
-                                    <div data-content="detailedLinks"></div>
-                                </div>
-
-                                <div data-container="hiddenLinks">
-                                    <div data-content="hiddenLinks"></div>
-                                </div>
-                            </ff-asn-group>
-                        </ff-asn>
-                    </div>
-                    <div class="col-8">
-                        <div id="rightColumn">
-                            <div id="tagCloudContainer"></div>
-                            <ff-record-list unresolved>
-                                <!-- tile here -->
-                                <ff-record class="product__wrapper col-12 col-sm-6 col-lg-4">
-                                    <div class="product__tile">
-                                        <div class="product__image-wrapper">
-                                            <img class="product__image" src="public/assets/recommended-products/backpack.jpg"
-                                                 alt="backpack"/>
-                                            <div class="product__links">
-                                                <a href="#" class="product-add-to-wishlist"></a>
-                                            </div>
-                                        </div>
-
-                                        <div class="product__info">
-                                            <h3 class="product__name">{{record.Title}}</h3>
-                                            <div class="product__desc">{{record.Manufacturer}}</div>
-                                            <div class="product__price">{{record.Price}}</div>
-                                            <div class="product__add-to-cart">
-                                                <a href="#" class="btn btn-primary btn-block">In den Warenkorb</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </ff-record>
-                                <!-- tile here -->
-                            </ff-record-list>
-                        </div>
-                    </div>
+                        </ff-record>
+                    </ff-record-list>
                 </div>
             </div>
         </main>

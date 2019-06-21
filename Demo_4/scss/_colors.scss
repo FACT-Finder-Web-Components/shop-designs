@@ -6,7 +6,7 @@ $bg-gray: #f9f9fa;
 $bg-navy: #004587;
 $bg-light-blue: #47bfe9;
 $category-menu-highlight: #a45a95;
-$border-light-gray: #b9b9b9;
+$bg-light-gray: #b9b9b9;
 
 $navbar-dark-toggler-icon-bg: str-replace(url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='#{$navbar-dark-color}' stroke-width='4' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"), "#", "%23") !default;
 

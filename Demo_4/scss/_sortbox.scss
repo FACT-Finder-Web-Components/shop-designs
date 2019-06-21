@@ -1,8 +1,7 @@
 .search-result-header__sortbox {
   color: black;
-  padding-top: 20px;
   text-align: end;
-  @include media-breakpoint-down(sm) {
+  @include media-breakpoint-down(md) {
     text-align: center;
   }
 
@@ -11,7 +10,7 @@
     color: #444;
     width: 100%;
     margin: 0;
-    border: 1px solid $border-light-gray;
+    border: 1px solid $bg-light-gray;
     box-shadow: 0 1px 0 1px rgba(0, 0, 0, .04);
     -moz-appearance: none;
     -webkit-appearance: none;
@@ -33,12 +32,18 @@
       font-size: inherit;
       white-space: nowrap;
       margin: auto;
+      @include media-breakpoint-down(md) {
+        text-align: center;
+      }
     }
 
     &__wrapper {
       text-align: left;
       padding: 0;
       font-size: inherit;
+      @include media-breakpoint-down(md) {
+        padding-bottom: 1em;
+      }
     }
 
     .ffw-selected-container {
@@ -52,12 +57,16 @@
         ff-sortbox-item {
           padding: 0.4em;
           margin: 0;
-          border: 1px solid $border-light-gray;
+          border: 1px solid $bg-light-gray;
           background: #fff;
 
           &:hover {
             color: white;
             background-color: $background-navy;
+          }
+
+          &:not(:last-child) {
+            border-bottom: 0;
           }
         }
       }

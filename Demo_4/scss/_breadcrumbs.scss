@@ -1,12 +1,15 @@
 .search-result-header {
   &__breadcrumbs {
     color: black;
-    padding-top: 20px;
+    font-weight: bolder;
     font-size: calc(1em + 0.01vw);
-    @include media-breakpoint-down(sm) {
+    @include media-breakpoint-down(md) {
       text-align: center;
     }
-    font-weight: bolder;
+  }
+
+  @include media-breakpoint-up(lg) {
+   padding:0 15px;
   }
 
   .product-counter {

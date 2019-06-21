@@ -24,10 +24,12 @@
 
         function changeViewport() {
             if (viewport.is('<=md')) {
-                searchbar.hide();
+                // searchbar.style.display = "none";
+                // searchbar.style.opacity = "0";
                 mobileMenuLabel.hide();
             } else {
-                searchbar.show();
+                searchbar.style.display = "";
+                searchbar.style.opacity = "1";
             }
         }
     });
@@ -42,7 +44,7 @@ function showSearchResult() {
 
 function showSection(event, sectionId) {
     event.preventDefault();
-    const sections = ['homePage','searchResult'];
+    const sections = ['homePage', 'searchResult'];
     var section = document.querySelector('#' + sectionId);
     section.style.display = "";
     section.style.opacity = "1";

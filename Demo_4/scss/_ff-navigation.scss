@@ -14,7 +14,7 @@ ff-navigation {
             border-bottom: 2px solid lightgray;
           }
           .nav-link {
-            font-size: 26px;
+            font-size: 1.4em;
             color: black;
           }
         }
@@ -53,17 +53,17 @@ ff-navigation {
       &[cluster-level="1"] {
         padding-left: 15px;
         color: gray;
-        font-size:20px;
+        font-size:1.1em;
       }
 
       &[cluster-level="2"] {
         padding-left: 30px;
-        font-size:18px;
+        font-size:1em;
       }
 
       &[cluster-level="3"] {
         padding-left: 45px;
-        font-size:16px;
+        font-size:.9em;
       }
 
       &:not([cluster-level="0"]) {
