@@ -15,3 +15,15 @@
     }
   }
 }
+
+.search-result__campaign {
+  padding-top: 20px;
+
+  & > a {
+    display: block;
+  }
+}
+
+ff-campaign-feedbacktext {
+  width: 100%;
+}
