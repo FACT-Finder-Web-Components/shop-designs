@@ -24,18 +24,14 @@
 
         function changeViewport() {
             if (viewport.is('<=md')) {
-                // searchbar.style.display = "none";
-                // searchbar.style.opacity = "0";
+                searchbar.hide();
                 mobileMenuLabel.hide();
             } else {
-                searchbar.style.display = "";
-                searchbar.style.opacity = "1";
+                searchbar.show();
             }
         }
-
         $('#product-color, #product-size').togglebutton();
     });
-
 })(jQuery, ResponsiveBootstrapToolkit);
 
 function showSearchResult() {
