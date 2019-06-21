@@ -28,6 +28,7 @@
 
     <div class="svgsprite-inline">
         <svg xmlns="http://www.w3.org/2000/svg">
+            <path id="icon-done" d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"></path>
             <path id="icon-heart" d="M1356.99,42.024c-3.36-7.975-12.93-6.114-12.99,3.142-0.04,5.084,4.55,6.984,7.61,9.017,2.96,1.971,5.07,4.667,5.4,5.815,0.29-1.125,2.64-3.9,5.38-5.87,3-2.157,7.65-3.933,7.61-9.017C1369.94,35.831,1360.2,34.367,1356.99,42.024Z" transform="translate(-1344 -36.969)"/>
             <path id="icon-star" d="M505.222,456.49l1.869,3.853a0.868,0.868,0,0,0,.654.483l4.18,0.618a0.888,0.888,0,0,1,.482,1.507l-3.025,3a0.9,0.9,0,0,0-.25.783l0.714,4.234a0.872,0.872,0,0,1-1.261.932l-3.738-2a0.853,0.853,0,0,0-.809,0l-3.739,2a0.872,0.872,0,0,1-1.26-.932l0.714-4.234a0.9,0.9,0,0,0-.25-0.783l-3.025-3a0.887,0.887,0,0,1,.482-1.507l4.18-.618a0.87,0.87,0,0,0,.654-0.483l1.869-3.853A0.863,0.863,0,0,1,505.222,456.49Z" transform="translate(-496.219 -456.031)"/>
         </svg>
@@ -216,11 +217,11 @@
                                 <h1 class="product__name">EVOC - Line 28 - Skitourenrucksack</h1>
 
                                 <div class="product__rating order-md-first" data-rating="4">
-                                    <svg class="rating-star" width="20px" height="20px" viewBox="0 0 16.469 15.969"><use xlink:href="#icon-star"></use><use xlink:href="#icon-star"></use></svg>
-                                    <svg class="rating-star" width="20px" height="20px" viewBox="0 0 16.469 15.969"><use xlink:href="#icon-star"></use><use xlink:href="#icon-star"></use></svg>
-                                    <svg class="rating-star" width="20px" height="20px" viewBox="0 0 16.469 15.969"><use xlink:href="#icon-star"></use><use xlink:href="#icon-star"></use></svg>
-                                    <svg class="rating-star" width="20px" height="20px" viewBox="0 0 16.469 15.969"><use xlink:href="#icon-star"></use><use xlink:href="#icon-star"></use></svg>
-                                    <svg class="rating-star" width="20px" height="20px" viewBox="0 0 16.469 15.969"><use xlink:href="#icon-star"></use><use xlink:href="#icon-star"></use></svg>
+                                    <svg class="rating-star" width="20px" height="20px" viewBox="0 0 16.469 15.969"><use xlink:href="#icon-star"></use></svg>
+                                    <svg class="rating-star" width="20px" height="20px" viewBox="0 0 16.469 15.969"><use xlink:href="#icon-star"></use></svg>
+                                    <svg class="rating-star" width="20px" height="20px" viewBox="0 0 16.469 15.969"><use xlink:href="#icon-star"></use></svg>
+                                    <svg class="rating-star" width="20px" height="20px" viewBox="0 0 16.469 15.969"><use xlink:href="#icon-star"></use></svg>
+                                    <svg class="rating-star" width="20px" height="20px" viewBox="0 0 16.469 15.969"><use xlink:href="#icon-star"></use></svg>
                                     <span class="rating-reviews">57 Reviews</span>
                                 </div>
 
@@ -275,10 +276,59 @@
                                 </div>
 
                                 <div class="product__addtocart btn-group">
-                                    <button class="btn btn-primary">In den Warenkorb</button>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#cartModal">In den Warenkorb</button>
                                     <button class="btn btn-primary btn-wishlist">
                                         <svg width="32px" height="32px" viewBox="0 0 26 23.031"><use xlink:href="#icon-heart"></use></svg>
                                     </button>
+
+                                    <div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="cartModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg shadow" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <svg class="done" width="24px" height="24px" viewBox="0 0 24 24"><use xlink:href="#icon-done"></use></svg>
+                                                    <h5 class="modal-title h6" id="cartModalLabel">Dein Artikel wurde dem Warenkorb hinzugefügt</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body container-fluid">
+                                                    <div class="row">
+                                                        <div class="col-lg-4 item-image">
+                                                            <div class="product-image">
+                                                                <img src="public/assets/recommended-products/backpack.jpg" alt="EVOC - Line 28 - Skitourenrucksack" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6 item-details">
+                                                            <h1 class="product__name">EVOC - Line 28 - Skitourenrucksack</h1>
+
+                                                            <div class="product__price">
+                                                                <div class="price-box">
+                                                                    <span class="regular-price">
+                                                                        <span class="price">€ 219,95</span>
+                                                                    </span>
+                                                                    <span class="vat-hint">inkl. MwSt.</span>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="btn-group">
+                                                                <button type="button" class="btn btn-secondary">Weiter einkaufen</button>
+                                                                <button type="button" class="btn btn-success">Zur Kasse</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <div class="modal-banner">
+                                                        <img src="public/assets/zelten.png" alt="Zelten" />
+                                                        <div class="banner-body">
+                                                            <div>Zelte für den Outdoor-Einsatz</div>
+                                                            <a href="#" class="banner-cta">Jetzt entdecken</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </section>
                             <section class="col-md-6 product__gallery">
@@ -428,5 +478,4 @@
             </div>
         </footer>
     </div>
-</body>
 </html>
