@@ -11,6 +11,7 @@
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="public/js/responsive-toolkit.js"></script>
+    <script src="public/js/select-togglebutton.js"></script>
     <script src="public/js/custom.js"></script>
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans&amp;display=swap"/>
@@ -27,6 +28,14 @@
                     }
                 });
             });
+
+            factfinder.communication.FFCommunicationEventAggregator.addBeforeDispatchingCallback(function (event) {
+                if ((event.type === 'search' || event.type === 'navigation-search')) {
+                    showSection(event, 'searchResult');
+                    document.querySelector('#asn').classList.remove('collapse');
+                    document.querySelector('#categoriesNavigation').classList.remove('show');
+                }
+            });
         });
 
     </script>
@@ -37,7 +46,8 @@
                   currency-country-code="de-DE"
                   search-immediate
                   currency-max-digits="5"
-                  currency-min-digits="1">></ff-communication>
+                  currency-min-digits="1">>
+</ff-communication>
 
 <div class="page__wrapper">
     <nav id="header" class="d-block navbar navbar-dark px-0 py-0">
@@ -129,7 +139,9 @@
                                     <div class="row">
                                         <div class="col-4"></div>
                                         <div class="col-8 ">
-                                            <a href="#" class="btn btn-primary btn-block all-results">
+                                            <a href="#" id="suggestAllResult"
+                                               class="btn btn-primary btn-block all-results"
+                                               onclick="showSection(event,'searchResult')">
                                                 <span>See all results...</span>
                                             </a>
                                         </div>
@@ -198,8 +210,10 @@
         <div class="categories-menu__wrapper">
             <div class="categories-menu d-none d-lg-block">
                 <ff-header-navigation group-count="6">
-                    <div slot="Outdoor jackets"><a href="http://www.myshop.de"> >> See all...</a></div>
-                    <div slot="Outdoor pants"><a href="http://www.myshop.de"> >> See all...</a></div>
+                    <div slot="Outdoor jackets"><a
+                            href="?query=jackets&channel=bergfreunde-co-uk&sid=KXIou2xysC36as9Ybjy96w0zT3V3Lj"> >> See
+                        all...</a></div>
+                    <div slot="Outdoor pants"><a href="{{}}"> >> See all...</a></div>
                     <div slot="Long and short sleeve shirts"><a href="http://www.myshop.de"> >> See all...</a></div>
                     <div slot="Functional underwear"><a href="http://www.myshop.de"> >> See all...</a></div>
                     <div slot="Sweaters & hoodies"><a href="http://www.myshop.de"> >> See all...</a></div>
@@ -618,14 +632,16 @@
                             <ff-asn-group-element class="ff-asn-group">
                                 <div slot="selected">
                                     <p class="selected indent">
-                                        <span class="circle" style="background-color:{{element.previewImageURL}} !important"></span>
+                                        <span class="circle"
+                                              style="background-color:{{element.previewImageURL}} !important"></span>
                                         {{element.name}}&nbsp;{{group.unit}}
                                     </p>
                                 </div>
 
                                 <div slot="unselected" class="ff-asn-group">
                                     <p class="indent">
-                                        <span class="circle" style="background-color:{{element.previewImageURL}} !important"></span>
+                                        <span class="circle"
+                                              style="background-color:{{element.previewImageURL}} !important"></span>
                                         {{element.name}}&nbsp;{{group.unit}}
                                     </p>
                                 </div>

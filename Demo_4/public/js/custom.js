@@ -30,18 +30,16 @@
                 searchbar.show();
             }
         }
+
         $('#product-color, #product-size').togglebutton();
     });
 })(jQuery, ResponsiveBootstrapToolkit);
 
-function showSearchResult() {
-    var main = document.querySelector("#searchResult");
-    main.style.display = "";
-    main.style.opacity = "1";
-}
 
 function showSection(event, sectionId) {
-    event.preventDefault();
+    if (event.preventDefault !== undefined) {
+        event.preventDefault();
+    }
     const sections = ['homePage', 'searchResult'];
     var section = document.querySelector('#' + sectionId);
     section.style.display = "";
@@ -51,5 +49,6 @@ function showSection(event, sectionId) {
         if (section !== sectionId) {
             jQuery('#' + section).css('display', 'none');
         }
-    })
+    });
+    window.scrollTo(0, 0);
 }

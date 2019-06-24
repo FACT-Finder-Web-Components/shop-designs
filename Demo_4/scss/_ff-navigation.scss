@@ -1,19 +1,24 @@
 ff-navigation {
   z-index: 99;
   color: black;
+  border-bottom: 1px solid black;
 
   .ffw-menu-items {
     z-index: 99;
     background: white;
+    height: 525px;
+    overflow: auto;
+
     ff-navigation-item {
       white-space: nowrap;
 
       &[cluster-level="0"] {
-        .ffw-item-caption {
-          .level-top {
-            border-bottom: 2px solid lightgray;
-          }
-          .nav-link {
+        border-bottom: 2px solid $bg-light-gray;
+
+        & .ffw-item-caption {
+          margin: auto 0;
+
+          & .nav-link {
             font-size: 1.4em;
             color: black;
           }
@@ -21,16 +26,14 @@ ff-navigation {
 
         &[has-subelements] {
           &[selected] {
-            li {
-              background-color: #484749;
+            & li {
+              background-color: $text-primary;
 
-              .nav-link {
+              & .nav-link {
                 padding-left: 20px;
                 color: white;
 
                 &:before {
-                  float: right !important;
-                  font-family: FontAwesome;
                   content: "\f068";
                   padding-right: 15px;
                   color: white;
@@ -39,9 +42,9 @@ ff-navigation {
             }
           }
 
-          .nav-link {
+          & .nav-link {
             &:before {
-              float: right !important;
+              float: right;
               font-family: FontAwesome;
               content: "\f067";
               padding-right: 15px;
@@ -53,36 +56,38 @@ ff-navigation {
       &[cluster-level="1"] {
         padding-left: 15px;
         color: gray;
-        font-size:1.1em;
+        font-size: 1.1em;
       }
 
       &[cluster-level="2"] {
         padding-left: 30px;
-        font-size:1em;
+        font-size: 1em;
       }
 
       &[cluster-level="3"] {
         padding-left: 45px;
-        font-size:.9em;
+        font-size: .9em;
       }
 
       &:not([cluster-level="0"]) {
-        .ffw-item-caption {
+        & .ffw-item-caption {
           padding: 15 0px;
         }
+
         &[has-subelements] {
           &[selected] {
-            .ffw-item-caption:before {
-              float: right !important;
+            & .ffw-item-caption:before {
+              float: right;
               font-family: FontAwesome;
               content: "\f068";
               padding-right: 15px;
               color: gray;
             }
           }
+
           &:not([selected]) {
-            .ffw-item-caption:before {
-              float: right !important;
+            & .ffw-item-caption:before {
+              float: right;
               font-family: FontAwesome;
               content: "\f067";
               color: gray;
@@ -92,7 +97,7 @@ ff-navigation {
         }
 
         &:not([has-subelements]) {
-          .ffw-item-caption:before {
+          & .ffw-item-caption:before {
             display: none;
           }
         }

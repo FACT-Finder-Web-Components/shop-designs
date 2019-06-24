@@ -109,7 +109,6 @@ ff-asn-group-element {
 
   & .count {
     transition: all 0.2s;
-    color: rgba(0, 0, 0, 0.35);
     float: right;
     font-size: 1.1em;
     line-height: 1.2em;
@@ -137,11 +136,6 @@ ff-asn-group-element {
 
     & .checkbox {
       background-color: $bg-light-blue;
-    }
-
-    & .count {
-      background-color: #375765;
-      color: #fff;
     }
   }
 
