@@ -210,10 +210,9 @@
         <div class="categories-menu__wrapper">
             <div class="categories-menu d-none d-lg-block">
                 <ff-header-navigation group-count="6">
-                    <div slot="Outdoor jackets"><a
-                            href="?query=jackets&channel=bergfreunde-co-uk&sid=KXIou2xysC36as9Ybjy96w0zT3V3Lj"> >> See
+                    <div slot="Outdoor jackets"><a href="#"> >> See
                         all...</a></div>
-                    <div slot="Outdoor pants"><a href="{{}}"> >> See all...</a></div>
+                    <div slot="Outdoor pants"><a onclick="showSection(event, 'searchResult')"> >> See all...</a></div>
                     <div slot="Long and short sleeve shirts"><a href="http://www.myshop.de"> >> See all...</a></div>
                     <div slot="Functional underwear"><a href="http://www.myshop.de"> >> See all...</a></div>
                     <div slot="Sweaters & hoodies"><a href="http://www.myshop.de"> >> See all...</a></div>
@@ -707,7 +706,7 @@
                     </ff-asn>
                 </div>
                 <div class="col-lg-8 col-12 search-result__products">
-                    <ff-record-list unresolved>
+                    <ff-record-list infinite-scrolling unresolved>
                         <ff-record class="product__wrapper col-12 col-sm-6 col-lg-4">
                             <div class="product__tile">
                                 <div class="product__image-wrapper">

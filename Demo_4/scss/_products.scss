@@ -19,6 +19,15 @@
 
   &__tile {
     border: 1px solid #b9b9b9;
+    cursor:pointer;
+    &:hover {
+      box-shadow: 0 5px 15px $bg-light-gray;
+      transition-timing-function: ease-in;
+      -webkit-transition: opacity 0.3s;
+      transition: opacity 0.3s;
+      transform: translate(0,-5px);
+      border:none;
+    }
   }
 
   &__image-wrapper {
