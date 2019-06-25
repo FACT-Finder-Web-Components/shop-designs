@@ -11,11 +11,19 @@
 
         searchbarIcon.on('click', function () {
             document.querySelector('#categoriesNavigation').classList.remove('show');
-            searchbar.slideToggle(200);
+            searchbar.slideToggle(300);
         });
 
         navMenuIcon.on('click', function () {
             searchbar.hide();
+        });
+
+        jQuery(document).on('click', '.see-all-link', (e) => {
+            showSection(e, 'searchResult')
+        });
+
+        jQuery(document).on('click', '.ff-asn-group', () => {
+            scrollToTop();
         });
 
         $('.service-nav .card').on('click', '.card-header', function (e) {
@@ -54,7 +62,7 @@ const showSection = (event, sectionId) => {
             document.querySelector('#' + section).style.display = "none";
         }
     });
-    window.scrollTo(0, 0);
+    scrollToTop();
 };
 
 const displaySpinner = (result) => {
@@ -66,4 +74,8 @@ const displaySpinner = (result) => {
     } else {
         spinner.style.display = "block";
     }
+};
+
+const scrollToTop = () => {
+    window.scrollTo(0, 0);
 };

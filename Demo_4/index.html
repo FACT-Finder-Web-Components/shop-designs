@@ -210,13 +210,12 @@
         <div class="categories-menu__wrapper">
             <div class="categories-menu d-none d-lg-block">
                 <ff-header-navigation group-count="6">
-                    <div slot="Outdoor jackets"><a href="#"> >> See
-                        all...</a></div>
-                    <div slot="Outdoor pants"><a onclick="showSection(event, 'searchResult')"> >> See all...</a></div>
-                    <div slot="Long and short sleeve shirts"><a href="http://www.myshop.de"> >> See all...</a></div>
-                    <div slot="Functional underwear"><a href="http://www.myshop.de"> >> See all...</a></div>
-                    <div slot="Sweaters & hoodies"><a href="http://www.myshop.de"> >> See all...</a></div>
-                    <div slot="Headwear"><a href="http://www.myshop.de"> >> See all...</a></div>
+                    <div slot="Outdoor jackets"><a class="see-all-link">See all...</a></div>
+                    <div slot="Outdoor pants"><a class="see-all-link">See all...</a></div>
+                    <div slot="Long and short sleeve shirts"><a class="see-all-link">See all...</a></div>
+                    <div slot="Functional underwear"><a class="see-all-link">See all...</a></div>
+                    <div slot="Sweaters & hoodies"><a class="see-all-link">See all...</a></div>
+                    <div slot="Headwear"><a class="see-all-link">See all...</a></div>
                 </ff-header-navigation>
             </div>
         </div>
@@ -302,7 +301,7 @@
                                 <div class="product__desc">Line R.A.S.20</div>
                                 <div class="product__price">€219,95</div>
                                 <div class="product__add-to-cart">
-                                    <a href="#" class="btn btn-primary btn-block">In den Warenkorb</a>
+                                    <button data-toggle="modal" data-target="#cartModal" class="btn btn-primary btn-block">In den Warenkorb</button>
                                 </div>
                             </div>
                         </div>
@@ -333,7 +332,7 @@
                                 <div class="product__desc">South Canyon Lined</div>
                                 <div class="product__price">€169,96</div>
                                 <div class="product__add-to-cart">
-                                    <a href="#" class="btn btn-primary btn-block">In den Warenkorb</a>
+                                    <button data-toggle="modal" data-target="#cartModal"class="btn btn-primary btn-block">In den Warenkorb</button>
                                 </div>
                             </div>
                         </div>
@@ -361,7 +360,7 @@
                                 <div class="product__desc">Smart Merino - Merinounte</div>
                                 <div class="product__price">€219,95</div>
                                 <div class="product__add-to-cart">
-                                    <a href="#" class="btn btn-primary btn-block">In den Warenkorb</a>
+                                    <button data-toggle="modal" data-target="#cartModal" class="btn btn-primary btn-block">In den Warenkorb</button>
                                 </div>
                             </div>
                         </div>
@@ -389,7 +388,7 @@
                                 <div class="product__desc">Lace 2</div>
                                 <div class="product__price">€189,99</div>
                                 <div class="product__add-to-cart">
-                                    <a href="#" class="btn btn-primary btn-block">In den Warenkorb</a>
+                                    <button data-toggle="modal" data-target="#cartModal" class="btn btn-primary btn-block">In den Warenkorb</button>
                                 </div>
                             </div>
                         </div>
@@ -700,7 +699,7 @@
                     </ff-asn>
                 </div>
                 <div class="col-lg-9 col-12 search-result__products">
-                    <ff-record-list infinite-scrolling unresolved>
+                    <ff-record-list infinite-scrolling unresolved infinite-debounce-delay="500">
                         <ff-record class="product__wrapper col-12 col-sm-6 col-lg-4">
                             <div class="product__tile">
                                 <div class="product__image-wrapper">
@@ -708,7 +707,7 @@
                                          src="public/assets/recommended-products/backpack.jpg"
                                          alt="backpack"/>
                                     <div class="product__links">
-                                        <a href="#" class="product-add-to-wishlist"></a>
+                                        <a href="#" class="product-add-to-wishlist" ></a href="#">
                                     </div>
                                 </div>
 
@@ -717,7 +716,7 @@
                                     <div class="product__desc">{{record.Manufacturer}}</div>
                                     <div class="product__price">{{record.Price}}</div>
                                     <div class="product__add-to-cart">
-                                        <a href="#" class="btn btn-primary btn-block">In den Warenkorb</a>
+                                        <button data-toggle="modal" data-target="#cartModal" class="btn btn-primary btn-block">In den Warenkorb</button>
                                     </div>
                                 </div>
                             </div>
@@ -731,6 +730,54 @@
                 </div>
             </div>
         </main>
+        <div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="cartModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg shadow" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <svg class="done" width="24px" height="24px" viewBox="0 0 24 24"><use xlink:href="#icon-done"></use></svg>
+                        <h5 class="modal-title h6" id="cartModalLabel">Dein Artikel wurde dem Warenkorb hinzugefügt</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body container-fluid">
+                        <div class="row">
+                            <div class="col-lg-4 item-image">
+                                <div class="product-image">
+                                    <img src="public/assets/recommended-products/backpack.jpg" alt="EVOC - Line 28 - Skitourenrucksack" />
+                                </div>
+                            </div>
+                            <div class="col-lg-6 item-details">
+                                <h1 class="product__name">EVOC - Line 28 - Skitourenrucksack</h1>
+
+                                <div class="product__price">
+                                    <div class="price-box">
+                                                                    <span class="regular-price">
+                                                                        <span class="price">€ 219,95</span>
+                                                                    </span>
+                                        <span class="vat-hint">inkl. MwSt.</span>
+                                    </div>
+                                </div>
+
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-secondary">Weiter einkaufen</button>
+                                    <button type="button" class="btn btn-success">Zur Kasse</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="modal-banner">
+                            <img src="public/assets/zelten.png" alt="Zelten" />
+                            <div class="banner-body">
+                                <div>Zelte für den Outdoor-Einsatz</div>
+                                <a href="#" class="banner-cta">Jetzt entdecken</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <footer class="page-footer">

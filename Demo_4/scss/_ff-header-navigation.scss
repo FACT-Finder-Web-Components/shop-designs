@@ -84,6 +84,15 @@ ff-header-navigation {
                 font-weight: bolder;
               }
             }
+            .see-all-link {
+              cursor: pointer;
+              &::before {
+                content: '>> ';
+              }
+              &:hover {
+                color:$bg-navy;
+              }
+            }
           }
         }
       }
