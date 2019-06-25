@@ -1,7 +1,6 @@
 .search-result-header {
   &__breadcrumbs {
-    color: black;
-    font-weight: bolder;
+    font-weight: $font-weight-bold;
     font-size: calc(1em + 0.01vw);
     @include media-breakpoint-down(md) {
       text-align: center;

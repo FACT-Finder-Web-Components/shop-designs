@@ -1,267 +1,190 @@
 ff-asn {
   border: 1px solid $bg-light-gray;
-  cursor: pointer;
+  padding: .625rem .625rem 0;
 
-  & ff-asn-remove-all-filter {
-    width: 100%;
-    padding: 1em;
+  &-remove-all-filter {
+    display: block;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    font-size: .8125rem;
+    @include transition(all .3s ease);
+
+    &:hover {
+      padding-left: .5em;
+    }
+  }
+
+  &-group, &-group-slider {
+    min-width: auto;
+    max-width: none;
+    margin-bottom: .625rem;
+    opacity: 1;
+  }
+
+  .ffw-wrapper {
+    padding: 0 1em;
+    font-size: .8125rem;
+  }
+
+  .groupCaption {
+    background: $bg-gray;
+    padding: 1rem 2.5rem 1rem 1rem;
     text-transform: uppercase;
     cursor: pointer;
-    @include transition(all .3s ease);
-    &:hover {
-      padding-left: 1.5em;
-    }
-  }
 
-  & ff-asn-group,
-  & ff-asn-group-slider {
-    max-width: 100%;
-    width: 100%;
-    box-shadow: none;
+    h3 {
+      position: relative;
+      margin: 0;
+      font-size: 1rem;
+      line-height: 1.25rem;
 
-    & [data-container="groupCaption"] {
-      padding: 10px;
-    }
+      &::after {
+        position: absolute;
+        width: 1.25rem;
+        height: 1.25rem;
+        background: url("../assets/icons/black/caret-right.svg");
+        background-size: cover;
+        content: " ";
+        right: -1.5rem;
 
-    & .ffw-wrapper {
-      @include transition(all .3s ease);
-      padding-left: 1em;
-    }
-
-    & .groupCaption {
-      opacity: 1;
-      padding: 1em;
-      background: $bg-gray;
-      color: black;
-      width: 100%;
-
-
-      & h3 {
-        cursor: pointer;
-        font-size: 1.1rem;
-        text-transform: uppercase;
-        color: rgba(0, 0, 0, 0.45);
-        margin: auto;
-
-        &::after {
-          position: absolute;
-          width: 20px;
-          height: 20px;
-          background: url("../assets/icons/black/caret-left.svg");
-          background-size: 25px;
-          content: " ";
-          right: 35px;
+        @at-root #{selector_replace(&, 'ff-asn', '[opened]')} {
+          transform: rotate(90deg);
         }
       }
-    }
 
-    &:not([opened]) {
-      .groupCaption {
+      &, &::after {
         @include transition(all .3s ease);
-        &:hover {
-          padding-left: 1.5em;
-        }
-        h3::after {
-          background: url("../assets/icons/black/caret-right.svg");
-          background-size: 25px;
-        }
       }
     }
-    &[for-group="Category"] .groupCaption {
+
+    @at-root #{selector_replace(&, "ff-asn", '[for-group="Category"]')} {
       background: $background-navy;
+      color: $white;
 
-      & h3 {
-        color: white;
+      h3::after {
+        content: none;
+      }
+    }
+  }
 
-        &::after {
-          background: none;
+  &-group-element {
+    @include transition(all .3s ease);
+    cursor: pointer;
+
+    &:hover {
+      padding-left: .5rem;
+      color: darken($text-primary, 50);
+    }
+
+    .checkbox, .circle {
+      display: inline-block;
+      vertical-align: middle;
+      width: 1.5rem;
+      height: 1.5rem;
+      margin-right: 5px;
+      background-color: $bg-light-gray;
+
+      @at-root {
+        #{selector_replace(&, 'ff-asn-group-element', '.selected')},
+        #{selector_replace(&, 'ff-asn-group-element', 'p:hover')} {
+          background: $bg-light-blue;
         }
       }
     }
-  }
-}
 
-ff-asn-group-element {
-  cursor: pointer;
-  @include transition(all .3s ease);
-  font-size: .8rem;
-  line-height: 2em;
-  padding-top: 0.2em;
-  padding-left: 1em;
-  font-weight: 700;
-  margin: 0;
-  width:100%;
-  position: relative;
-  clear: both;
-
-  .ffw-asn-unselected {
-    display: inline-block;
-  }
-
-  & .indent {
-    padding-left: 1.5em;
-    margin-block-start: 0;
-  }
-
-  & .circle {
-    border: 1px solid black;
-    border-radius: 50%;
-    background-color: white;
-    width: 25px;
-    height: 25px;
-    position: absolute;
-    top: 5px;
-    left: 0px;
-    @include transition(all .3s ease);
-  }
-
-  & .count {
-    @include transition(all .3s ease);
-    float: right;
-    font-size: .9em;
-    line-height: 1.2em;
-    padding: 1px 4px;
-    margin-top: 4px;
-  }
-
-  & .checkbox {
-    width: 25px;
-    height: 25px;
-    position: absolute;
-    top: 6px;
-    left: 0px;
-    background-color: $bg-light-gray;
-  }
-
-  & .selected {
-    color: $bg-light-blue;
-    font-weight: $font-weight-bold;
-
-    & .circle {
-      background-color: $bg-light-blue;
+    .circle {
+      background-color: $white;
+      border: 1px solid $black;
+      border-radius: 50%;
+      @include transition(all .3s ease);
     }
 
-    & .checkbox {
-      background-color: $bg-light-blue;
-    }
-  }
-
-  &:hover {
-    padding-left: 1.7em;
-
-    & .count {
-      color: black;
+    .count {
+      float: right;
+      font-size: .625rem;
     }
 
-    & .circle {
-      background-color: $bg-light-blue;
-    }
-
-    & .checkbox {
-      background-color: $bg-light-blue;
-    }
-  }
-
-  &.clusterLevel1 {
-    margin-left: 5px;
-  }
-
-  &.clusterLevel2 {
-    margin-left: 10px;
-  }
-
-  &.clusterLevel3 {
-    margin-left: 15px;
-  }
-
-  &.clusterLevel4 {
-    margin-left: 20px;
-  }
-}
-
-[for-group="Color"] {
-  ff-asn-group-element {
-    &:hover, &[selected="true"] {
-      text-decoration: underline;
-
-      & .circle {
-        top: 2px;
-        width: 30px;
-        height: 30px;
+    @for $i from 1 through 4 {
+      &.clusterLevel#{$i} > div {
+        margin-left: .75rem * $i;
       }
     }
   }
-}
 
-
-ff-asn-group-slider {
-  max-width: 100% !important;
-
-  & .slider-remove-filter {
-    margin-top: 12px;
+  [data-container="showLess"], [data-container="showMore"], [data-container="removeFilter"] {
     cursor: pointer;
+    margin-bottom: .625rem;
   }
 
-  & ff-slider-control {
-    padding: 5px 0 10px;
+  [data-container="detailedLinks"] {
+    padding-top: .625rem;
+  }
 
-    & input {
-      border: 0;
-      background-color: $bg-gray;
-      position: inherit !important;
-      left: 0 !important;
-      text-align: center;
-      width: 65px;
-      line-height: 21px;
+  &-group-slider {
+    max-width: 100% !important;
 
-      &:nth-of-type(2) {
-        right: 0 !important;
-        float: right;
-      }
+    .slider-remove-filter {
+      margin-top: 12px;
+      cursor: pointer;
     }
 
-    & ff-slider {
-      width: 90% !important;
-      border: 1px solid #375765;
-      border-radius: 2.5rem 0 3.5rem 2.5rem;
-      border-top-right-radius: 2.5em;
-      height: 15px;
+    ff-slider-control {
+      padding: 5px 0 10px;
 
-      & .ffw-sliderBar {
-        background-color: $bg-navy;
+      input {
+        border: 0;
+        background-color: $bg-gray;
+        position: inherit !important;
+        left: 0 !important;
+        text-align: center;
+        width: 65px;
+        line-height: 21px;
+
+        &:nth-of-type(2) {
+          right: 0 !important;
+          float: right;
+        }
+      }
+
+      ff-slider {
+        width: 90% !important;
+        border: 1px solid #375765;
         border-radius: 2.5rem 0 3.5rem 2.5rem;
         border-top-right-radius: 2.5em;
+        height: 15px;
 
-        & .sliderBtn {
-          border-radius: 50px;
-          background: repeat-x scroll 50% 50% #f6f6f6;
-          border: 1px solid #7f7f7f;
-          color: #fff;
-          font-weight: $font-weight-bold;
-          outline: medium none;
-          margin-left: -0.5em;
-          height: 18px;
-          position: absolute;
-          width: 1em;
-          z-index: 3;
-          font-size: 1.1em;
-          text-align: left;
-          text-decoration: none;
-          top: -3px;
-          cursor: pointer;
+        .ffw-sliderBar {
+          background-color: $bg-navy;
+          border-radius: 2.5rem 0 3.5rem 2.5rem;
+          border-top-right-radius: 2.5em;
+
+          .sliderBtn {
+            border-radius: 50px;
+            background: repeat-x scroll 50% 50% #f6f6f6;
+            border: 1px solid #7f7f7f;
+            color: #fff;
+            font-weight: $font-weight-bold;
+            outline: medium none;
+            margin-left: -0.5em;
+            height: 18px;
+            position: absolute;
+            width: 1em;
+            z-index: 3;
+            font-size: 1.1em;
+            text-align: left;
+            text-decoration: none;
+            top: -3px;
+            cursor: pointer;
+          }
+        }
+
+        .slider.ff-slider {
+          width: 1.4em;
+          height: 1.4em;
+          border-radius: 5px;
+          border: 1px solid #375765;
         }
       }
-
-      & .slider.ff-slider {
-        width: 1.4em;
-        height: 1.4em;
-        border-radius: 5px;
-        border: 1px solid #375765;
-      }
     }
-  }
-
-  & #ffSliderSection {
-    clear: both;
   }
 }

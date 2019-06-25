@@ -6,9 +6,9 @@
   }
 
   .sortbox {
+    display: block;
     font-size: calc(1em + 0.01vw);
     color: $text-primary;
-    width: 100%;
     margin: 0;
     border: 1px solid $bg-light-gray;
     -moz-appearance: none;
@@ -39,7 +39,6 @@
 
     &__wrapper {
       text-align: left;
-      padding: 0;
       font-size: inherit;
       @include media-breakpoint-down(md) {
         padding-bottom: 1em;

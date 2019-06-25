@@ -1,27 +1,21 @@
 .search-result-header {
   padding-top: 1em;
-  width: 100%;
-  margin: 0;
 
-  &__filter-button {
-    display: block;
+  @at-root {
+    .filter-button-show {
+      display: none;
 
-    &.collapsed {
-      & .filter-button-show {
+      .collapsed & {
         display: block;
       }
+    }
 
-      & .filter-button-hide {
+    .filter-button-hide {
+      display: block;
+
+      .collapsed & {
         display: none;
       }
-    }
-
-    & .filter-button-show {
-      display: none;
-    }
-
-    & .filter-button-hide {
-      display: block;
     }
   }
 }
@@ -30,14 +24,15 @@
   padding-top: 20px;
 
   &__products {
-    @include media-breakpoint-down(md) {
-      padding-top: 1em;
-    }
     padding-left: 0;
     padding-right: 0;
 
+    @include media-breakpoint-down(md) {
+      padding-top: 1em;
+    }
+
     .product {
-      &__info h3{
+      &__info h3 {
         min-height: 60px;
       }
 
@@ -48,7 +43,6 @@
   }
 
   &__filters {
-    padding:0;
     & collapsing {
       position: relative;
       height: 0;

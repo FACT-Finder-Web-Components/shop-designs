@@ -45,7 +45,6 @@
 <ff-communication url="https://search-web-components.fact-finder.de/FACT-Finder-7.2" version="7.2"
                   default-query="jacket" channel="bergfreunde-co-uk" currency-code="EUR"
                   currency-country-code="de-DE"
-                  search-immediate
                   currency-max-digits="5"
                   currency-min-digits="1"></ff-communication>
 
@@ -599,12 +598,12 @@
                         <div class="col-12 col-lg-8 sortbox__wrapper">
                             <ff-sortbox class="sortbox" collapse-onblur="true" unresolved/>
                         </div>
-                        <button class=" d-lg-none col-12 btn btn-primary search-result-header__filter-button"
-                                type="button" data-toggle="collapse" data-target="#asn" aria-expanded="false"
-                                aria-controls="collapseExample">
-                            <span class="filter-button-show">Show filters</span>
-                            <span class="filter-button-hide">Hide filters</span>
-                        </button>
+                        <div class="col-12 d-lg-none search-result-header__filter-button">
+                            <button class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#asn" aria-expanded="false" aria-controls="collapseExample">
+                                <span class="filter-button-show">Show filters</span>
+                                <span class="filter-button-hide">Hide filters</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -799,9 +798,9 @@
 
                                 <div class="product__price">
                                     <div class="price-box">
-                                                                    <span class="regular-price">
-                                                                        <span class="price">€ 219,95</span>
-                                                                    </span>
+                                        <span class="regular-price">
+                                            <span class="price">€ 219,95</span>
+                                        </span>
                                         <span class="vat-hint">inkl. MwSt.</span>
                                     </div>
                                 </div>
