@@ -9,6 +9,33 @@
 
   &__footer {
     background: $bg-gray;
+    padding: 2rem 0;
+
+    &__total {
+      .heading {
+        font-weight: $font-weight-bold;
+        text-transform: uppercase;
+      }
+
+      .price-box {
+        font-weight: $font-weight-bold;
+      }
+
+      .btn {
+        margin: 1rem 2rem 0 0;
+      }
+    }
+
+    &__coupon {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      margin-top: 2rem;
+
+      form {
+        margin: 0;
+      }
+    }
   }
 }
 

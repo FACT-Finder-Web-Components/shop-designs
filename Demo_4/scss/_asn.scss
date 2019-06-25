@@ -135,7 +135,7 @@ ff-asn-group-element {
 
   & .selected {
     color: $bg-light-blue;
-    font-weight: bold;
+    font-weight: $font-weight-bold;
 
     & .circle {
       background-color: $bg-light-blue;

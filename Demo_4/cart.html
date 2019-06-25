@@ -261,7 +261,7 @@
                         <div class="tbl-value">
                             <div class="price-box">
                                 <span class="regular-price">
-                                    <span class="price">€ 219,95</span>
+                                    <span class="price">€ 7.219,95</span>
                                 </span>
                             </div>
                         </div>
@@ -273,11 +273,24 @@
                 </div>
 
                 <div class="cart__footer row">
-                    <div class="col">
-                        <div class="row">
-                            <div class="col-lg-6">Gutscheincode</div>
-                            <div class="col-lg-6">Gesamtsumme</div>
+                    <div class="col-lg-3 order-lg-last offset-lg-3 cart__footer__total">
+                        <h4 class="h6 heading">Gesamtsumme</h4>
+                        <div class="price-box">
+                                <span class="regular-price">
+                                    <span class="price">€ 7.219,95</span>
+                                </span>
+                            <span class="vat-hint">inkl. MwSt.</span>
                         </div>
+                        <button class="btn btn-success btn-block">zur Kasse</button>
+                    </div>
+                    <div class="col-lg-4 offset-lg-1 cart__footer__coupon">
+                        <form class="input-group">
+                            <input type="text" class="form-control" placeholder="Gutscheincode"
+                                   aria-label="Gutscheincode" aria-describedby="btn-coupon-code">
+                            <div class="input-group-append">
+                                <button class="btn btn-secondary" type="button" id="btn-coupon-code">Einlösen</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </main>

@@ -42,10 +42,11 @@
   &__rating {
     margin-bottom: 2rem;
     display: flex;
-    align-items: baseline;
+    align-items: center;
 
     .rating-reviews {
       white-space: nowrap;
+      font-size: .625rem;
     }
 
     .rating-star {
@@ -62,6 +63,14 @@
     @for $i from 1 through 5 {
       &[data-rating="#{$i}"] .rating-star:nth-child(-n + #{$i}) {
         fill: #f7ba66;
+      }
+    }
+
+    @include media-breakpoint-up(lg) {
+      align-items: baseline;
+
+      .rating-reviews {
+        font-size: inherit;
       }
     }
   }
@@ -138,7 +147,7 @@
 
 .attributes .attr {
   &-title {
-    font-weight: bold;
+    font-weight: $font-weight-bold;
     display: inline;
 
     &::after {
