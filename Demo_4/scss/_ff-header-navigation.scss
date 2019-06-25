@@ -81,7 +81,7 @@ ff-header-navigation {
               cursor: pointer;
               &:hover {
                 color:$bg-navy;
-                font-weight: bolder;
+                font-weight: $font-weight-bold;
               }
             }
             .see-all-link {
@@ -91,6 +91,7 @@ ff-header-navigation {
               }
               &:hover {
                 color:$bg-navy;
+                font-weight: $font-weight-bold;
               }
             }
           }

@@ -8,96 +8,113 @@
 
 .header {
   width: 100%;
+  padding: 2rem 0;
+  z-index: 999;
+  margin: auto;
+  @include media-breakpoint-down(md) {
+    padding-bottom: 0;
+  }
 
   &__wrapper {
-    padding: 2rem 0;
-    z-index: 999;
+    padding: 0
+  }
+}
+
+.logo {
+  text-align: center;
+  &__wrapper{
+    padding-bottom: 20px;
+  }
+}
+
+.navigation {
+  height: 100%;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.searchbar {
+  width: 100%;
+  border: 2px solid $bg-light-gray;
+
+  &__wrapper {
     @include media-breakpoint-down(md) {
-      padding-bottom:0;
-    }
-  }
-  .searchbar {
-    width: 100%;
-    border: 2px solid $bg-light-gray;
-
-    &__wrapper {
-      @include media-breakpoint-down(md) {
-        padding-left: 0;
-        padding-right: 0;
-        height: 1vh;
-        order:10;
-      }
-    }
-
-    .form-control {
-      padding-left:20px;
-      height: 50px;
-      border: 0;
-
-      &:focus {
-        outline: none;
-      }
-    }
-
-    .input-group {
-      display: table;
-    }
-
-    .input-group-btn {
-      width: 1%;
-      white-space: nowrap;
-      vertical-align: middle;
-      display: table-cell;
-    }
-  }
-
-  .links__item {
-    float: left;
-    padding-right: 25px;
-    cursor: pointer;
-    @include media-breakpoint-down(md) {
-      &:active {
-        background: rgba(0, 173, 255, 0.54);
-        border: 1px;
-      }
-
-      &:hover {
-        background: rgba(0, 173, 255, 0.54);
-        border: 1px;
-      }
-    }
-  }
-
-  @include media-breakpoint-down(md) {
-    .navigation {
-      background: $bg-navy;
-      height: 100px;
-      padding-left:0;
+      padding-left: 0;
       padding-right: 0;
+      height: 1vh;
+      order: 11;
+    }
+  }
 
-      ul {
-        width: 100%;
-        float: right;
+  .form-control {
+    padding-left: 20px;
+    height: 50px;
+    border: 0;
 
-        .links__item {
-          display: inline-block;
-          width: 25%;
-          height: 100%;
-          text-align: center;
-          padding-top: 1.5em;
-          padding-bottom: 1.5em;
+    &:focus {
+      outline: none;
+    }
+  }
 
-          &:active {
-            background: rgba(0, 173, 255, 0.54);
-            border: 1px;
-          }
+  .input-group {
+    display: table;
+  }
 
-          &:hover {
-            background: rgba(0, 173, 255, 0.54);
-            border: 1px;
-          }
+  .input-group-btn {
+    width: 1%;
+    white-space: nowrap;
+    vertical-align: middle;
+    display: table-cell;
+  }
+}
+
+.links__item {
+  float: left;
+  padding-right: 25px;
+  cursor: pointer;
+  @include media-breakpoint-down(md) {
+    &:active {
+      background: rgba(0, 173, 255, 0.54);
+      border: 1px;
+    }
+
+    &:hover {
+      background: rgba(0, 173, 255, 0.54);
+      border: 1px;
+    }
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .navigation__wrapper {
+    background: $bg-navy;
+    height: 100px;
+    padding-left: 0;
+    padding-right: 0;
+
+    ul {
+      width: 100%;
+      float: right;
+
+      .links__item {
+        display: inline-block;
+        width: 25%;
+        height: 100%;
+        text-align: center;
+        padding-top: 1.5em;
+        padding-bottom: 1.5em;
+
+        &:active {
+          background: rgba(0, 173, 255, 0.54);
+          border: 1px;
+        }
+
+        &:hover {
+          background: rgba(0, 173, 255, 0.54);
+          border: 1px;
         }
       }
     }
   }
 }
+
