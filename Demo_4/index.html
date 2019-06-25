@@ -49,6 +49,16 @@
                   currency-max-digits="5"
                   currency-min-digits="1"></ff-communication>
 
+<div class="svgsprite-inline">
+    <svg xmlns="http://www.w3.org/2000/svg">
+        <path id="icon-delete" d="M1391.48,329.327h-12.52a3.5,3.5,0,0,1-3.48-3.517V308.221a0.7,0.7,0,1,1,1.39,0V325.81a2.1,2.1,0,0,0,2.09,2.11h12.52a2.1,2.1,0,0,0,2.09-2.11V308.221a0.7,0.7,0,1,1,1.39,0V325.81A3.5,3.5,0,0,1,1391.48,329.327Zm6.26-20.4H1372.7a0.7,0.7,0,0,1,0-1.407h25.04A0.7,0.7,0,0,1,1397.74,308.925Zm-8.35,0h-8.35a0.7,0.7,0,0,1-.69-0.7v-2.11a2.1,2.1,0,0,1,2.08-2.111H1388a2.1,2.1,0,0,1,2.09,2.111v2.11A0.7,0.7,0,0,1,1389.39,308.925Zm-7.65-1.407h6.96v-1.407a0.707,0.707,0,0,0-.7-0.7h-5.57a0.7,0.7,0,0,0-.69.7v1.407Zm-0.55,17.3a0.7,0.7,0,0,1-.69-0.7V312.442a0.7,0.7,0,1,1,1.39,0v11.675A0.7,0.7,0,0,1,1381.19,324.82Zm4.03,0a0.7,0.7,0,0,1-.7-0.7V312.442a0.7,0.7,0,1,1,1.39,0v11.675A0.7,0.7,0,0,1,1385.22,324.82Zm4.02,0a0.7,0.7,0,0,1-.69-0.7V312.442a0.7,0.7,0,1,1,1.39,0v11.675A0.7,0.7,0,0,1,1389.24,324.82Z" transform="translate(-1372 -304)"></path>
+        <path id="icon-done" d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"></path>
+        <path id="icon-edit" d="M1396.59,373H1374v-1.369h22.59V373Zm-20.48-4.1a0.717,0.717,0,0,1-.5-0.2,0.673,0.673,0,0,1-.18-0.672l2-6.775a0.611,0.611,0,0,1,.18-0.3l13.47-13.067a3.248,3.248,0,0,1,4.49,0l1.5,1.452a3.014,3.014,0,0,1,0,4.355l-13.47,13.067a0.713,0.713,0,0,1-.31.174l-6.99,1.936A0.692,0.692,0,0,1,1376.11,368.909Zm2.62-7.1-1.59,5.42,5.59-1.549,13.34-12.941a1.668,1.668,0,0,0,0-2.42l-1.5-1.452a1.8,1.8,0,0,0-2.49,0Zm15.35-6.167-5-4.839,1-.968,4.99,4.84Z" transform="translate(-1374 -347)"></path>
+        <path id="icon-heart" d="M1356.99,42.024c-3.36-7.975-12.93-6.114-12.99,3.142-0.04,5.084,4.55,6.984,7.61,9.017,2.96,1.971,5.07,4.667,5.4,5.815,0.29-1.125,2.64-3.9,5.38-5.87,3-2.157,7.65-3.933,7.61-9.017C1369.94,35.831,1360.2,34.367,1356.99,42.024Z" transform="translate(-1344 -36.969)"></path>
+        <path id="icon-star" d="M505.222,456.49l1.869,3.853a0.868,0.868,0,0,0,.654.483l4.18,0.618a0.888,0.888,0,0,1,.482,1.507l-3.025,3a0.9,0.9,0,0,0-.25.783l0.714,4.234a0.872,0.872,0,0,1-1.261.932l-3.738-2a0.853,0.853,0,0,0-.809,0l-3.739,2a0.872,0.872,0,0,1-1.26-.932l0.714-4.234a0.9,0.9,0,0,0-.25-0.783l-3.025-3a0.887,0.887,0,0,1,.482-1.507l4.18-.618a0.87,0.87,0,0,0,.654-0.483l1.869-3.853A0.863,0.863,0,0,1,505.222,456.49Z" transform="translate(-496.219 -456.031)"></path>
+    </svg>
+</div>
+
 <div class="page__wrapper">
     <nav id="header" class="d-block navbar navbar-dark px-0 py-0">
         <div class="header__wrapper container-fluid mr-auto ml-auto">
@@ -437,7 +447,7 @@
                                 <div class="product__desc">Woman's Svalbard 2 - Mantel</div>
                                 <div class="product__price">€299,95</div>
                                 <div class="product__add-to-cart">
-                                    <a href="#" class="btn btn-primary btn-block">In den Warenkorb</a>
+                                    <button data-toggle="modal" data-target="#cartModal" class="btn btn-primary btn-block">In den Warenkorb</button>
                                 </div>
                             </div>
                         </div>
@@ -469,7 +479,7 @@
                                 <div class="product__desc">Broad Peak In Hooded Jacket</div>
                                 <div class="product__price">€328,95</div>
                                 <div class="product__add-to-cart">
-                                    <a href="#" class="btn btn-primary btn-block">In den Warenkorb</a>
+                                    <button data-toggle="modal" data-target="#cartModal" class="btn btn-primary btn-block">In den Warenkorb</button>
                                 </div>
                             </div>
                         </div>
@@ -501,7 +511,7 @@
                                 <div class="product__desc">Lifalot Hybrid Insulator Jacket</div>
                                 <div class="product__price">€161,96</div>
                                 <div class="product__add-to-cart">
-                                    <a href="#" class="btn btn-primary btn-block">In den Warenkorb</a>
+                                    <button data-toggle="modal" data-target="#cartModal" class="btn btn-primary btn-block">In den Warenkorb</button>
                                 </div>
                             </div>
                         </div>
@@ -527,7 +537,7 @@
                                 <div class="product__desc">Woman's lifalot Hooded Jacket</div>
                                 <div class="product__price">€219,95</div>
                                 <div class="product__add-to-cart">
-                                    <a href="#" class="btn btn-primary btn-block">In den Warenkorb</a>
+                                    <button data-toggle="modal" data-target="#cartModal" class="btn btn-primary btn-block">In den Warenkorb</button>
                                 </div>
                             </div>
                         </div>
