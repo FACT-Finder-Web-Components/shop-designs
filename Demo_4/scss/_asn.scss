@@ -8,6 +8,14 @@ ff-asn {
     padding: 1em;
     text-transform: uppercase;
     cursor: pointer;
+    &:hover {
+      transform: translate(5px,0);
+      -webkit-transition-duration: 500ms !important;
+      -moz-transition-duration: 500ms !important;
+      -ms-transition-duration: 500ms !important;
+      -o-transition-duration: 500ms !important;
+      transition-duration: 500ms !important;
+    }
   }
 
   & ff-asn-group,
@@ -77,7 +85,7 @@ ff-asn {
 ff-asn-group-element {
   cursor: pointer;
   transition: all 0.3s;
-  font-size: 0.9rem;
+  font-size: .8rem;
   line-height: 2em;
   padding-top: 0.2em;
   padding-left: 1em;
@@ -110,9 +118,8 @@ ff-asn-group-element {
   & .count {
     transition: all 0.2s;
     float: right;
-    font-size: 1.1em;
+    font-size: .9em;
     line-height: 1.2em;
-    font-size: 1em;
     padding: 1px 4px;
     margin-top: 4px;
   }
@@ -156,19 +163,19 @@ ff-asn-group-element {
   }
 
   &.clusterLevel1 {
-    margin-left: 10px;
+    margin-left: 5px;
   }
 
   &.clusterLevel2 {
-    margin-left: 20px;
+    margin-left: 10px;
   }
 
   &.clusterLevel3 {
-    margin-left: 30px;
+    margin-left: 15px;
   }
 
   &.clusterLevel4 {
-    margin-left: 40px;
+    margin-left: 20px;
   }
 }
 

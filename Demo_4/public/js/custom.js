@@ -3,13 +3,19 @@
         let mobileMenuInput = $('#navigation-menu'),
             mobileMenuLabel = $('.ffw-navigation-label'),
             searchbarIcon = $('#searchMobile'),
-            searchbar = $('.searchbar');
+            searchbar = $('#searchbar'),
+            navMenuIcon = $('#navMenuIcon');
 
-        mobileMenuInput.click();
+        mobileMenuInput.click(); //show ff-navigation mobile menu
         changeViewport();
 
         searchbarIcon.on('click', function () {
+            document.querySelector('#categoriesNavigation').classList.remove('show');
             searchbar.slideToggle(200);
+        });
+
+        navMenuIcon.on('click', function () {
+            searchbar.hide();
         });
 
         $('.service-nav .card').on('click', '.card-header', function (e) {
@@ -35,20 +41,29 @@
     });
 })(jQuery, ResponsiveBootstrapToolkit);
 
-
-function showSection(event, sectionId) {
+const showSection = (event, sectionId) => {
     if (event.preventDefault !== undefined) {
         event.preventDefault();
     }
-    const sections = ['homePage', 'searchResult'];
-    var section = document.querySelector('#' + sectionId);
+    let section = document.querySelector('#' + sectionId);
     section.style.display = "";
     section.style.opacity = "1";
 
-    sections.map(section => {
+    ['homePage', 'searchResult'].map(section => {
         if (section !== sectionId) {
-            jQuery('#' + section).css('display', 'none');
+            document.querySelector('#' + section).style.display = "none";
         }
     });
     window.scrollTo(0, 0);
-}
+};
+
+const displaySpinner = (result) => {
+    let spinner = document.querySelector('#spinnerWrapper'),
+        page = result.paging ? result.paging : result;
+
+    if (page.currentPage === page.pageCount) {
+        spinner.style.display = "none";
+    } else {
+        spinner.style.display = "block";
+    }
+};

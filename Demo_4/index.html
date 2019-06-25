@@ -22,7 +22,7 @@
     <script>
         document.addEventListener("ffReady", function () {
             factfinder.communication.ResultDispatcher.subscribe('suggest', function (suggestion) {
-                suggestion.forEach(function (element) {
+                suggestion && suggestion.forEach(function (element) {
                     if (element.type == 'searchTerm') {
                         element.name = element.name.charAt(0).toUpperCase() + element.name.slice(1).toLowerCase();
                     }
@@ -36,8 +36,9 @@
                     document.querySelector('#categoriesNavigation').classList.remove('show');
                 }
             });
+            factfinder.communication.ResultDispatcher.subscribe("result", displaySpinner);
+            factfinder.communication.ResultDispatcher.subscribe("paging", displaySpinner);
         });
-
     </script>
 </head>
 <body>
@@ -60,7 +61,7 @@
                     </div>
                 </div>
                 <div class="col-12 col-lg-6 order-10 searchbar__wrapper">
-                    <div class="searchbar">
+                    <div class="searchbar" id="searchbar">
                         <form autocomplete="off" class="d-inline" onsubmit="showSection(event,'searchResult')">
                             <input type="hidden" autocomplete="false"/>
                             <div class="input-group">
@@ -153,7 +154,7 @@
 
                 <div class="navigation col-12 col-lg-3 order-lg-10">
                     <div class="row h-100 m-lg-0 mx-0">
-                        <button
+                        <button id="navMenuIcon"
                                 class="col-2 navbar-toggler d-inline d-lg-none h-100"
                                 type="button"
                                 data-toggle="collapse"
@@ -168,7 +169,7 @@
                                 <div class="col-12 d-inline mr-0 h-100">
                                     <ul class="links list-unstyled d-inline-block float-right text-center">
                                         <li class="links__item d-lg-none col-3">
-                                            <a href="#" id="searchMobile">
+                                            <a id="searchMobile">
                                                 <div>
                                                     <span class="icon icon-search search-mobile"></span>
                                                 </div>
@@ -560,13 +561,7 @@
                     <div class="row">
                         <span class="col-12 col-lg-4 sortbox__caption">Sort by</span>
                         <div class="col-12 col-lg-8 sortbox__wrapper">
-                            <ff-sortbox class="sortbox" collapse-onblur="true" unresolved>
-                                <ff-sortbox-item key="null.desc">Relevance</ff-sortbox-item>
-                                <ff-sortbox-item key="Name.asc">Name (Ascending)</ff-sortbox-item>
-                                <ff-sortbox-item key="Name.desc">Name (Descending)</ff-sortbox-item>
-                                <ff-sortbox-item key="Price.asc">Price (Ascending)</ff-sortbox-item>
-                                <ff-sortbox-item key="Price.desc">Price (Descending)</ff-sortbox-item>
-                            </ff-sortbox>
+                            <ff-sortbox class="sortbox" collapse-onblur="true" unresolved />
                         </div>
                         <button class=" d-lg-none col-12 btn btn-primary search-result-header__filter-button"
                                 type="button" data-toggle="collapse" data-target="#asn" aria-expanded="false"
@@ -578,7 +573,7 @@
                 </div>
             </div>
             <div class="row search-result">
-                <div class="col-lg-4 col-12 collapse show search-result__filters" id="asn">
+                <div class="col-lg-3 col-12 collapse show search-result__filters" id="asn">
                     <ff-asn unresolved class="asn">
                         <ff-asn-remove-all-filter>[X] Remove all Filter</ff-asn-remove-all-filter>
                         <ff-asn-group for-group="all" class="group">
@@ -704,7 +699,7 @@
                         </ff-asn-group>
                     </ff-asn>
                 </div>
-                <div class="col-lg-8 col-12 search-result__products">
+                <div class="col-lg-9 col-12 search-result__products">
                     <ff-record-list infinite-scrolling unresolved>
                         <ff-record class="product__wrapper col-12 col-sm-6 col-lg-4">
                             <div class="product__tile">
@@ -728,6 +723,11 @@
                             </div>
                         </ff-record>
                     </ff-record-list>
+                    <div id="spinnerWrapper">
+                        <svg id="spinner" class="spinner col-12" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                            <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+                        </svg>
+                    </div>
                 </div>
             </div>
         </main>

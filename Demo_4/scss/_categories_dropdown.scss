@@ -11,8 +11,10 @@
   }
 
   &--mobile {
-    padding-top: 20px;
     width: 100%;
+    line-height: normal;
+    overflow-y: scroll;
+    height: 100vh;
   }
 }
 
