@@ -10,7 +10,7 @@
   filter: drop-shadow(1px 0px 1px);
   width: 100%;
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
-  border: 1px solid #b9b9b9;
+  border: 1px solid $bg-light-gray;;
 
   .ffw-suggestContainer {
     flex-direction: row-reverse;

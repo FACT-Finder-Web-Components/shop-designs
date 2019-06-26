@@ -37,165 +37,176 @@
     </div>
 
     <div class="page__wrapper">
-        <nav id="header" class="d-block navbar navbar-dark px-0 py-0">
-            <div class="header__wrapper container-fluid mr-auto ml-auto">
-                <div class="row header m-0">
-                    <!-- Logo start -->
-                    <div class="col-12 col-lg-3 pb-4 d-inline-block">
-                        <div class="logo text-center">
-                            <a href="index.html">
-                                <img alt="Outdoor" src="public/assets/logo.png"/>
-                            </a>
-                        </div>
+        <nav id="header" class="container-fluid header__wrapper">
+            <div class="row header">
+                <div class="col-12 col-lg-3 logo__wrapper">
+                    <div class="logo" onclick="showSection(event,'homePage')">
+                        <a href="índex.html">
+                            <img alt="Outdoor" src="public/assets/logo.png"/>
+                        </a>
                     </div>
-                    <!-- logo end-->
-
-                    <!-- searchbox start-->
-                    <div class="col-12 col-lg-6 order-10 px-0 px-lg-0">
-                        <div class="searchbar">
-                            <form autocomplete="off" class="d-inline">
-                                <input type="hidden" autocomplete="false"/>
-                                <div class="input-group">
-                                    <ff-searchbox unresolved>
-                                        <input class="form-control" type="text" name="search"
-                                               placeholder="I'm looking for"/>
-                                    </ff-searchbox>
-                                    <span class="input-group-btn d-none d-lg-table-cell">
-                                            <ff-searchbutton>
-                                                <button class="btn btn btn-default btn-link d-none d-sm-block w-40">
-                                                    <span class="icon icon-search"></span>
-                                                </button>
-                                            </ff-searchbutton>
-                                        </span>
-                                </div>
-                            </form>
-                            <!-- suggest start -->
-                            <ff-suggest id="ffSuggest" layout="block" unresolved>
-                                <section id="searchContainer" class="searchTermContainer container-fluid">
+                </div>
+                <div class="col-12 col-lg-6 searchbar__wrapper">
+                    <div class="searchbar" id="searchbar">
+                        <form autocomplete="off" onsubmit="showSection(event,'searchResult')">
+                            <input type="hidden" autocomplete="false"/>
+                            <div class="input-group">
+                                <ff-searchbox unresolved>
+                                    <input class="form-control" type="text" name="search" placeholder="I'm looking for"/>
+                                </ff-searchbox>
+                                <span class="input-group-btn">
+                                    <ff-searchbutton>
+                                        <button class="btn btn btn-default btn-link d-none d-sm-block w-40"
+                                                onclick="showSection(event,'searchResult')">
+                                            <span class="icon icon-search"></span>
+                                        </button>
+                                    </ff-searchbutton>
+                                </span>
+                            </div>
+                        </form>
+                        <ff-suggest id="ffSuggest" layout="block" unresolved>
+                            <div class="row m-0 w-100">
+                                <section id="searchContainer" class="col-4 search-terms-container">
                                     <div data-container="searchTerm">
-                                        <p class="containerCaption">Search terms</p>
+                                        <p class="container-caption">Search terms</p>
                                         <ff-suggest-item class="ff-suggest-element" type="searchTerm">
                                             <span class="ff-search-term">{{{name}}}</span>
                                         </ff-suggest-item>
                                     </div>
-
                                     <div data-container="category">
-                                        <p class="containerCaption">Categories</p>
-                                        <ff-suggest-item class="ff-suggest-element" type="category">
+                                        <p class="container-caption">Categories</p>
+                                        <ff-suggest-item unresolved class="ff-suggest-element" type="category">
                                             <span class="ff-category">{{{name}}}</span>
                                         </ff-suggest-item>
                                     </div>
 
                                     <div data-container="brand">
-                                        <p class="containerCaption">Brands</p>
-                                        <ff-suggest-item class="ff-suggest-element" type="brand">
+                                        <p class="container-caption">Brands</p>
+                                        <ff-suggest-item unresolved class="ff-suggest-element" type="brand">
                                             <span class="ff-brand">{{{name}}}</span>
                                         </ff-suggest-item>
                                     </div>
                                 </section>
-
-                                <section id="productContainer" class="productsContainer row">
-                                    <div data-container="productName">
-                                        <p class="containerCaption">Suggested products</p>
-                                        <div class="row">
-                                            <ff-suggest-item class="col-lg-4 col-md-6 col-12 ff-suggest-element ff-suggest-product d-table-cell" type="productName">
-                                                <a href="{{attributes.deeplink}}"
-                                                   data-redirect="{{attributes.deeplink}}" data-redirect-target="_blank">
-                                                    <div class="container-image">
-                                                        <img class="img-fluid" data-image="public/assets/recommended-products/backpack.jpg"/>
-                                                    </div>
-                                                </a>
-                                                <div class="product-info">
-                                                    <a href="{{attributes.deeplink}}"
-                                                       data-redirect="{{attributes.deeplink}}"
-                                                       data-redirect-target="_blank">
-                                                        <div class="product-name">{{{name}}}</div>
-                                                        <div class="product-brand">{{{attributes.Brand}}}</div>
-                                                        <!--                                                    <div class="product-price">{{attributes.Price}}</div>-->
-                                                    </a>
+                                <section id="productContainer" class="col-8 products-container">
+                                    <div class="row h-100">
+                                        <div class="products-container--scrollable" data-container="productName">
+                                            <p class="col-12 container-caption">Suggested products</p>
+                                            <div class="col-12">
+                                                <div class="row">
+                                                    <ff-suggest-item unresolved class="col-xl-4 col-md-6 col-12"
+                                                                     type="productName">
+                                                        <a href="{{attributes.deeplink}}"
+                                                           data-redirect="{{attributes.deeplink}}"
+                                                           data-redirect-target="_blank">
+                                                            <div class="product__image">
+                                                                <!--@todo  image mock, need to be changed-->
+                                                                <img class="img-fluid"
+                                                                     data-image="public/assets/recommended-products/backpack.jpg"/>
+                                                            </div>
+                                                        </a>
+                                                        <div class="product-info">
+                                                            <a href="{{attributes.deeplink}}"
+                                                               data-redirect="{{attributes.deeplink}}"
+                                                               data-redirect-target="_blank">
+                                                                <div class="product-info__name">{{{name}}}</div>
+                                                                <div class="product-info__brand">
+                                                                    {{{attributes.Brand}}}
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                    </ff-suggest-item>
                                                 </div>
-                                            </ff-suggest-item>
+                                            </div>
                                         </div>
                                     </div>
                                 </section>
-                            </ff-suggest>
-                            <!-- suggest stop -->
-                        </div>
-                    </div>
-                    <!--searchbox end-->
-
-                    <!-- links start-->
-                    <div class="navigation col-12 col-lg-3 order-lg-10">
-                        <div class="row h-100 m-lg-0 mx-0">
-                            <button
-                                    class="col-2 navbar-toggler d-inline d-lg-none h-100"
-                                    type="button"
-                                    data-toggle="collapse"
-                                    data-target="#categoriesNavigation"
-                                    aria-controls="categoriesNavigation"
-                                    aria-expanded="true"
-                                    aria-label="Toggle navigation">
-                                <span class="navbar-toggler-icon float-left"></span>
-                            </button>
-                            <div class="col-10 col-lg-12">
-                                <div class="row h-100">
-                                    <div class="col-12 d-inline mr-0 h-100">
-                                        <ul class="links list-unstyled d-inline-block float-right text-center">
-                                            <li class="links__item d-lg-none col-3">
-                                                <a href="#" id="searchMobile">
-                                                    <div>
-                                                        <span class="icon icon-search search-mobile"></span>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                            <li class="links__item col-3 col-lg-4">
-                                                <a href="#">
-                                                    <div>
-                                                        <span class="icon icon-account"></span>
-                                                        <span class="icon-caption d-none d-lg-block">Log In</span>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                            <li class="links__item col-3 col-lg-4">
-                                                <a href="#">
-                                                    <div>
-                                                        <span class="icon icon-wishlist"></span>
-                                                        <span class="icon-caption d-none d-lg-block">Wishlist</span>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                            <li class="links__item col-3 col-lg-4">
-                                                <a href="#">
-                                                    <div>
-                                                        <span class="icon icon icon-cart"></span>
-                                                        <span class="icon-caption d-none d-lg-block">Cart</span>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                        </ul>
+                                <div class="col-12 all-results-container">
+                                    <div class="row">
+                                        <div class="col-4"></div>
+                                        <div class="col-8 ">
+                                            <a href="#" id="suggestAllResult"
+                                               class="btn btn-primary btn-block all-results"
+                                               onclick="showSection(event,'searchResult')">
+                                                <span>See all results...</span>
+                                            </a>
+                                        </div>
                                     </div>
+                                </div>
+                            </div>
+                        </ff-suggest>
+                    </div>
+                </div>
+
+                <div class="navbar navbar-dark navigation__wrapper col-12 col-lg-3">
+                    <div class="navigation row">
+                        <button id="navMenuIcon"
+                                class="col-2 navbar-toggler d-inline d-lg-none h-100"
+                                type="button"
+                                data-toggle="collapse"
+                                data-target="#categoriesNavigation"
+                                aria-controls="categoriesNavigation"
+                                aria-expanded="true"
+                                aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon float-left"></span>
+                        </button>
+                        <div class="col-10">
+                            <div class="row">
+                                <div class="col-12 links__wrapper">
+                                    <ul class="links">
+                                        <li class="links__item search col-3">
+                                            <a id="searchMobile">
+                                                <div>
+                                                    <span class="icon icon-search search-mobile"></span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="links__item col-3 col-lg-4">
+                                            <a href="#">
+                                                <div>
+                                                    <span class="icon icon-account"></span>
+                                                    <span class="icon-caption">Log In</span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="links__item col-3 col-lg-4">
+                                            <a href="#">
+                                                <div>
+                                                    <span class="icon icon-wishlist"></span>
+                                                    <span class="icon-caption">Wishlist</span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="links__item col-3 col-lg-4">
+                                            <a href="cart.html">
+                                                <div>
+                                                    <span class="icon icon icon-cart"></span>
+                                                    <span class="icon-caption">Cart</span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- links end-->
                 </div>
             </div>
             <div class="categories-menu__wrapper">
-                <div class="categories-menu d-none d-lg-block">
+                <div class="categories-menu">
                     <ff-header-navigation group-count="6">
-                        <div slot="Outdoor jackets"><a href="http://www.myshop.de"> >> See all...</a></div>
-                        <div slot="Outdoor pants"><a href="http://www.myshop.de"> >> See all...</a></div>
-                        <div slot="Long and short sleeve shirts"><a href="http://www.myshop.de"> >> See all...</a></div>
-                        <div slot="Functional underwear"><a href="http://www.myshop.de"> >> See all...</a></div>
-                        <div slot="Sweaters & hoodies"><a href="http://www.myshop.de"> >> See all...</a></div>
-                        <div slot="Headwear"><a href="http://www.myshop.de"> >> See all...</a></div>
+                        <div slot="Outdoor jackets"><a class="see-all-link">See all...</a></div>
+                        <div slot="Outdoor pants"><a class="see-all-link">See all...</a></div>
+                        <div slot="Long and short sleeve shirts"><a class="see-all-link">See all...</a></div>
+                        <div slot="Functional underwear"><a class="see-all-link">See all...</a></div>
+                        <div slot="Sweaters & hoodies"><a class="see-all-link">See all...</a></div>
+                        <div slot="Headwear"><a class="see-all-link">See all...</a></div>
                     </ff-header-navigation>
                 </div>
             </div>
-            <div class="categories-menu--mobile navbar-collapse collapse d-lg-none " id="categoriesNavigation">
-                <ul class="navbar-nav mx-3">
-                    <ff-navigation class="d-lg-none d-block" fetch-size="3" unresolved layout="vertical" flyout="false" mobile="true" fetch-initial="false" unresolved>
+            <div class="navbar-collapse collapse categories-menu--mobile" id="categoriesNavigation">
+                <ul class="navbar-nav">
+                    <ff-navigation class="d-lg-none d-block" fetch-size="3" unresolved layout="vertical" flyout="false"
+                                   mobile="true" fetch-initial="false" unresolved>
                         <div id="ffMenu" slot="menu" style="display: none">Navigation</div>
                         <ff-navigation-item type="header" class="level0 level-top">
                             <li class="level0 level-top parent">
@@ -205,7 +216,6 @@
                             </li>
                         </ff-navigation-item>
                     </ff-navigation>
-
                 </ul>
             </div>
         </nav>

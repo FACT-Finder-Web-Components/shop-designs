@@ -4,6 +4,9 @@
   max-width: 1140px;
   margin-left: auto;
   margin-right: auto;
+  @include media-breakpoint-down(md) {
+    display: none;
+  }
 
   &__wrapper {
     width: 100%;
@@ -15,19 +18,9 @@
     line-height: normal;
     overflow-y: scroll;
     height: 100vh;
+    @include media-breakpoint-up(lg) {
+      display: none;
+    }
   }
 }
 
-.navbar-toggler {
-  &:active, &:hover {
-    background: rgba(0, 173, 255, .54);
-    border: 1px
-  }
-
-  &-icon {
-    height: 70px;
-    margin-left: auto;
-    margin-right: auto;
-    width: 100%;
-  }
-}
