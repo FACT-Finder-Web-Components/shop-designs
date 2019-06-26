@@ -5,7 +5,7 @@ ff-asn {
   &-remove-all-filter {
     display: block;
     cursor: pointer;
-    margin-bottom: 1rem;
+    margin: 0 1rem 1rem;
     font-size: .8125rem;
     @include transition(all .3s ease);
 
@@ -72,8 +72,11 @@ ff-asn {
     cursor: pointer;
 
     &:hover {
-      padding-left: .5rem;
       color: darken($text-primary, 50);
+
+      [for-group="Category"] & {
+        padding-left: .5rem;
+      }
     }
 
     .checkbox, .circle {
@@ -81,14 +84,17 @@ ff-asn {
       vertical-align: middle;
       width: 1.5rem;
       height: 1.5rem;
-      margin-right: 5px;
+      margin-right: .3125rem;
       background-color: $bg-light-gray;
+      @include transition(all .3s ease);
 
-      @at-root {
-        #{selector_replace(&, 'ff-asn-group-element', '.selected')},
-        #{selector_replace(&, 'ff-asn-group-element', 'p:hover')} {
-          background: $bg-light-blue;
-        }
+      @at-root #{selector_replace(&, 'ff-asn-group-element', 'p:hover')} {
+        background: $bg-light-blue;
+        margin-right: .75rem;
+      }
+
+      @at-root #{selector_replace(&, 'ff-asn-group-element', '.selected')} {
+        background: $bg-light-blue;
       }
     }
 
