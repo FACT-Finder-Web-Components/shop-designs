@@ -21,14 +21,6 @@
 
     <script>
         document.addEventListener("ffReady", function () {
-            factfinder.communication.ResultDispatcher.subscribe('suggest', function (suggestion) {
-                suggestion && suggestion.forEach(function (element) {
-                    if (element.type == 'searchTerm') {
-                        element.name = element.name.charAt(0).toUpperCase() + element.name.slice(1).toLowerCase();
-                    }
-                });
-            });
-
             factfinder.communication.FFCommunicationEventAggregator.addBeforeDispatchingCallback(function (event) {
                 if ((event.type === 'search' || event.type === 'navigation-search')) {
                     showSection(event, 'searchResult');
