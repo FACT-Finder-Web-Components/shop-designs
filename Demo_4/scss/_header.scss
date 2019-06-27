@@ -21,7 +21,7 @@
   text-align: center;
 
   &__wrapper {
-    padding-bottom: 20px;
+    padding-bottom: $padding-standard;
   }
 }
 
@@ -58,7 +58,7 @@
     display: table;
 
     & .form-control {
-      padding-left: 20px;
+      padding-left: $padding-standard;
       height: 50px;
       border: 0;
 
@@ -134,8 +134,9 @@
       }
       &-toggler {
         padding: .4em;
+        height: 100%;
         &:active, &:hover {
-          background: $bg-navy-highlight;
+          background: $bg-light-blue;
         }
 
         &-icon {
@@ -144,6 +145,10 @@
           margin-right: auto;
           height: 100%;
           width: 100%;
+        }
+
+        @include media-breakpoint-up(lg) {
+          display: none;
         }
       }
     }

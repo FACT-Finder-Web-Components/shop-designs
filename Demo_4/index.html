@@ -78,7 +78,7 @@
                                 </ff-searchbox>
                                 <span class="input-group-btn">
                                     <ff-searchbutton>
-                                        <button class="btn btn btn-default btn-link d-none d-sm-block w-40"
+                                        <button class="btn btn btn-default btn-link"
                                                 onclick="showSection(event,'searchResult')">
                                             <span class="icon icon-search"></span>
                                         </button>
@@ -87,7 +87,7 @@
                             </div>
                         </form>
                         <ff-suggest id="ffSuggest" layout="block" unresolved>
-                            <div class="row m-0 w-100">
+                            <div class="row">
                                 <section id="searchContainer" class="col-4 search-terms-container">
                                     <div data-container="searchTerm">
                                         <p class="container-caption">Search terms</p>
@@ -110,7 +110,6 @@
                                     </div>
                                 </section>
                                 <section id="productContainer" class="col-8 products-container">
-                                    <div class="row h-100">
                                         <div class="products-container--scrollable" data-container="productName">
                                             <p class="col-12 container-caption">Suggested products</p>
                                             <div class="col-12">
@@ -140,7 +139,6 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
                                 </section>
                                 <div class="col-12 all-results-container">
                                     <div class="row">
@@ -162,14 +160,14 @@
                 <div class="navbar navbar-dark navigation__wrapper col-12 col-lg-3">
                         <div class="navigation row">
                         <button id="navMenuIcon"
-                                class="col-2 navbar-toggler d-inline d-lg-none h-100"
+                                class="col-2 navbar-toggler"
                                 type="button"
                                 data-toggle="collapse"
                                 data-target="#categoriesNavigation"
                                 aria-controls="categoriesNavigation"
                                 aria-expanded="true"
                                 aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon float-left"></span>
+                            <span class="navbar-toggler-icon"></span>
                         </button>
                         <div class="col-10">
                             <div class="row">
@@ -227,7 +225,7 @@
         </div>
         <div class="navbar-collapse collapse categories-menu--mobile" id="categoriesNavigation">
             <ul class="navbar-nav">
-                <ff-navigation class="d-lg-none d-block" fetch-size="3" unresolved layout="vertical" flyout="false"
+                <ff-navigation fetch-size="3" unresolved layout="vertical" flyout="false"
                                mobile="true" fetch-initial="false" unresolved>
                     <div id="ffMenu" slot="menu" style="display: none">Navigation</div>
                     <ff-navigation-item type="header" class="level0 level-top">
@@ -244,9 +242,8 @@
 
     <div class="page">
         <main id="homePage" class="container-fluid main-column">
-            <!--slider start -->
-            <section class="slider__wrapper py-3">
-                <div id="mainSlider" class="carousel slide d-lg-block" data-ride="carousel">
+            <section class="slider__wrapper">
+                <div id="mainSlider" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <div class="slider">
@@ -279,8 +276,6 @@
                     </a>
                 </div>
             </section>
-            <!--slider end -->
-
             <section class="recommended-products">
                 <div class="recommended-products__caption h3">Recommended for You</div>
 

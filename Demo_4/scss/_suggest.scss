@@ -9,11 +9,12 @@
 
   filter: drop-shadow(1px 0px 1px);
   width: 100%;
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
-  border: 1px solid $bg-light-gray;;
+  box-shadow: 0 1em 1em rgba(0, 0, 0, 0.5);
+  border: $border-width-standard solid $bg-light-gray;;
 
   .ffw-suggestContainer {
     flex-direction: row-reverse;
+    padding: $padding-standard;
 
     .container-caption {
       font-size: calc(1em + 0.5vw);
@@ -25,7 +26,7 @@
     }
 
     div[data-container] {
-      padding-top: 1em;
+      padding-top: $padding-standard;
     }
 
     .search-terms-container {
@@ -68,7 +69,7 @@
     }
 
     .all-results-container {
-      padding: 1em;
+      padding: $padding-standard;
 
       .all-results {
         background-color: $background-navy;
@@ -84,7 +85,8 @@
   ff-suggest-item.ffw-highlight-suggest-item {
     background-color: $background-navy;
     color: white;
-    &  .ffw-query {
+
+    & .ffw-query {
       color: white;
       font-weight: bold;
     }

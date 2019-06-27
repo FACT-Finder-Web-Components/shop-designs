@@ -1,6 +1,10 @@
 ff-navigation {
   z-index: 99;
   color: black;
+  display: block;
+  @include media-breakpoint-up(lg) {
+    display: none;
+  }
 
   .ffw-menu-items {
     z-index: 99;
@@ -9,12 +13,12 @@ ff-navigation {
     overflow: auto;
     ff-navigation-item {
       white-space: nowrap;
-
       &[cluster-level="0"] {
-        border-bottom: 2px solid $bg-gray;
+        border-bottom: 2px solid $bg-light-gray;
 
         & .ffw-item-caption {
           margin: auto 0;
+          padding-left: $padding-standard/2;
 
           & .nav-link {
             font-size: 1.4em;
@@ -24,16 +28,19 @@ ff-navigation {
 
         &[has-subelements] {
           &[selected] {
+            & .ffw-item-caption {
+              padding-left:0;
+            }
             & li {
               background-color: $text-primary;
 
               & .nav-link {
-                padding-left: 20px;
+                padding-left:$padding-standard;
                 color: white;
 
                 &:before {
                   content: "\f068";
-                  padding-right: 15px;
+                  padding-right: $padding-standard;
                   color: white;
                 }
               }
@@ -45,31 +52,23 @@ ff-navigation {
               float: right;
               font-family: FontAwesome;
               content: "\f067";
-              padding-right: 15px;
+              padding-right: $padding-standard;
             }
           }
         }
       }
 
-      &[cluster-level="1"] {
-        padding-left: 15px;
-        color: gray;
-        font-size: 1em;
-      }
-
-      &[cluster-level="2"] {
-        padding-left: 30px;
-        font-size: .9em;
-      }
-
-      &[cluster-level="3"] {
-        padding-left: 45px;
-        font-size: .8em;
+      @for $i from 1 through 4 {
+        &[cluster-level="#{$i}"]{
+          margin-left: .9rem * $i;
+        }
       }
 
       &:not([cluster-level="0"]) {
         & .ffw-item-caption {
-          padding: 15 0px;
+          padding-top:$padding-standard;
+          padding-bottom: $padding-standard;
+          color:$text-primary;
         }
 
         &[has-subelements] {
@@ -78,8 +77,8 @@ ff-navigation {
               float: right;
               font-family: FontAwesome;
               content: "\f068";
-              padding-right: 15px;
-              color: gray;
+              padding-right: $padding-standard;
+              color: $text-primary;
             }
           }
 
@@ -88,7 +87,7 @@ ff-navigation {
               float: right;
               font-family: FontAwesome;
               content: "\f067";
-              color: gray;
+              color: $text-primary;
               padding-right: 15px;
             }
           }
