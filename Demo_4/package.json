@@ -12,7 +12,7 @@
   "private": true,
   "dependencies": {
     "bootstrap": "^4.3.1",
-    "ff-web-components": "https://github.com/FACT-Finder-Web-Components/ff-web-components.git#3.3.2",
+    "ff-web-components": "https://github.com/FACT-Finder-Web-Components/ff-web-components.git#3.4.0",
     "font-awesome": "^4.7.0",
     "jquery": "^3.4.1",
     "node-sass": "^4.12.0",
