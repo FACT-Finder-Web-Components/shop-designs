@@ -1,35 +1,11 @@
 .icon {
   display: inline-block;
-  height: 50px;
-  width: 50px;
+  width: 1.875rem;
+  height: 1.875rem;
   background: transparent none no-repeat 50% 50%;
   background-size: contain;
 
-  &-caption {
-    display: block;
-    text-align: center;
-    color: $bg-light-gray;
-    height: 18px;
-    white-space: nowrap;
-    @include media-breakpoint-down(md) {
-      display: none;
-    }
-  }
-
-  @each $icon in 'search', 'account', 'wishlist', 'cart' {
-    &-#{$icon} {
-      background-image: url("../assets/mobile/#{$icon}.svg");
-    }
-  }
-
-  @include media-breakpoint-up(lg) {
-    height: 28px;
-    width: 28px;
-
-    @each $icon in 'search', 'account', 'wishlist', 'cart' {
-      &-#{$icon} {
-        background-image: url("../assets/desktop/#{$icon}.svg");
-      }
-    }
+  &-search {
+    background-image: url("../assets/desktop/search.svg");
   }
 }

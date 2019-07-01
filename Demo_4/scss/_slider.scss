@@ -24,10 +24,6 @@
 }
 
 .slider {
-  &__wrapper {
-    padding-top: $padding-standard;
-  }
-
   @include banner(#fff);
   font-size: 2.5rem;
 

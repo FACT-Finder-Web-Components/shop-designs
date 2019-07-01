@@ -8,10 +8,10 @@ body {
 }
 
 .page {
-  margin-top: 220px;
+  margin-top: 7.75rem;
 
   @include media-breakpoint-up(lg) {
-    margin-top: 192px;
+    margin-top: 11.5rem;
   }
 
   &__wrapper {
@@ -38,10 +38,6 @@ a {
 
 .btn-primary {
   @include button-variant($bg-navy, $bg-navy);
-}
-
-.svgsprite-inline {
-  display: none;
 }
 
 .modal {

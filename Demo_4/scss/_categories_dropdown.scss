@@ -1,26 +1,10 @@
 .categories-menu {
-  height: 40px;
-  color: black;
   max-width: 1140px;
+  height: 2.5rem;
   margin-left: auto;
   margin-right: auto;
-  @include media-breakpoint-down(md) {
-    display: none;
-  }
 
   &__wrapper {
-    width: 100%;
     background: $bg-navy;
   }
-
-  &--mobile {
-    width: 100%;
-    line-height: normal;
-    overflow-y: scroll;
-    height: 100vh;
-    @include media-breakpoint-up(lg) {
-      display: none;
-    }
-  }
 }
-

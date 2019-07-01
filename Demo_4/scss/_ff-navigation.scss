@@ -1,7 +1,6 @@
 ff-navigation {
-  z-index: 99;
-  color: black;
   display: block;
+  flex: 1;
   @include media-breakpoint-up(lg) {
     display: none;
   }
@@ -11,31 +10,33 @@ ff-navigation {
     background: white;
     height: 60vh;
     overflow: auto;
+
     ff-navigation-item {
       white-space: nowrap;
-      &[cluster-level="0"] {
-        border-bottom: 2px solid $bg-light-gray;
 
-        & .ffw-item-caption {
+      &[cluster-level="0"] {
+        border-bottom: 1px solid $bg-light-gray;
+
+        .ffw-item-caption {
           margin: auto 0;
           padding-left: $padding-standard/2;
 
-          & .nav-link {
-            font-size: 1.4em;
-            color: black;
+          .nav-link {
+            font-size: 1.125rem;
           }
         }
 
         &[has-subelements] {
           &[selected] {
-            & .ffw-item-caption {
-              padding-left:0;
+            .ffw-item-caption {
+              padding-left: 0;
             }
-            & li {
+
+            li {
               background-color: $text-primary;
 
-              & .nav-link {
-                padding-left:$padding-standard;
+              .nav-link {
+                padding-left: $padding-standard;
                 color: white;
 
                 &:before {
@@ -47,7 +48,7 @@ ff-navigation {
             }
           }
 
-          & .nav-link {
+          .nav-link {
             &:before {
               float: right;
               font-family: FontAwesome;
@@ -59,21 +60,21 @@ ff-navigation {
       }
 
       @for $i from 1 through 4 {
-        &[cluster-level="#{$i}"]{
+        &[cluster-level="#{$i}"] {
           margin-left: .9rem * $i;
         }
       }
 
       &:not([cluster-level="0"]) {
-        & .ffw-item-caption {
-          padding-top:$padding-standard;
+        .ffw-item-caption {
+          padding-top: $padding-standard;
           padding-bottom: $padding-standard;
-          color:$text-primary;
+          color: $text-primary;
         }
 
         &[has-subelements] {
           &[selected] {
-            & .ffw-item-caption:before {
+            .ffw-item-caption:before {
               float: right;
               font-family: FontAwesome;
               content: "\f068";
@@ -83,7 +84,7 @@ ff-navigation {
           }
 
           &:not([selected]) {
-            & .ffw-item-caption:before {
+            .ffw-item-caption:before {
               float: right;
               font-family: FontAwesome;
               content: "\f067";
@@ -94,7 +95,7 @@ ff-navigation {
         }
 
         &:not([has-subelements]) {
-          & .ffw-item-caption:before {
+          .ffw-item-caption:before {
             display: none;
           }
         }

@@ -1,6 +1,4 @@
 ff-header-navigation {
-  float: left;
-  z-index: 99;
   .ffw-header-nav {
     height: 100%;
 
@@ -14,11 +12,17 @@ ff-header-navigation {
       }
 
       .ffw-nav-item {
-        padding: 5 15 5 15px;
         cursor: pointer;
         font-style: normal;
         text-decoration: inherit;
-        justify-content: center;
+        justify-content: space-around;
+        flex: 1;
+
+        a {
+          display: block;
+          padding: 5px 15px;
+          text-align: center;
+        }
 
         &:active {
           background: $category-menu-highlight;
@@ -79,18 +83,22 @@ ff-header-navigation {
               display: block;;
               padding: 5 0px;
               cursor: pointer;
+
               &:hover {
-                color:$bg-navy;
+                color: $bg-navy;
                 font-weight: $font-weight-bold;
               }
             }
+
             .see-all-link {
               cursor: pointer;
+
               &::before {
                 content: '>> ';
               }
+
               &:hover {
-                color:$bg-navy;
+                color: $bg-navy;
                 font-weight: $font-weight-bold;
               }
             }

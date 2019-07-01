@@ -1,53 +1,18 @@
-(function ($, viewport) {
-    $(document).ready(function () {
-        let mobileMenuInput = $('#navigation-menu'),
-            mobileMenuLabel = $('.ffw-navigation-label'),
-            searchbarIcon = $('#searchMobile'),
-            searchbar = $('#searchbar'),
-            navMenuIcon = $('#navMenuIcon');
+jQuery(function ($) {
+    let $body = $('body');
 
-        mobileMenuInput.click(); //show ff-navigation mobile menu
-        changeViewport();
-
-        searchbarIcon.on('click', function () {
-            document.querySelector('#categoriesNavigation').classList.remove('show');
-            searchbar.slideToggle(300);
-        });
-
-        navMenuIcon.on('click', function () {
-            searchbar.hide();
-        });
-
-        jQuery(document).on('click', '.see-all-link', (e) => {
-            showSection(e, 'searchResult')
-        });
-
-        jQuery(document).on('click', '.ff-asn-group', () => {
-            scrollToTop();
-        });
-
-        $('.service-nav .card').on('click', '.card-header', function (e) {
-            $(e.delegateTarget).toggleClass('collapsed');
-        });
-
-        $(window).resize(
-            viewport.changed(function () {
-                changeViewport();
-            })
-        );
-
-        function changeViewport() {
-            if (viewport.is('<=md')) {
-                searchbar.hide();
-                mobileMenuLabel.hide();
-            } else {
-                searchbar.show();
-            }
-        }
-
-        $('#product-color, #product-size').togglebutton();
+    $body.on('click', '.see-all-link', (e) => {
+        showSection(e, 'searchResult')
     });
-})(jQuery, ResponsiveBootstrapToolkit);
+
+    $body.on('click', '.ff-asn-group', scrollToTop);
+
+    $('.service-nav .card').on('click', '.card-header', function (e) {
+        $(e.delegateTarget).toggleClass('collapsed');
+    });
+
+    $('#product-color, #product-size').togglebutton();
+});
 
 const showSection = (event, sectionId) => {
     if (event.preventDefault !== undefined) {
@@ -76,6 +41,4 @@ const displaySpinner = (result) => {
     }
 };
 
-const scrollToTop = () => {
-    window.scrollTo(0, 0);
-};
+const scrollToTop = () => window.scrollTo(0, 0);
