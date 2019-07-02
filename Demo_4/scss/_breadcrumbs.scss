@@ -1,14 +1,14 @@
 .search-result-header {
+  text-align: center;
+  @include media-breakpoint-up(lg) {
+    text-align: inherit;
+  }
+
   &__breadcrumbs {
     font-weight: $font-weight-bold;
-    font-size: calc(1em + 0.01vw);
-    @include media-breakpoint-down(md) {
-      text-align: center;
-    }
   }
 
   .product-counter {
     font-weight: normal;
   }
 }
-

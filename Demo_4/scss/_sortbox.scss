@@ -1,74 +1,72 @@
-.search-result-header__sortbox {
-  color: black;
-  text-align: end;
-  @include media-breakpoint-down(md) {
-    text-align: center;
+.sortbox {
+  display: block;
+  position: relative;
+  text-align: left;
+
+  &__caption {
+    margin: .5rem 0;
   }
 
-  .sortbox {
-    display: block;
-    font-size: calc(1em + 0.01vw);
-    color: $text-primary;
-    margin: 0;
-    border: 1px solid $bg-light-gray;
-    -moz-appearance: none;
-    -webkit-appearance: none;
-    appearance: none;
-    background-image: url(../assets/icons/black/angle-down.svg);
-    background-repeat: no-repeat, repeat;
-    background-position: right .7em top 50%, 0 0;
-    background-size: 1em auto, 100%;
+  &__wrapper {
+    margin-bottom: 1rem;
+  }
 
-    &[opened] {
-      background-image: url(../assets/icons/black/angle-up.svg);
-      box-shadow: 0 5px 15px $bg-light-gray;
-    }
+  &[opened] {
+    box-shadow: 0 5px 15px $bg-light-gray;
+  }
 
-    &::-ms-expand {
-      display: none;
-    }
-
-    &__caption {
-      font-size: inherit;
-      white-space: nowrap;
-      margin: auto;
-      @include media-breakpoint-down(md) {
-        text-align: center;
+  @at-root {
+    .search-result-header {
+      &__sortbox .row, & {
+        align-items: center;
       }
-    }
-
-    &__wrapper {
-      text-align: left;
-      font-size: inherit;
-      @include media-breakpoint-down(md) {
-        padding-bottom: 1em;
-      }
-    }
-
-    .ffw-selected-container {
-      padding: 0.4em;
     }
 
     .ffw-dropdown-container {
-      width: 100%;
+      left: 0;
+      right: 0;
+    }
 
-      &:not([ffw-closed]) {
-        ff-sortbox-item {
-          padding: 0.4em;
-          margin: 0;
-          border: 1px solid $bg-light-gray;
-          background: #fff;
+    ff-sortbox-item {
+      border: 1px solid $input-border-color;
+      padding: .5rem;
 
-          &:hover {
-            color: white;
-            background-color: $background-navy;
-          }
+      &.ffw-selected::after {
+        display: block;
+        width: 1rem;
+        height: 1rem;
+        content: "";
+        position: absolute;
+        right: .625rem;
+        top: .75rem;
+        background: $white url("../assets/icons/black/angle-down.svg") no-repeat 0 0;
+        background-size: 100% auto;
+        @include transition(all .3s ease);
 
-          &:not(:last-child) {
-            border-bottom: 0;
-          }
+        [opened] & {
+          transform: rotate(-180deg);
         }
       }
+
+      .ffw-dropdown-container & {
+        border-top: 0;
+
+        &:hover {
+          color: $white;
+          background: $bg-navy;
+        }
+      }
+    }
+  }
+
+  @include media-breakpoint-up(lg) {
+    &__caption {
+      margin: 0;
+      text-align: right;
+    }
+
+    &__wrapper {
+      margin-bottom: 0;
     }
   }
 }
