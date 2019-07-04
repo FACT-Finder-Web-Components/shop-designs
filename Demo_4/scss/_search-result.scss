@@ -1,5 +1,6 @@
 .search-result-header {
-  padding-top: 1em;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 
   @at-root {
     .filter-button-show {
@@ -21,15 +22,9 @@
 }
 
 .search-result {
-  padding-top: 20px;
-
   &__products {
     padding-left: 0;
     padding-right: 0;
-
-    @include media-breakpoint-down(md) {
-      padding-top: 1em;
-    }
 
     .product {
       &__info h3 {
@@ -39,20 +34,6 @@
       &__price {
         min-height: 30px;
       }
-    }
-  }
-
-  &__filters {
-    & collapsing {
-      position: relative;
-      height: 0;
-      overflow: hidden;
-      -webkit-transition-property: height, visibility;
-      transition-property: height, visibility;
-      -webkit-transition-duration: 1.35s;
-      transition-duration: 1.35s;
-      -webkit-transition-timing-function: ease;
-      transition-timing-function: ease;
     }
   }
 }
