@@ -1,10 +1,6 @@
 jQuery(function ($) {
     let $body = $('body');
 
-    $body.on('click', '.see-all-link', (e) => {
-        showSection(e, 'searchResult')
-    });
-
     $body.on('click', '.ff-asn-group', scrollToTop);
 
     $('.service-nav .card').on('click', '.card-header', function (e) {
@@ -15,6 +11,7 @@ jQuery(function ($) {
 });
 
 const showSection = (event, sectionId) => {
+    return;
     if (event.preventDefault !== undefined) {
         event.preventDefault();
     }

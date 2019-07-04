@@ -4,6 +4,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <title>Dein Warenkorb</title>
 
+    <script>
+
+    document.addEventListener('ffReady', function () {
+        var redirectPath = window.location.origin + '/search.html';
+        factfinder.communication.FFCommunicationEventAggregator.addBeforeDispatchingCallback(function (event) {
+            if (event.type === 'search') {
+                var params = Object.assign({}, event);
+                delete params.type;
+                delete params.version;
+                window.location.href = redirectPath + factfinder.common.dictToParameterString(params);
+            }
+        });
+    });
+
+    </script>
+
     <script src="node_modules/ff-web-components/dist/vendor/custom-elements-es5-adapter.js"></script>
     <script src="node_modules/ff-web-components/dist/vendor/webcomponents-loader.js"></script>
     <script defer src="node_modules/ff-web-components/dist/bundle.js"></script>
@@ -13,14 +29,17 @@
     <script src="public/js/select-togglebutton.js"></script>
     <script src="public/js/custom.js"></script>
 
+    <link rel="shortcut icon" href="public/assets/favicon.png"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans&amp;display=swap"/>
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css"/>
     <link rel="stylesheet" href="public/css/styles.css"/>
 </head>
 <body>
-<ff-communication url="https://search-web-components.fact-finder.de/FACT-Finder-7.2" version="7.2"
-                  default-query="jacket" channel="bergfreunde-co-uk" currency-code="EUR"
+<ff-communication url="https://search-web-components.fact-finder.de/FACT-Finder-7.2"
+                  version="7.2"
+                  channel="bergfreunde-co-uk"
+                  currency-code="EUR"
                   currency-country-code="de-DE"
                   currency-max-digits="5"
                   currency-min-digits="1"></ff-communication>
@@ -48,17 +67,16 @@
 
             <div class="searchbar__wrapper col-12 col-lg-6">
                 <div class="searchbar collapse d-lg-block" id="searchbar" data-parent="#header">
-                    <form autocomplete="off" onsubmit="showSection(event,'searchResult')">
-                        <input type="hidden" autocomplete="false"/>
+                    <div class="searchbar__form">
                         <ff-searchbox unresolved class="input-group">
-                            <input class="form-control form-control-lg" type="text" name="search" placeholder="I'm looking for"/>
+                            <input class="form-control form-control-lg" placeholder="I'm looking for&hellip;"/>
                             <ff-searchbutton class="input-group-append">
-                                <button class="btn btn-default btn-link" onclick="showSection(event,'searchResult')">
+                                <button class="btn btn-default btn-link">
                                     <span class="icon icon-search"></span>
                                 </button>
                             </ff-searchbutton>
                         </ff-searchbox>
-                    </form>
+                    </div>
                     <ff-suggest id="ffSuggest" layout="block" unresolved>
                         <div class="row m-0 w-100">
                             <section id="searchContainer" class="col-4 search-terms-container">
@@ -114,18 +132,6 @@
                                     </div>
                                 </div>
                             </section>
-                            <div class="col-12 all-results-container">
-                                <div class="row">
-                                    <div class="col-4"></div>
-                                    <div class="col-8 ">
-                                        <a href="#" id="suggestAllResult"
-                                           class="btn btn-primary btn-block all-results"
-                                           onclick="showSection(event,'searchResult')">
-                                            <span>See all results...</span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </ff-suggest>
                 </div>
