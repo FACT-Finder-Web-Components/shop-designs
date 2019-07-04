@@ -9,7 +9,7 @@
     document.addEventListener('ffReady', function () {
         var redirectPath = window.location.origin + '/search.html';
         factfinder.communication.FFCommunicationEventAggregator.addBeforeDispatchingCallback(function (event) {
-            if (event.type === 'search') {
+            if (['search', 'navigation-search'].includes(event.type)) {
                 var params = Object.assign({}, event);
                 delete params.type;
                 delete params.version;
