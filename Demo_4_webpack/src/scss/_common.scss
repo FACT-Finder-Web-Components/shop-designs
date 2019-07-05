@@ -1,0 +1,61 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  color: $text-primary;
+  font-family: "Open Sans", sans-serif;
+}
+
+[unresolved] {
+  opacity: 0;
+  display: none
+}
+
+.page {
+  margin-top: 7.75rem;
+
+  @include media-breakpoint-up(lg) {
+    margin-top: 11.5rem;
+  }
+
+  &__wrapper {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.main-column {
+  max-width: 1140px;
+}
+
+a {
+  &:hover {
+    text-decoration: none;
+    transition: color 0.5s;
+  }
+
+  &:active {
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+}
+
+.btn-primary {
+  @include button-variant($bg-navy, $bg-navy);
+}
+
+.modal {
+  &-backdrop {
+    background: #fff;
+  }
+
+  &-content, &-header, &-footer {
+    border: 0;
+    border-radius: 0;
+  }
+}
+
+.price {
+  white-space: nowrap;
+}

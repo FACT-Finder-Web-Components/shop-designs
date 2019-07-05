@@ -1,0 +1,107 @@
+.ffw-suggestContainerWrapper {
+  font-size: calc(1em + 0.01vw);
+  @include media-breakpoint-down(xs) {
+    font-size: calc(1em + 0.005vw);
+  }
+  @include scrollbar();
+  z-index: 999;
+
+  filter: drop-shadow(1px 0px 1px);
+  width: 100%;
+  box-shadow: 0 1em 1em rgba(0, 0, 0, 0.5);
+  border: $border-width-standard solid $bg-light-gray;;
+
+  .ffw-suggestContainer {
+    flex-direction: row-reverse;
+    padding: $padding-standard;
+
+    .container-caption {
+      font-size: calc(1em + 0.5vw);
+      @include media-breakpoint-down(xs) {
+        font-size: calc(1em + 0.025vw);
+      }
+      font-weight: bold;
+      text-align: left;
+    }
+
+    div[data-container] {
+      padding-top: $padding-standard;
+    }
+
+    .search-terms-container {
+      height: 60vh;
+      overflow-y: auto;
+      overflow-x: hidden;
+      margin: 0;
+      @include media-breakpoint-down(lg) {
+        height: 40vh;
+      }
+
+      .ff-suggest-element {
+        cursor: pointer;
+
+        &[type="searchTerm"] {
+          text-transform: lowercase;
+
+          &::first-letter {
+            text-transform: uppercase;
+          }
+        }
+      }
+
+    }
+
+    .products-container {
+      height: 60vh;
+      text-align: center;
+      @include media-breakpoint-down(lg) {
+        height: 40vh;
+      }
+
+      &div[data-container="productName"] {
+        height: 100%;
+      }
+
+      &--scrollable {
+        height: 100%;
+        width: 100%;
+        overflow-y: auto;
+        overflow-x: hidden;
+
+        a {
+          text-decoration: none;
+          color: black;
+          font-size: inherit;
+        }
+      }
+    }
+
+    .all-results-container {
+      padding: $padding-standard;
+
+      .all-results {
+        background-color: $background-navy;
+        color: white;
+        height: 5%;
+        vertical-align: middle;
+        font-weight: bolder;
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  ff-suggest-item.ffw-highlight-suggest-item {
+    background-color: $background-navy;
+    color: white;
+
+    & .ffw-query {
+      color: white;
+      font-weight: bold;
+    }
+  }
+
+  .ffw-query {
+    color: $background-navy;
+    font-weight: bold;
+  }
+}

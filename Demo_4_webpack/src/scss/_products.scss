@@ -1,0 +1,107 @@
+.recommended-products {
+  margin-bottom: 1.5rem;
+
+  &__caption {
+    text-transform: uppercase;
+    text-align: center;
+    padding: 1.25rem 0;
+    margin-top: 1.75rem;
+    margin-bottom: 1.75rem;
+    border: 1px solid $bg-light-gray;;
+    border-left: 0;
+    border-right: 0;
+  }
+}
+
+.product {
+  &__wrapper {
+    margin-bottom: 1rem;
+  }
+
+  &__tile {
+    border: 1px solid $bg-light-gray;;
+    cursor:pointer;
+    &:hover {
+      box-shadow: 0 5px 15px $bg-light-gray;
+      transition-timing-function: ease-in;
+      -webkit-transition: all 0.3s;
+      transition: all 0.3s;
+      transform: translate(0,-5px);
+      border:none;
+    }
+  }
+
+  &__image-wrapper {
+    @include responsive-image();
+
+    .recommended-products__outfit & {
+      @include responsive-image(percentage(1250 / 900));
+    }
+  }
+
+  &__links {
+    position: absolute;
+    z-index: 1;
+    right: .5rem;
+    top: .5rem;
+  }
+
+  &-add-to-wishlist {
+    display: inline-block;
+    background: transparent url("../images/desktop/wishlist.svg") no-repeat;
+    height: 24px;
+    width: 30px;
+    background-size: 30px 24px;
+  }
+
+  &__colors {
+    margin: .75rem 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+
+    li {
+      display: inline-block;
+    }
+
+    .color-swatch {
+      border-radius: 50%;
+      height: 1.25rem;
+      width: 1.25rem;
+      margin: 0 .25rem;
+    }
+
+    @each $name,$hex in $color-swatches {
+      .swatch-#{$name} {
+        background: $hex;
+        @if (lightness($hex) > 95) {
+          border: 1px solid darken(#b9b9b9, 50%);
+        }
+      }
+    }
+  }
+
+  &__info {
+    padding: 0 1rem 1rem;
+    text-align: center;
+    min-height: 90px;
+
+    h3 {
+      font-size: 1rem;
+      line-height: 1.25rem;
+      margin: 0;
+    }
+  }
+
+  &__price {
+    margin: .5rem 0;
+    font-weight: 700;
+    font-size: 1.25rem;
+  }
+
+  &__desc {
+    height: 3rem;
+    overflow: hidden;
+  }
+}

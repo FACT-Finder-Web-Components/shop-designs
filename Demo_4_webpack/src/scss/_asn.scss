@@ -1,0 +1,197 @@
+ff-asn {
+  border: 1px solid $bg-light-gray;
+  padding: .625rem .625rem 0;
+  margin-bottom: 1rem;
+
+  &-remove-all-filter {
+    display: block;
+    cursor: pointer;
+    margin: 0 1rem 1rem;
+    font-size: .8125rem;
+    @include transition(all .3s ease);
+
+    &:hover {
+      padding-left: .5em;
+    }
+  }
+
+  &-group, &-group-slider {
+    min-width: auto;
+    max-width: none;
+    margin-bottom: .625rem;
+    opacity: 1;
+  }
+
+  .ffw-wrapper {
+    padding: 0 1em;
+    font-size: .8125rem;
+  }
+
+  .groupCaption {
+    background: $bg-gray;
+    padding: 1rem 2.5rem 1rem 1rem;
+    text-transform: uppercase;
+    cursor: pointer;
+
+    h3 {
+      position: relative;
+      margin: 0;
+      font-size: 1rem;
+      line-height: 1.25rem;
+
+      &::after {
+        position: absolute;
+        width: 1.25rem;
+        height: 1.25rem;
+        background: url("../images/icons/black/caret-right.svg");
+        background-size: cover;
+        content: " ";
+        right: -1.5rem;
+
+        @at-root #{selector_replace(&, 'ff-asn', '[opened]')} {
+          transform: rotate(90deg);
+        }
+      }
+
+      &, &::after {
+        @include transition(all .3s ease);
+      }
+    }
+
+    @at-root #{selector_replace(&, "ff-asn", '[for-group="Category"]')} {
+      background: $background-navy;
+      color: $white;
+
+      h3::after {
+        content: none;
+      }
+    }
+  }
+
+  &-group-element {
+    @include transition(all .3s ease);
+    cursor: pointer;
+
+    &:hover {
+      color: darken($text-primary, 50);
+
+      [for-group="Category"] & {
+        padding-left: .5rem;
+      }
+    }
+
+    .checkbox, .circle {
+      display: inline-block;
+      vertical-align: middle;
+      width: 1.5rem;
+      height: 1.5rem;
+      margin-right: .3125rem;
+      background-color: $bg-light-gray;
+      @include transition(all .3s ease);
+
+      @at-root #{selector_replace(&, 'ff-asn-group-element', 'p:hover')} {
+        background: $bg-light-blue;
+        margin-right: .75rem;
+      }
+
+      @at-root #{selector_replace(&, 'ff-asn-group-element', '.selected')} {
+        background: $bg-light-blue;
+      }
+    }
+
+    .circle {
+      background-color: $white;
+      border: 1px solid $black;
+      border-radius: 50%;
+      @include transition(all .3s ease);
+    }
+
+    .count {
+      float: right;
+      font-size: .625rem;
+    }
+
+    @for $i from 1 through 4 {
+      &.clusterLevel#{$i} > div {
+        margin-left: .75rem * $i;
+      }
+    }
+  }
+
+  [data-container="showLess"], [data-container="showMore"], [data-container="removeFilter"] {
+    cursor: pointer;
+    margin-bottom: .625rem;
+  }
+
+  [data-container="detailedLinks"] {
+    padding-top: .625rem;
+  }
+
+  &-group-slider {
+    max-width: 100% !important;
+
+    .slider-remove-filter {
+      margin-top: 12px;
+      cursor: pointer;
+    }
+
+    ff-slider-control {
+      padding: 5px 0 10px;
+
+      input {
+        border: 0;
+        background-color: $bg-gray;
+        position: inherit !important;
+        left: 0 !important;
+        text-align: center;
+        width: 65px;
+        line-height: 21px;
+
+        &:nth-of-type(2) {
+          right: 0 !important;
+          float: right;
+        }
+      }
+
+      ff-slider {
+        width: 90% !important;
+        border: 1px solid #375765;
+        border-radius: 2.5rem 0 3.5rem 2.5rem;
+        border-top-right-radius: 2.5em;
+        height: 15px;
+
+        .ffw-sliderBar {
+          background-color: $bg-navy;
+          border-radius: 2.5rem 0 3.5rem 2.5rem;
+          border-top-right-radius: 2.5em;
+
+          .sliderBtn {
+            border-radius: 50px;
+            background: repeat-x scroll 50% 50% #f6f6f6;
+            border: 1px solid #7f7f7f;
+            color: #fff;
+            font-weight: $font-weight-bold;
+            outline: medium none;
+            margin-left: -0.5em;
+            height: 18px;
+            position: absolute;
+            width: 1em;
+            z-index: 3;
+            font-size: 1.1em;
+            text-align: left;
+            text-decoration: none;
+            top: -3px;
+            cursor: pointer;
+          }
+        }
+
+        .slider.ff-slider {
+          width: 1.4em;
+          height: 1.4em;
+          border-radius: 5px;
+          border: 1px solid #375765;
+        }
+      }
+    }
+  }
+}
