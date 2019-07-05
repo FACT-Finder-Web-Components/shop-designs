@@ -33,7 +33,7 @@
 <%= require('html-loader?interpolate!../ff-web-components/communication' + (htmlWebpackPlugin.options.filename === 'search.html' ? '-si' : '')+ '.html') %>
 
 <div class="page__wrapper">
-    <%= require('html-loader!../partials/header.html') %>
+    <%= require('html-loader?attrs=img:data-image!../partials/header.html') %>
     <div class="page">
         <%= require('html-loader!../' + htmlWebpackPlugin.options.filename) %>
     </div>
