@@ -6,7 +6,8 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack",
-    "watch": "webpack --watch"
+    "watch": "webpack --watch",
+    "dev": "webpack-dev-server --config webpack.config.js --mode development --watch true --devtool inline-source-map --compress"
   },
   "keywords": [],
   "author": "",
@@ -30,6 +31,7 @@
     "style-loader": "^0.23.1",
     "svg-inline-loader": "^0.8.0",
     "webpack": "^4.35.2",
+    "webpack-dev-server": "^3.7.2",
     "webpack-cli": "^3.3.5"
   }
 }
