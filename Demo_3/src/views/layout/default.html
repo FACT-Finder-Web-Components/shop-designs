@@ -7,7 +7,7 @@
 
     <script>
         document.addEventListener('ffReady', function () {
-            var searchPage = '/search.html';
+            var searchPage = '<%= webpackConfig.output.publicPath %>search.html';
             factfinder.communication.FFCommunicationEventAggregator.addBeforeDispatchingCallback(function (event) {
                 if (['search', 'navigation-search'].includes(event.type) && window.location.href.indexOf(searchPage) < 0) {
                     var params = {};
@@ -16,7 +16,6 @@
                             params[decodeURIComponent(key)] = decodeURIComponent(event[key]);
                         }
                     });
-                    console.log(params);
                     window.location.href = window.location.origin + searchPage + factfinder.common.dictToParameterString(params);
                 }
             });

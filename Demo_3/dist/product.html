@@ -7,7 +7,7 @@
 
     <script>
         document.addEventListener('ffReady', function () {
-            var searchPage = '/search.html';
+            var searchPage = '/Demo_3/dist/search.html';
             factfinder.communication.FFCommunicationEventAggregator.addBeforeDispatchingCallback(function (event) {
                 if (['search', 'navigation-search'].includes(event.type) && window.location.href.indexOf(searchPage) < 0) {
                     var params = {};
@@ -16,7 +16,6 @@
                             params[decodeURIComponent(key)] = decodeURIComponent(event[key]);
                         }
                     });
-                    console.log(params);
                     window.location.href = window.location.origin + searchPage + factfinder.common.dictToParameterString(params);
                 }
             });
@@ -26,9 +25,9 @@
     <script src="js/ff-web-components/vendor/custom-elements-es5-adapter.js"></script>
     <script src="js/ff-web-components/vendor/webcomponents-loader.js"></script>
     <script src="js/ff-web-components/bundle.js" defer></script>
-    <link rel="shortcut icon" href="/img/favicon.fea3abdce7b45d870d4f9bfb4d21a711.png"/>
+    <link rel="shortcut icon" href="/Demo_3/dist/img/favicon.fea3abdce7b45d870d4f9bfb4d21a711.png"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans&amp;display=swap"/>
-<link href="/css/app.88c780396b066173ddb5.css" rel="stylesheet"></head>
+<link href="/Demo_3/dist/css/app.c752ed13c8d7168e9fc2.css" rel="stylesheet"></head>
 <body>
 <ff-communication url="https://search-web-components.fact-finder.de/FACT-Finder-7.2"
                   version="7.2"
@@ -108,7 +107,7 @@
                                                     <div class="product__image">
                                                         <!--@todo  image mock, need to be changed-->
                                                         <img class="img-fluid"
-                                                             data-image="/img/backpack.d230b1c65065c9823f0e081edd472cf0.jpg"/>
+                                                             data-image="/Demo_3/dist/img/backpack.d230b1c65065c9823f0e081edd472cf0.jpg"/>
                                                     </div>
                                                 </a>
                                                 <div class="product-info">
@@ -237,13 +236,13 @@
                 </section>
                 <section class="col-md-6 product__gallery">
                     <div class="product__gallery__big-image product-image">
-                        <img src="/img/backpack.d230b1c65065c9823f0e081edd472cf0.jpg" alt="EVOC - Line 28 - Skitourenrucksack" />
+                        <img src="/Demo_3/dist/img/backpack.d230b1c65065c9823f0e081edd472cf0.jpg" alt="EVOC - Line 28 - Skitourenrucksack" />
                     </div>
                     <div class="row gallery-thumbnails">
-                        <div class="col"><div class="product-image"><img src="/img/backpack.d230b1c65065c9823f0e081edd472cf0.jpg" alt="EVOC - Line 28 - Skitourenrucksack" /></div></div>
-                        <div class="col"><div class="product-image"><img src="/img/boots.3208bfe13385e104b9eb0865304728f5.jpg" alt="EVOC - Line 28 - Skitourenrucksack" /></div></div>
-                        <div class="col"><div class="product-image"><img src="/img/jacket.b4b805070ceb7a90f8a0278f7fe9ebeb.jpg" alt="EVOC - Line 28 - Skitourenrucksack" /></div></div>
-                        <div class="col"><div class="product-image"><img src="/img/sweater.08083bdd6632765a659e05fde5f45c04.jpg" alt="EVOC - Line 28 - Skitourenrucksack" /></div></div>
+                        <div class="col"><div class="product-image"><img src="/Demo_3/dist/img/backpack.d230b1c65065c9823f0e081edd472cf0.jpg" alt="EVOC - Line 28 - Skitourenrucksack" /></div></div>
+                        <div class="col"><div class="product-image"><img src="/Demo_3/dist/img/boots.3208bfe13385e104b9eb0865304728f5.jpg" alt="EVOC - Line 28 - Skitourenrucksack" /></div></div>
+                        <div class="col"><div class="product-image"><img src="/Demo_3/dist/img/jacket.b4b805070ceb7a90f8a0278f7fe9ebeb.jpg" alt="EVOC - Line 28 - Skitourenrucksack" /></div></div>
+                        <div class="col"><div class="product-image"><img src="/Demo_3/dist/img/sweater.08083bdd6632765a659e05fde5f45c04.jpg" alt="EVOC - Line 28 - Skitourenrucksack" /></div></div>
                     </div>
                 </section>
             </div>
@@ -401,7 +400,7 @@
                 <div class="row">
                     <div class="col-lg-4 item-image">
                         <div class="product-image">
-                            <img src="/img/backpack.d230b1c65065c9823f0e081edd472cf0.jpg" alt="EVOC - Line 28 - Skitourenrucksack"/>
+                            <img src="/Demo_3/dist/img/backpack.d230b1c65065c9823f0e081edd472cf0.jpg" alt="EVOC - Line 28 - Skitourenrucksack"/>
                         </div>
                     </div>
                     <div class="col-lg-6 item-details">
@@ -424,7 +423,7 @@
             </div>
             <div class="modal-footer">
                 <div class="modal-banner">
-                    <img src="/img/zelten.cb868be18721a09ef80b0673c20aa5c1.png" alt="Zelten"/>
+                    <img src="/Demo_3/dist/img/zelten.cb868be18721a09ef80b0673c20aa5c1.png" alt="Zelten"/>
                     <div class="banner-body">
                         <div>Zelte für den Outdoor-Einsatz</div>
                         <a href="#" class="banner-cta">Jetzt entdecken</a>
@@ -446,5 +445,5 @@
     </svg>
 </div>
 
-<script type="text/javascript" src="/app.bundle.js"></script></body>
+<script type="text/javascript" src="/Demo_3/dist/app.bundle.js"></script></body>
 </html>
