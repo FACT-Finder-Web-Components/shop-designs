@@ -1,0 +1,27 @@
+.campaign-banner {
+  @include banner();
+  background: transparent url("../images/mobile/campaign-banner.jpg") no-repeat 50% 50%;
+  background-size: cover;
+
+  &__container {
+    height: 350px;
+  }
+
+  @include media-breakpoint-up(lg) {
+    background-image: url("../images/desktop/campaign-banner.png");
+
+    &__container {
+      height: 280px;
+    }
+  }
+}
+
+.search-result__campaign {
+  & > a {
+    display: block;
+  }
+}
+
+ff-campaign-feedbacktext {
+  width: 100%;
+}

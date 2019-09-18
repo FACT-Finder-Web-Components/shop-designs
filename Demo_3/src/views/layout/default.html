@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <title><%= htmlWebpackPlugin.options.title %></title>
+
+    <script>
+        document.addEventListener('ffReady', function () {
+            var searchPage = '<%= webpackConfig.output.publicPath %>search.html';
+            factfinder.communication.FFCommunicationEventAggregator.addBeforeDispatchingCallback(function (event) {
+                if (['search', 'navigation-search'].includes(event.type) && window.location.href.indexOf(searchPage) < 0) {
+                    var params = {};
+                    Object.keys(event).forEach(function (key) {
+                        if (!['type', 'version'].includes(key)) {
+                            params[decodeURIComponent(key)] = decodeURIComponent(event[key]);
+                        }
+                    });
+                    window.location.href = window.location.origin + searchPage + factfinder.common.dictToParameterString(params);
+                }
+            });
+        });
+    </script>
+
+    <script src="js/ff-web-components/vendor/custom-elements-es5-adapter.js"></script>
+    <script src="js/ff-web-components/vendor/webcomponents-loader.js"></script>
+    <script src="js/ff-web-components/bundle.js" defer></script>
+    <link rel="shortcut icon" href="<%= require('../../images/favicon.png') %>"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans&amp;display=swap"/>
+</head>
+<body>
+<%= require('html-loader?interpolate!../ff-web-components/communication' + (htmlWebpackPlugin.options.filename === 'search.html' ? '-si' : '')+ '.html') %>
+
+<div class="page__wrapper">
+    <%= require('html-loader?attrs=img:data-image!../partials/header.html') %>
+    <div class="page">
+        <%= require('html-loader!../' + htmlWebpackPlugin.options.filename) %>
+    </div>
+    <%= require('html-loader!../partials/footer.html') %>
+</div>
+
+<%= require('html-loader!../partials/cart-overlay.html') %>
+<%= require('html-loader!../partials/svg.html') %>
+</body>
+</html>
