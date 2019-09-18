@@ -9,3 +9,4 @@ feel free to use the git history of this project.
 
 [Demo 1](https://fact-finder-web-components.github.io/shop-designs/Demo_1/index.html)
 [Demo 2](https://fact-finder-web-components.github.io/shop-designs/Demo_2/index.html)
+[Demo 3](https://fact-finder-web-components.github.io/shop-designs/Demo_3/dist/index.html)
