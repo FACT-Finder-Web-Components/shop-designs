@@ -7,19 +7,19 @@
     <script src="../dist/vendor/custom-elements-es5-adapter.js"></script>
     <script src="../dist/vendor/webcomponents-loader.js"></script>
 
-    <link rel="stylesheet" href="css/asn.css" />
-    <link rel="stylesheet" href="css/header-navigation.css" />
-    <link rel="stylesheet" href="css/records.css">
-    <link rel="stylesheet" href="css/campaigns.css">
-    <link rel="stylesheet" href="css/spinner.css">
-    <link rel="stylesheet" href="css/tagcloud.css">
-    <link rel="stylesheet" href="css/breadcrumb.css">
-    <link rel="stylesheet" href="css/productDetail.css">
-    <link rel="stylesheet" href="css/sortbox.css">
-    <link rel="stylesheet" href="css/suggest.css">
+    <link rel="stylesheet" href="resources/css/asn.css" />
+    <link rel="stylesheet" href="resources/css/header-navigation.css" />
+    <link rel="stylesheet" href="resources/css/records.css">
+    <link rel="stylesheet" href="resources/css/campaigns.css">
+    <link rel="stylesheet" href="resources/css/spinner.css">
+    <link rel="stylesheet" href="resources/css/tagcloud.css">
+    <link rel="stylesheet" href="resources/css/breadcrumb.css">
+    <link rel="stylesheet" href="resources/css/productDetail.css">
+    <link rel="stylesheet" href="resources/css/sortbox.css">
+    <link rel="stylesheet" href="resources/css/suggest.css">
 
     <script defer src="../dist/bundle.js"></script>
-    <script defer src="./custom.js"></script>
+    <script defer src="resources/custom.js"></script>
 
     <script>
         document.addEventListener("ffReady", function () {
@@ -82,6 +82,10 @@
     <style>
         [unresolved] {
             opacity: 0;
+        }
+
+        * {
+            font-family: sans-serif;
         }
 
         html, body {
@@ -195,11 +199,11 @@
 <header>
     <nav>
         <ff-header-navigation group-count="4" unresolved>
-            <img slot="container-left-Outdoor clothing" src="images/outdoorClothing.jpg" style="max-width: 1200px"
+            <img slot="container-left-Outdoor clothing" src="resources/images/outdoorClothing.jpg" style="max-width: 1200px"
                  alt="Outdoor Clothing Banner">
         </ff-header-navigation>
         <img style="position: absolute;right: 15px; top: 15px; cursor: pointer;color: white"
-             src="images/ic_info_outline_black_24px.svg" alt="info icon"
+             src="resources/images/ic_info_outline_black_24px.svg" alt="info icon"
              height="42px"
              width="42px"/>
     </nav>
@@ -209,14 +213,14 @@
         </ff-searchbox>
         <ff-searchbutton>
             <button>
-                <img src="images/ic_search_black_24px.svg" alt="search icon" style="color: white" height="42px"
+                <img src="resources/images/ic_search_black_24px.svg" alt="search icon" style="color: white" height="42px"
                      width="42px" />
             </button>
         </ff-searchbutton>
 
         <div class="sortboxContainer">
             <div class="sortBoxCaption" onclick="toggleSortbox()">
-                <img src="images/sort_by_V1.png" alt="sorting icons" style="vertical-align: middle">
+                <img src="resources/images/sort_by_V1.png" alt="sorting icons" style="vertical-align: middle">
             </div>
             <ff-sortbox show-selected="true" id="sortbox"></ff-sortbox>
         </div>

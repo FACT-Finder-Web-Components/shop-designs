@@ -25,7 +25,7 @@ ff-asn-group-slider {
 }
 
 ff-asn-group .ffw-asn-group-container {
-    padding: 0px;
+    padding: 0;
 }
 
 ff-asn-group .ffw-wrapper {
@@ -58,7 +58,7 @@ ff-asn-group-element {
     font-size: 0.9rem;
     line-height: 26px;
     font-weight: 700;
-    margin: 0px;
+    margin: 0;
     position: relative;
     clear: both;
 }
@@ -74,12 +74,12 @@ ff-asn-group p {
 }
 
 ff-asn-group[for-group="Color"] ff-asn-group-element:hover,
-ff-asn-group[for-group="Color"] ff-asn-group-element[selected="true"] {
+ff-asn-group[for-group="Color"] ff-asn-group-element[selected] {
     text-decoration: underline;
 }
 
 ff-asn-group[for-group="Color"] ff-asn-group-element:hover .circle,
-ff-asn-group[for-group="Color"] ff-asn-group-element[selected="true"] .circle {
+ff-asn-group[for-group="Color"] ff-asn-group-element[selected] .circle {
     border: 1px solid white;
     top: 2px;
     width: 20px;
@@ -108,7 +108,7 @@ ff-asn-group ff-asn-group-element .circle {
     height: 15px;
     position: absolute;
     top: 5px;
-    left: 0px;
+    left: 0;
     transition: 300ms;
 }
 
@@ -140,7 +140,7 @@ ff-asn-group ff-asn-group-element .checkbox {
     height: 15px;
     position: absolute;
     top: 6px;
-    left: 0px;
+    left: 0;
     background: url("../images/checkbox_inactive.png") no-repeat transparent;
 }
 
@@ -170,7 +170,7 @@ ff-asn-group ff-asn-group-element.clusterLevel4 {
     margin-left: 40px;
 }
 
-.sliderBtn {
+ff-slider .sliderBtn {
     border-radius: 50px;
     background: repeat-x scroll 50% 50% #f6f6f6;
     border: 1px solid #7f7f7f;
