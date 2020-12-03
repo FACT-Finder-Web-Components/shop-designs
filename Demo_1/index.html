@@ -71,7 +71,7 @@
                 }
             });
 
-            factfinder.communication.FFCommunicationEventAggregator.addBeforeDispatchingCallback(function (event) {
+            factfinder.communication.EventAggregator.addBeforeDispatchingCallback(function (event) {
                 if (event.type === "search" || event.type === "filter" || event.type === "sort" || event.type === "clearFilter" || event.type === "advisor") {
                     showOverlay(0, true);
                 }
@@ -225,13 +225,8 @@
             <ff-sortbox show-selected="true" id="sortbox"></ff-sortbox>
         </div>
     </div>
-    <ff-onfocus-suggest id="suggest" unresolved>
-        <section data-container="onfocus">
-            <ff-suggest-item type="searchTerm">
-                <div>{{{name}}}</div>
-            </ff-suggest-item>
-        </section>
-        <section data-container="suggestions" style="display: flex;flex-direction: row">
+    <ff-suggest id="suggest" layout="block" unresolved>
+        <section style="display: flex;flex-direction: row">
             <div style="display: flex;flex-direction: column;">
                 <div data-container="category">
                     <h2>Categories</h2>
@@ -266,7 +261,7 @@
                 </div>
             </div>
         </section>
-    </ff-onfocus-suggest>
+    </ff-suggest>
 </header>
 
 <section id="productDetail" style="display: none;opacity: 0;">
