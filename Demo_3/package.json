@@ -17,7 +17,7 @@
     "copy-webpack-plugin": "^5.0.3",
     "css-loader": "^3.0.0",
     "csso-loader": "^0.3.1",
-    "ff-web-components": "git+https://github.com/FACT-Finder-Web-Components/ff-web-components.git#3.4.0",
+    "ff-web-components": "git+https://github.com/FACT-Finder-Web-Components/ff-web-components.git#4.0.0-rc.3",
     "file-loader": "^4.0.0",
     "font-awesome": "^4.7.0",
     "html-loader": "^0.5.5",

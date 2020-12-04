@@ -12,7 +12,7 @@
   border: $border-width-standard solid $bg-light-gray;;
 
   .ffw-suggestContainer {
-    flex-direction: row-reverse;
+    justify-content: flex-end;
     padding: $padding-standard;
 
     .container-caption {
@@ -37,7 +37,7 @@
         height: 40vh;
       }
 
-      .ff-suggest-element {
+      ff-suggest-item {
         cursor: pointer;
 
         &[type="searchTerm"] {
@@ -60,6 +60,12 @@
 
       &div[data-container="productName"] {
         height: 100%;
+      }
+
+      ff-suggest-item {
+        @extend .col-xl-4;
+        @extend .col-md-6;
+        @extend .col-12;
       }
 
       &--scrollable {

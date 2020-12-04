@@ -7,15 +7,14 @@
 
     <script>
         document.addEventListener('ffReady', function () {
-            var searchPage = '<%= webpackConfig.output.publicPath %>search.html';
-            factfinder.communication.FFCommunicationEventAggregator.addBeforeDispatchingCallback(function (event) {
+            const searchPage = '<%= webpackConfig.output.publicPath %>search.html';
+            factfinder.communication.EventAggregator.addBeforeDispatchingCallback(function (event) {
                 if (['search', 'navigation-search'].includes(event.type) && window.location.href.indexOf(searchPage) < 0) {
-                    var params = {};
-                    Object.keys(event).forEach(function (key) {
-                        if (!['type', 'version'].includes(key)) {
-                            params[decodeURIComponent(key)] = decodeURIComponent(event[key]);
-                        }
-                    });
+                    event.cancel();
+                    const params = factfinder.common.encodeDict(Object.assign({}, event));
+                    delete params.version;
+                    delete params.type;
+                    delete params.dispatchId;
                     window.location.href = window.location.origin + searchPage + factfinder.common.dictToParameterString(params);
                 }
             });

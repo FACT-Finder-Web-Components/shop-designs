@@ -30,58 +30,56 @@
                         </ff-searchbutton>
                     </ff-searchbox>
                 </div>
-                <ff-suggest id="ffSuggest" layout="block" unresolved>
-                    <div class="row m-0 w-100">
-                        <section id="searchContainer" class="col-4 search-terms-container">
-                            <div data-container="searchTerm">
-                                <p class="container-caption">Search terms</p>
-                                <ff-suggest-item class="ff-suggest-element" type="searchTerm">
-                                    <span class="ff-search-term">{{{name}}}</span>
-                                </ff-suggest-item>
-                            </div>
-                            <div data-container="category">
-                                <p class="container-caption">Categories</p>
-                                <ff-suggest-item unresolved class="ff-suggest-element" type="category">
-                                    <span class="ff-category">{{{name}}}</span>
-                                </ff-suggest-item>
-                            </div>
+                <ff-suggest class="row m-0 w-100" id="ffSuggest" layout="block" unresolved>
+                    <section id="searchContainer" class="col-4 search-terms-container">
+                        <div data-container="searchTerm">
+                            <p class="container-caption">Search terms</p>
+                            <ff-suggest-item type="searchTerm">
+                                <span class="ff-search-term">{{{name}}}</span>
+                            </ff-suggest-item>
+                        </div>
+                        <div data-container="category">
+                            <p class="container-caption">Categories</p>
+                            <ff-suggest-item unresolved type="category">
+                                <span class="ff-category">{{{name}}}</span>
+                            </ff-suggest-item>
+                        </div>
 
-                            <div data-container="brand">
-                                <p class="container-caption">Brands</p>
-                                <ff-suggest-item unresolved class="ff-suggest-element" type="brand">
-                                    <span class="ff-brand">{{{name}}}</span>
-                                </ff-suggest-item>
-                            </div>
-                        </section>
-                        <section id="productContainer" class="col-8 products-container">
-                            <div class="row h-100">
-                                <div class="products-container--scrollable" data-container="productName">
-                                    <p class="col-12 container-caption">Suggested products</p>
-                                    <div class="col-12">
-                                        <div class="row">
-                                            <ff-suggest-item unresolved class="col-xl-4 col-md-6 col-12" type="productName">
+                        <div data-container="brand">
+                            <p class="container-caption">Brands</p>
+                            <ff-suggest-item unresolved type="brand">
+                                <span class="ff-brand">{{{name}}}</span>
+                            </ff-suggest-item>
+                        </div>
+                    </section>
+                    <section id="productContainer" class="col-8 products-container">
+                        <div class="row h-100">
+                            <div class="products-container--scrollable" data-container="productName">
+                                <p class="col-12 container-caption">Suggested products</p>
+                                <div class="col-12">
+                                    <div class="row">
+                                        <ff-suggest-item unresolved class="col-xl-4 col-md-6 col-12" type="productName">
+                                            <a href="product.html">
+                                                <div class="product__image">
+                                                    <!--@todo  image mock, need to be changed-->
+                                                    <img class="img-fluid"
+                                                         data-image="../../images/recommended-products/backpack.jpg"/>
+                                                </div>
+                                            </a>
+                                            <div class="product-info">
                                                 <a href="product.html">
-                                                    <div class="product__image">
-                                                        <!--@todo  image mock, need to be changed-->
-                                                        <img class="img-fluid"
-                                                             data-image="../../images/recommended-products/backpack.jpg"/>
+                                                    <div class="product-info__name">{{{name}}}</div>
+                                                    <div class="product-info__brand">
+                                                        {{{attributes.Brand}}}
                                                     </div>
                                                 </a>
-                                                <div class="product-info">
-                                                    <a href="product.html">
-                                                        <div class="product-info__name">{{{name}}}</div>
-                                                        <div class="product-info__brand">
-                                                            {{{attributes.Brand}}}
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </ff-suggest-item>
-                                        </div>
+                                            </div>
+                                        </ff-suggest-item>
                                     </div>
                                 </div>
                             </div>
-                        </section>
-                    </div>
+                        </div>
+                    </section>
                 </ff-suggest>
             </div>
         </div>
