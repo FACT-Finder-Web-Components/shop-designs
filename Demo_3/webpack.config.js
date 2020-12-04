@@ -41,7 +41,7 @@ module.exports = function (env, options) {
         output: {
             filename: '[name].bundle.js',
             path: resolve('dist'),
-            publicPath: '/'
+            publicPath: mode === 'development' ? '/' : '/shop-designs/Demo_3/dist/'
         },
     };
 };
