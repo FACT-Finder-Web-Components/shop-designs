@@ -87,12 +87,14 @@ function toggleSortbox() {
 
 }
 
-document.querySelector("ff-onfocus-suggest").addEventListener("suggest-item-clicked", function (event) {
-    var ffSuggestItem = event.detail.element;
-    var suggestionData = event.detail.suggestion;
+document.querySelector("ff-suggest").addEventListener("suggest-item-clicked", function (event) {
+    const ffSuggestItem = event.detail.element;
+    const suggestionData = event.detail.suggestion;
     if (suggestionData.type === "productName") {
-        var id = suggestionData.attributes.ArticleNumber;
-        factfinder.communication.FFCommunicationEventAggregator.addFFEvent({
+        ffSuggestItem.ffPreventDefault = true;
+
+        const id = suggestionData.attributes.ArticleNumber;
+        factfinder.communication.EventAggregator.addFFEvent({
             type: "search",
             query: id,
             isArticleNumber: true,
@@ -100,7 +102,5 @@ document.querySelector("ff-onfocus-suggest").addEventListener("suggest-item-clic
                 return ["detailPage"];
             }
         });
-        // alert(id);
-        ffSuggestItem.ffPreventDefault = true;
     }
 });

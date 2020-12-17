@@ -58,7 +58,7 @@ ff-asn {
       }
     }
 
-    @at-root #{selector_replace(&, "ff-asn", '[for-group="Category"]')} {
+    @at-root #{selector_replace(&, "ff-asn", '[for-group="CategoryROOT"]')} {
       background: $background-navy;
       color: $white;
 
@@ -75,7 +75,7 @@ ff-asn {
     &:hover {
       color: darken($text-primary, 50);
 
-      [for-group="Category"] & {
+      [for-group="CategoryROOT"] & {
         padding-left: .5rem;
       }
     }
